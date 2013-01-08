@@ -1,9 +1,927 @@
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-<html><head>
-<title>404 Not Found</title>
-</head><body>
-<h1>Not Found</h1>
-<p>The requested URL /var/www/public/note.txt was not found on this server.</p>
-<hr>
-<address>Apache/2.2.20 (Ubuntu) Server at theboox.com Port 80</address>
-</body></html>
+drop table Employee;
+drop table EmpJob;
+
+create table Employee
+(	
+	ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name CHAR(20),
+	school CHAR(30)
+);
+
+create table EmpJob 
+(	
+	E_ID	INT NOT NULL,
+	job_title CHAR(20),
+	project   CHAR(30)
+);
+
+insert into Employee (name, school) VALUES('dog', 'uw');
+insert into EmpJob(E_ID, job_title, project) VALUES(1, 'manager', 'windows');
+
+insert into Employee (name, school) VALUES('kelvin', 'UT');
+insert into EmpJob(E_ID, job_title, project) VALUES(2, 'debugger', 'Intel');
+
+insert into Employee (name, school) VALUES('johnny', 'School');
+insert into EmpJob(E_ID, job_title, project) VALUES(3, 'clearing', 'apple');
+
+insert into Employee (name, school) VALUES('Joh', 'Cool School');
+insert into EmpJob(E_ID, job_title, project) VALUES(4, 'Designer', 'google');
+
+
+mysql> select * from Employee;
++----+--------+-------------+
+| ID | name   | school      |
++----+--------+-------------+
+|  1 | dog    | uw          | 
+|  2 | kelvin | UT          | 
+|  3 | johnny | School      | 
+|  4 | Joh    | Cool School | 
++----+--------+-------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from EmpJob;
++------+-----------+---------+
+| E_ID | job_title | project |
++------+-----------+---------+
+|    1 | manager   | windows | 
+|    2 | debugger  | Intel   | 
+|    3 | clearing  | apple   | 
+|    4 | Designer  | google  | 
++------+-----------+---------+
+4 rows in set (0.00 sec)
+
+mysql> select * from Employee NATURE JOIN EmpJob;
++----+--------+-------------+------+-----------+---------+
+| ID | name   | school      | E_ID | job_title | project |
++----+--------+-------------+------+-----------+---------+
+|  1 | dog    | uw          |    1 | manager   | windows | 
+|  2 | kelvin | UT          |    1 | manager   | windows | 
+|  3 | johnny | School      |    1 | manager   | windows | 
+|  4 | Joh    | Cool School |    1 | manager   | windows | 
+|  1 | dog    | uw          |    2 | debugger  | Intel   | 
+|  2 | kelvin | UT          |    2 | debugger  | Intel   | 
+|  3 | johnny | School      |    2 | debugger  | Intel   | 
+|  4 | Joh    | Cool School |    2 | debugger  | Intel   | 
+|  1 | dog    | uw          |    3 | clearing  | apple   | 
+|  2 | kelvin | UT          |    3 | clearing  | apple   | 
+|  3 | johnny | School      |    3 | clearing  | apple   | 
+|  4 | Joh    | Cool School |    3 | clearing  | apple   | 
+|  1 | dog    | uw          |    4 | Designer  | google  | 
+|  2 | kelvin | UT          |    4 | Designer  | google  | 
+|  3 | johnny | School      |    4 | Designer  | google  | 
+|  4 | Joh    | Cool School |    4 | Designer  | google  | 
++----+--------+-------------+------+-----------+---------+
+
+
+mysql: inner join
+
+mysql> select * from Employee INNER JOIN EmpJob ON ID > E_ID;
++----+--------+-------------+------+-----------+---------+
+| ID | name   | school      | E_ID | job_title | project |
++----+--------+-------------+------+-----------+---------+
+|  2 | kelvin | UT          |    1 | manager   | windows | 
+|  3 | johnny | School      |    1 | manager   | windows | 
+|  4 | Joh    | Cool School |    1 | manager   | windows | 
+|  3 | johnny | School      |    2 | debugger  | Intel   | 
+|  4 | Joh    | Cool School |    2 | debugger  | Intel   | 
+|  4 | Joh    | Cool School |    3 | clearing  | apple   | 
++----+--------+-------------+------+-----------+---------+
+<mysqldump>
+mysqldump -uuser -ppassword --all-databases > db.sql
+
+<mysql>
+flush privileges
+
+<mysql> how to create new user
+create user 'user1'@'localhost' identified by 'password';
+
+GRANT select, update, delete ON *.* TO 'user1'@'localhost';
+
+GRANT ALL ON *.* to 'user1'@'localhost';	
+<find command> how to use ind and exec>
+find all the files or directories in the current path and copy them to new directory
+find ./ -name \*.mp3 -exec cp {} /home/user/song \;
+</find>
+
+<find the file that were last modified 4 days ago>
+find ./ -name "*.txt" -mtime -4  -print
+</find>
+
+<find all php from images directory>
+find -iname images -exec ls {} \;   | grep -Hnrs '.php'
+</find all php file from images directory>
+
+<ssh X11 forwarding> X11 forwarding in ssh
+ssh -Y user@domain
+============================================
+connect to cs348
+
+drop table author
+create table author ( \
+    aid			integer not null, \
+    name        char(22) not null, \
+    url         char(42) , \
+    primary key (aid) )
+
+drop table publication
+create table publication ( \
+	pubid		char(10) not null, \
+	title		char(70) not null, \
+	primary key (pubid) )
+
+drop table wrote
+create table wrote ( \
+    aid			integer not null, \
+    pubid		char(10) not null, \
+    aorder		integer not null, \
+    primary key (aid, pubid), \
+    foreign key (aid) references author (aid), \
+    foreign key (pubid) references publication (pubid) )
+
+drop table proceedings
+create table proceedings ( \
+    pubid		char(10) not null, \
+    year		integer not null, \
+    primary key (pubid) )
+	
+drop table journal
+create table journal ( \
+	pubid		char(10) not null, \
+	volume		integer not null, \
+	number		integer not null, \
+	year		integer not null, \
+	primary key (pubid), \
+	foreign key (pubid) references publication (pubid) )
+	
+drop table book
+create table book ( \
+	pubid		char(10) not null, \
+	publisher	char(50) not null, \
+	year		integer not null, \
+	primary key (pubid), \
+	foreign key (pubid) references publication (pubid) )
+	
+drop table article
+create table article ( \
+	pubid		char(10) not null, \
+	appearsin	char(10) not null, \
+	startpage	integer not null, \
+	endpage		integer not null, \
+	primary key (pubid), \
+	foreign key (pubid) references publication (pubid) )
+
+insert into publication values ('1', 'love book1')
+insert into publication values ('2', 'love book2')
+insert into publication values ('3', 'love book3')
+
+insert into proceedings values ('1', 2001)
+insert into proceedings values ('2', 2002)
+insert into proceedings values ('3', 2003)
+
+insert into journal values ('1', 100, 50, 2009)
+insert into journal values ('2', 101, 51, 2010)
+insert into journal values ('3', 102, 52, 2011)
+
+insert into book 	values ('1', 'publisher 1', 1933)
+insert into book 	values ('2', 'publisher 2', 1934)
+insert into book 	values ('3', 'publisher 3', 1935)
+
+insert into article values ('1', 'appear1', 1, 11)
+insert into article values ('2', 'appear2', 2, 12)
+insert into article values ('3', 'appear3', 3, 13)
+
+insert into author values (1, 'name1', 'http://google1.com')
+insert into author values (2, 'name2', 'http://google2.com')
+insert into author values (3, 'name3', 'http://google3.com')
+
+insert into wrote values (1, '1', 1)
+insert into wrote values (2, '2', 2)
+insert into wrote values (3, '3', 3)
+
+============================================
+
+<history command>
+CTRL-R to search the history commmand
+!10 to execute  10 line history
+
+<craftysyntax live chat>
+install file 
+mtheme/common/tpl_header.php
+generate html from admin page, in department 
+<end>
+
+<add product from admin page>
+edit file
+zencart138/admin/edit_orders.php
+</add product from admin page>
+
+=====================================================
+update Nov 11, 2010
+change zencart model: number color 
+file mtheme/templates/tpl_products_info_display.php
+<font color=red>' . TEXT_PRODUCT_MODEL . $products_model . '</font></li>
+=====================================================
+update Nov 27, 2010
+add products_model to customers info, $p_products_model
+file mtheme/templates/tpl_products_info_display.php
+=====================================================
+remove social bookmark from templates/tpl_products_info_display	
+=====================================================
+Date: Nov 5, 2010
+fixed bug to add some items to current order.
+can't get products_quantity from orders_products table
+
+load customer order images from user account
+=======================================================
+templates/mtheme/templates/tpl_account_history_info_default.php
+<end>
+
+<mysql update>
+update products set products_quantity=0 where products_model=12345;
+<end>
+
+<change ubuntu shell>
+chsh -s /bin/bash user
+<end>
+
+<change ntp time>
+apt-get install ntp
+tzdate 
+<end>
+<zen cart scale down image>
+/var/www/domainname/../include/moudle/product_listing.php
+replace listing->fileds[product_image] as listName 
+
+/var/www/domainname/../include/moudle/new_products.php
+replace new_products->fileds[product_image] as listName 
+
+$imgName = $listing->fields['products_image'];
+$ext = end(explode(".", $imgName));
+$name = reset(explode(".", $imgName));
+$listName = $name."KK.".$ext;
+
+//Feb 07, 2011
+update center column images, 
+modified file: css/stylesheet.css
+
+modified class: centerContent
+modified class: kkkcenterBoxContentsNew
+add margin-left:30px;
+add margin-right:30px;
+
+modified modules/new_products.php
+modified modules/product_listing.php
+add style: text-align:center;
+
+<end>
+
+<add modle # in product title>
+update TABLE products_descriptions 
+field: products_name
+<end>
+
+<mysql shell command>
+\! ls -la
+<end>
+<zen cart user login error>
+error: There was a security error when trying to login"
+include/template/mtheme/templates/tpl_login_default.php
+include/template/mtheme/templates/tpl_timeout_default.php
+<end>
+
+
+<update price>
+update products set products_price=100 where products_model >= 100 and products_model <= 200;
+</update price>
+<php in order parse split html textarea line by line>
+$newline = $_POST['textarea_name'];
+$br_newline = nl2br($newline);
+</php parse textarea>
+
+<grep and replace find and replace>
+<desc>e.g grep all the file *.php search oldstring and replace newstring</desc>
+sed -i -e 's/oldstring/newstring/g' *
+find . -name "*" | xargs -n1 perl -i -ane 's/images/img/g; print;'
+</grep and replace>
+
+<ubuntu apache include directive>
+enalbe include directive in apache
+
+make sure you have enabled modes_include
+check whether you have mod_include.so
+/usr/lib/apache2/modules/mod_include.so
+
+if you have the mod_include, then you can just use a2enmode to enable it
+
+<Directory /var/www/yourdomainname>
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride ALL 
+		Order allow,deny
+		allow from all
+
+		# for include directive 
+		Options +Includes
+		XBitHack on
+</Directory>
+</ubuntu apache include directive>
+
+
+
+<merge two tables>
+insert into customers (
+  `customers_gender` ,
+  `customers_firstname` ,
+  `customers_lastname` ,
+  `customers_dob` ,
+  `customers_email_address` ,
+  `customers_nick` ,
+  `customers_default_address_id` ,
+  `customers_telephone` ,
+  `customers_fax` ,
+  `customers_password` ,
+  `customers_newsletter` ,
+  `customers_group_pricing` ,
+  `customers_email_format` ,
+  `customers_authorization` ,
+  `customers_referral` ,
+  `customers_paypal_payerid` ,
+  `customers_paypal_ec`) 
+	select 
+  `customers_gender` ,
+  `customers_firstname` ,
+  `customers_lastname` ,
+  `customers_dob` ,
+  `customers_email_address` ,
+  `customers_nick` ,
+  `customers_default_address_id` ,
+  `customers_telephone` ,
+  `customers_fax` ,
+  `customers_password` ,
+  `customers_newsletter` ,
+  `customers_group_pricing` ,
+  `customers_email_format` ,
+  `customers_authorization` ,
+  `customers_referral` ,
+  `customers_paypal_payerid` ,
+   `customers_paypal_ec` from cu order by customers_id asc
+<merge two tables>
+
+<screen commands>
+split window vertically
+:split -v
+
+scroll screen
+:C-a [ copy
+:C-a ] paste
+highligh
+<space>
+copy
+<space>
+
+or use vim commands to move around the window
+
+C-a h
+dump all data to file hardcopy.0
+
+</screen command>
+<update price>
+update products set products_price = (products_price * 1.5) where products_id >= 0;
+update products set products_model = products_model + 1000000 where products_id >= 0;
+<update price>
+<zencart>
+add paypal email
+/var/www/domainname/zencart138/includes/languages/english/modules/payment/moneyorder.php
+languages/english/html_includes/define_checkout_success.php
+</zencart>
+
+<zencart>
+import/export user 
+need all following tables
+customers
+customers_info
+countries
+address_book
+</zencart>
+
+<zencart>
+<date>Sun Mar 13 23:57:36 EDT 2011</date>
+<topic>how to turn off random products</topic>
+change file: include/modules/new_products.php
+             include/modified/featured_products.php
+change all function:
+ExecuteRandomMulti() to Execute()
+MoveNextRandom(); to MoveNext()
+</zencart>
+
+<zencart>
+353453453454
+include/modules/new_products.php
+control the priority of display image when page is loading
+</zencart> 
+
+<zencart change category image size>
+/var/www/domain/zencart138/includes/templates/mtheme/templates/tpl_product_info_display.php
+change tempates/mtheme/css/stylesheet.css
+</zencart>
+
+<change main category left margin>
+.pos5 {margin-left:2px; margin-bottom:30px;
+/var/www/*/zencart138/includes/templates/mtheme/css/style.css
+</change main category left margin>
+<update products_status>
+update products set products_status=0 where products_model='1012124';
+</update products_status>
+<mysql regular express>
+select products_id, products_model, products_image from products where products_image regexp 'hair'
+</mysql regular express>
+
+<zencart table>
+add column to products table
+add: products_show_sorter varchar(10) NOT NULL default '0'
+change sorted order by products_show_sorter
+</zencart table>
+
+<zencart update smaller display image>
+update purchased products to display smaller images
+/var/www/itemsdeal/zencart138/includes/modules/also_purchased_products.php
+</zencart update smaller display image>
+
+update sorted order
+update products set products_show_sorter=55 where products_image regexp 'something'
+
+add linke to footer
+template/yourtemp/common/tpl_footer.php
+
+
+<put this script on your .bashrc file, shell script auto email>
+echo 'ALERT - Root Shell Access on:' `date` `who` | mail -s "Alert: Root Access from `who | cut -d"(" -f2 | cut -d")" -f1 `"  name@gmail.com
+</put this script on your .bashrc file>
+
+
+
+mysql: inner join
+
+mysql> select * from Employee INNER JOIN EmpJob ON ID > E_ID;
++----+--------+-------------+------+-----------+---------+
+| ID | name   | school      | E_ID | job_title | project |
++----+--------+-------------+------+-----------+---------+
+|  2 | kelvin | UT          |    1 | manager   | windows | 
+|  3 | johnny | School      |    1 | manager   | windows | 
+|  4 | Joh    | Cool School |    1 | manager   | windows | 
+|  3 | johnny | School      |    2 | debugger  | Intel   | 
+|  4 | Joh    | Cool School |    2 | debugger  | Intel   | 
+|  4 | Joh    | Cool School |    3 | clearing  | apple   | 
++----+--------+-------------+------+-----------+---------+
+<mysqldump>
+mysqldump -uuser -ppassword --all-databases > db.sql
+
+<mysql>
+flush privileges
+
+<mysql> how to create new user
+create user 'user1'@'localhost' identified by 'password';
+
+GRANT select, update, delete ON *.* TO 'user1'@'localhost';
+
+GRANT ALL ON *.* to 'user1'@'localhost';	
+<ind command> how to use ind and exec 
+
+find all the files or directories in the current path and copy them to new directory
+find ./ -name \*.mp3 -exec cp {} /home/user/song \;
+find -name "*.sql" -print
+find -name "*.sql" -delete
+
+//find the file that were last modified 4 days ago
+find ./ -name "*.txt" -mtime -4  -print
+
+<find all php from images directory>
+find -iname images -exec ls {} \;   | grep -Hnrs '.php'
+</find all php file from images directory>
+
+<ssh X11 forwarding> X11 forwarding in ssh
+ssh -Y user@domain
+============================================
+connect to cs348
+
+drop table author
+create table author ( \
+    aid			integer not null, \
+    name        char(22) not null, \
+    url         char(42) , \
+    primary key (aid) )
+
+drop table publication
+create table publication ( \
+	pubid		char(10) not null, \
+	title		char(70) not null, \
+	primary key (pubid) )
+
+drop table wrote
+create table wrote ( \
+    aid			integer not null, \
+    pubid		char(10) not null, \
+    aorder		integer not null, \
+    primary key (aid, pubid), \
+    foreign key (aid) references author (aid), \
+    foreign key (pubid) references publication (pubid) )
+
+drop table proceedings
+create table proceedings ( \
+    pubid		char(10) not null, \
+    year		integer not null, \
+    primary key (pubid) )
+	
+drop table journal
+create table journal ( \
+	pubid		char(10) not null, \
+	volume		integer not null, \
+	number		integer not null, \
+	year		integer not null, \
+	primary key (pubid), \
+	foreign key (pubid) references publication (pubid) )
+	
+drop table book
+create table book ( \
+	pubid		char(10) not null, \
+	publisher	char(50) not null, \
+	year		integer not null, \
+	primary key (pubid), \
+	foreign key (pubid) references publication (pubid) )
+	
+drop table article
+create table article ( \
+	pubid		char(10) not null, \
+	appearsin	char(10) not null, \
+	startpage	integer not null, \
+	endpage		integer not null, \
+	primary key (pubid), \
+	foreign key (pubid) references publication (pubid) )
+
+insert into publication values ('1', 'love book1')
+insert into publication values ('2', 'love book2')
+insert into publication values ('3', 'love book3')
+
+insert into proceedings values ('1', 2001)
+insert into proceedings values ('2', 2002)
+insert into proceedings values ('3', 2003)
+
+insert into journal values ('1', 100, 50, 2009)
+insert into journal values ('2', 101, 51, 2010)
+insert into journal values ('3', 102, 52, 2011)
+
+insert into book 	values ('1', 'publisher 1', 1933)
+insert into book 	values ('2', 'publisher 2', 1934)
+insert into book 	values ('3', 'publisher 3', 1935)
+
+insert into article values ('1', 'appear1', 1, 11)
+insert into article values ('2', 'appear2', 2, 12)
+insert into article values ('3', 'appear3', 3, 13)
+
+insert into author values (1, 'name1', 'http://google1.com')
+insert into author values (2, 'name2', 'http://google2.com')
+insert into author values (3, 'name3', 'http://google3.com')
+
+insert into wrote values (1, '1', 1)
+insert into wrote values (2, '2', 2)
+insert into wrote values (3, '3', 3)
+
+============================================
+
+<history command>
+CTRL-R to search the history commmand
+!10 to execute  10 line history
+
+<craftysyntax live chat>
+install file 
+mtheme/common/tpl_header.php
+generate html from admin page, in department 
+<end>
+
+<add product from admin page>
+edit file
+zencart138/admin/edit_orders.php
+</add product from admin page>
+
+=====================================================
+update Nov 11, 2010
+change zencart model: number color 
+file mtheme/templates/tpl_products_info_display.php
+<font color=red>' . TEXT_PRODUCT_MODEL . $products_model . '</font></li>
+=====================================================
+update Nov 27, 2010
+add products_model to customers info, $p_products_model
+file mtheme/templates/tpl_products_info_display.php
+=====================================================
+remove social bookmark from templates/tpl_products_info_display	
+=====================================================
+Date: Nov 5, 2010
+fixed bug to add some items to current order.
+can't get products_quantity from orders_products table
+
+load customer order images from user account
+=======================================================
+templates/mtheme/templates/tpl_account_history_info_default.php
+<end>
+
+<mysql update>
+update products set products_quantity=0 where products_model=12345;
+<end>
+
+<change ubuntu shell>
+chsh -s /bin/bash user
+<end>
+
+<change ntp time>
+apt-get install ntp
+tzdate 
+<end>
+<zen cart scale down image>
+/var/www/domainname/../include/moudle/product_listing.php
+replace listing->fileds[product_image] as listName 
+
+/var/www/domainname/../include/moudle/new_products.php
+replace new_products->fileds[product_image] as listName 
+
+$imgName = $listing->fields['products_image'];
+$ext = end(explode(".", $imgName));
+$name = reset(explode(".", $imgName));
+$listName = $name."KK.".$ext;
+
+//Feb 07, 2011
+update center column images, 
+modified file: css/stylesheet.css
+
+modified class: centerContent
+modified class: kkkcenterBoxContentsNew
+add margin-left:30px;
+add margin-right:30px;
+
+modified modules/new_products.php
+modified modules/product_listing.php
+add style: text-align:center;
+
+<end>
+
+<add modle # in product title>
+update TABLE products_descriptions 
+field: products_name
+<end>
+
+<mysql shell command>
+\! ls -la
+<end>
+<zen cart user login error>
+error: There was a security error when trying to login"
+include/template/mtheme/templates/tpl_login_default.php
+include/template/mtheme/templates/tpl_timeout_default.php
+<end>
+
+<zen cart>
+add paypal email
+/var/www/domainname/zencart138/includes/languages/english/modules/payment/moneyorder.php
+languages/english/html_includes/define_checkout_success.php
+</zen cart>
+
+<update price>
+update products set products_price=100 where products_model >= 100 and products_model <= 200;
+</update price>
+<php in order parse split html textarea line by line>
+$newline = $_POST['textarea_name'];
+$br_newline = nl2br($newline);
+</php parse textarea>
+
+<grep and replace find and replace>
+<desc>e.g grep all the file *.php search oldstring and replace newstring</desc>
+sed -i -e 's/oldstring/newstring/g' *
+find . -name "*" | xargs -n1 perl -i -ane 's/images/img/g; print;'
+</grep and replace>
+
+<ubuntu apache include directive>
+enalbe include directive in apache
+
+make sure you have enabled modes_include
+check whether you have mod_include.so
+/usr/lib/apache2/modules/mod_include.so
+
+if you have the mod_include, then you can just use a2enmode to enable it
+
+<Directory /var/www/yourdomainname>
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride ALL 
+		Order allow,deny
+		allow from all
+
+		# for include directive 
+		Options +Includes
+		XBitHack on
+</Directory>
+</ubuntu apache include directive>
+
+<zencart>
+import/export user 
+need all following tables
+customers
+customers_info
+countries
+address_book
+</zencart>
+
+<zencart>
+<date>Sun Mar 13 23:57:36 EDT 2011</date>
+<topic>how to turn off random products</topic>
+change file: include/modules/new_products.php
+             include/modified/featured_products.php
+change all function:
+ExecuteRandomMulti() to Execute()
+MoveNextRandom(); to MoveNext()
+</zencart>
+
+<zencart>
+353453453454
+include/modules/new_products.php
+control the priority of display image when page is loading
+</zencart> 
+
+
+<merge two tables>
+insert into customers (
+  `customers_gender` ,
+  `customers_firstname` ,
+  `customers_lastname` ,
+  `customers_dob` ,
+  `customers_email_address` ,
+  `customers_nick` ,
+  `customers_default_address_id` ,
+  `customers_telephone` ,
+  `customers_fax` ,
+  `customers_password` ,
+  `customers_newsletter` ,
+  `customers_group_pricing` ,
+  `customers_email_format` ,
+  `customers_authorization` ,
+  `customers_referral` ,
+  `customers_paypal_payerid` ,
+  `customers_paypal_ec`) 
+	select 
+  `customers_gender` ,
+  `customers_firstname` ,
+  `customers_lastname` ,
+  `customers_dob` ,
+  `customers_email_address` ,
+  `customers_nick` ,
+  `customers_default_address_id` ,
+  `customers_telephone` ,
+  `customers_fax` ,
+  `customers_password` ,
+  `customers_newsletter` ,
+  `customers_group_pricing` ,
+  `customers_email_format` ,
+  `customers_authorization` ,
+  `customers_referral` ,
+  `customers_paypal_payerid` ,
+   `customers_paypal_ec` from cu order by customers_id asc
+<merge two tables>
+
+<screen commands>
+split window vertically
+:split -v
+
+scroll screen
+:C-a [ copy
+:C-a ] paste
+highligh
+<space>
+copy
+<space>
+
+or use vim commands to move around the window
+
+C-a h
+dump all data to file hardcopy.0
+
+</screen command>
+<update price>
+update products set products_price = (products_price * 1.5) where products_id >= 0
+update products set products_model = products_model + 1000000 where products_id >= 0;
+update products set products_price=65 where products_model>= 1051976 AND products_model <= 1052160 
+<update price>
+
+<zencart change category image size>
+/var/www/domain/zencart138/includes/templates/mtheme/templates/tpl_product_info_display.php
+change tempates/mtheme/css/stylesheet.css
+</zencart>
+
+<change main category left margin>
+.pos5 {margin-left:2px; margin-bottom:30px;
+/var/www/*/zencart138/includes/templates/mtheme/css/style.css
+</change main category left margin>
+<update products_status>
+update products set products_status=0 where products_model='1012124';
+</update products_status>
+<mysql regular express>
+select products_id, products_model, products_image from products where products_image regexp 'hair'
+</mysql regular express>
+
+<zencart table>
+add column to products table
+add: products_show_sorter varchar(10) NOT NULL default '0'
+change sorted order by products_show_sorter
+</zencart table>
+
+						
+update sorted order
+update products set products_show_sorter=56 where products_image regexp 'something'
+
+add linke to footer
+template/yourtemp/common/tpl_footer.php
+
+
+<put this script on your .bashrc file, shell script auto email>
+echo 'ALERT - Root Shell Access on:' `date` `who` | mail -s "Alert: Root Access from `who | cut -d"(" -f2 | cut -d")" -f1 `"  name@gmail.com
+</put this script on your .bashrc file>
+
+
+<update smaller display image>
+update purchased products to display smaller images
+/var/www/itemsdeal/zencart138/includes/modules/also_purchased_products.php
+</update smaller display image>
+<add facebook button>
+templates/mtheme/templates/tpl_product_info_display.php
+</add facebook button>
+<add pinterest button>
+includes/templates/mtheme/templates/tpl_products_info_display
+</add pinterest button>
+
+<display iamge with edge>
+/css/stylesheet.css
+kkkcenterBoxContentsNew
+</display image with edge>
+
+<change main image size>
+zencart138/includes/templates/mtheme_dog/templates/tpl_modules_main_product_image.php
+</change main image size>
+
+
+<java_package>
+1 create package 
+create directory mypack
+cd mypack
+mkdir mypack/com
+mkdir mypack/com/mycompany
+mkdir mypack/com/mycompany/myproject
+touch mypack/com/mycompany/myproject/MyClass.java 
+
+
+//put the code inside your MyClass.java file
+package com.mycompany.myproject;
+public class MyClass{
+				public void print()
+				{
+								System.out.println("MyClass");
+				}
+}
+
+//compile MyClass
+javac -d ./classes src/com/mycompany/myproject/MyClass.java
+
+//you will see the MyClass.class under classes/com/mycompany/myproject/
+
+touch src/com/mycompany/myproject/Test.java
+
+//put the code inside your Test.java file
+
+package com.mycompany.myproject;
+import com.mycompany.myproject.*;
+class Test
+{
+				public static void main(String args[])
+				{
+					MyClass c = new MyClass();
+					c.print();
+				}
+}
+
+//compile your Test.java 
+javac -d ./classes -cp src/  src/com/mycompany/myproject/Test.java
+
+//you will see the Test.class under classes/com/mycompany/myproject/
+<java>
+
+<java view the content of jar file>
+jar tf jar-file
+</java>
+
+<java intellj>
+add unit test
+1 Place the cursor and highlight the class name.
+2 Press ALT+Enter to show the list of intention actions
+3 Choose create Test from the suggestion list
+</java intellj>
+
+<zencart forget password, reset admin password>
+zencart v1.5.1
+
+DELETE FROM admin WHERE admin_name = 'Admin'; 
+INSERT INTO admin (admin_name, admin_email, admin_pass, admin_profile) 
+VALUES ('Admin', 'admin@localhost', '351683ea4e19efe34874b501fdbf9792:9b', 1);
+</zencart>
