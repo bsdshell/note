@@ -934,3 +934,6 @@ set shiftwidth=4
 set expandtab
 </vim>
 
+<maven create maven file>
+mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+</maven>
