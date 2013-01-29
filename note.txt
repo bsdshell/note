@@ -938,6 +938,7 @@ set expandtab
 mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 </maven>
 
+
 <intellj shortcut key>
 Ctrl Alt B	goto implementation
 Ctrl E	go back to implementation
@@ -945,8 +946,13 @@ Ctrl Alt F7	shows usages
 Alt Right/Left	cycle through tabs
 </intellj>
 
+<xcode shortcut key>
+CTRL 6 show all current methods
+CTRL WindowKey left/right  navigate backward/backward
+</xcode>
 
 <tmp note>
 move displayObjects to MyAppDelegate.h
 and use [[UIApplication sharedApplication]] delegate] to displayObjects 
 </tmp note>
+
