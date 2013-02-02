@@ -944,11 +944,20 @@ Ctrl Alt B	goto implementation
 Ctrl E	go back to implementation
 Ctrl Alt F7	shows usages
 Alt Right/Left	cycle through tabs
+Ctrl Shit F12 Max code window
+Ctrl 1 from max window to origin window
 </intellj>
 
 <xcode shortcut key>
 CTRL 6 show all current methods
 CTRL WindowKey left/right  navigate backward/backward
+Shit Command f  global find
+Shit Command right/left highlight line
+Command left/right move cursor to begin/end of line(no highligh)
+ALT Command .(dot) change focus
+Command 3 global search
+
+Command-W close window (not just xcode)
 </xcode>
 
 <tmp note>
