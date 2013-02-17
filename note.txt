@@ -951,17 +951,30 @@ Ctrl 1 from max window to origin window
 <xcode shortcut key>
 CTRL 6 show all current methods
 CTRL WindowKey left/right  navigate backward/backward
+CTRL Command UP/Down .h and .m file
 Shit Command f  global find
 Shit Command right/left highlight line
 Command left/right move cursor to begin/end of line(no highligh)
 ALT Command .(dot) change focus
+Command , show setting(xcode)
 Command 3 global search
 
 Command-W close window (not just xcode)
+Command [] shift hightlight code left/right
+Command double click jump to definition
+Ctrl Command J jump to definition
+Ctrl Command Left jump back
+
+sqlite pass2.db
+/Users/cat/Library/Application Support/iPhone Simulator/6.1/Applications/66026FA2-3C01-4653-B0B8-EC4C6F7F1C05/Documents
 </xcode>
 
 <tmp note>
 move displayObjects to MyAppDelegate.h
 and use [[UIApplication sharedApplication]] delegate] to displayObjects 
+
+remove EditableDetailCell2 from MyDetailController.h file
+use UITableViewCell instead of EditableDetailCell2 in CellForRowAtIndexPath, use [cell.contentView addSubView:UITextView]
+in MyDetailControll.h declear a UITextView variable and set the content when "save" and pass the variable to addNote()/updateNote
 </tmp note>
 
