@@ -696,6 +696,10 @@ sed -i -e 's/oldstring/newstring/g' *
 find . -name "*" | xargs -n1 perl -i -ane 's/images/img/g; print;'
 </grep and replace>
 
+<find vim open multiple files in find command under bash shell>
+find $(find ./ -name *.java -type f)
+</find>
+
 <ubuntu apache include directive>
 enalbe include directive in apache
 
@@ -977,4 +981,5 @@ remove EditableDetailCell2 from MyDetailController.h file
 use UITableViewCell instead of EditableDetailCell2 in CellForRowAtIndexPath, use [cell.contentView addSubView:UITextView]
 in MyDetailControll.h declear a UITextView variable and set the content when "save" and pass the variable to addNote()/updateNote
 </tmp note>
+
 
