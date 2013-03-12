@@ -950,6 +950,7 @@ Ctrl Alt F7	shows usages
 Alt Right/Left	cycle through tabs
 Ctrl Shit F12 Max code window
 Ctrl 1 from max window to origin window
+Shift-F search recent file by typing
 </intellj>
 
 <xcode shortcut key>
