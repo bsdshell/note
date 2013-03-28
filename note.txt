@@ -915,6 +915,10 @@ javac -d ./classes -cp src/  src/com/mycompany/myproject/Test.java
 jar tf jar-file
 </java>
 
+<command history>
+history -d  xxx //remove line number from history
+</command>
+
 <java intellj>
 add unit test
 1 Place the cursor and highlight the class name.
