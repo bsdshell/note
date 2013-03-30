@@ -978,13 +978,8 @@ sqlite pass2.db
 /Users/cat/Library/Application Support/iPhone Simulator/6.1/Applications/66026FA2-3C01-4653-B0B8-EC4C6F7F1C05/Documents
 </xcode>
 
-<tmp note>
-move displayObjects to MyAppDelegate.h
-and use [[UIApplication sharedApplication]] delegate] to displayObjects 
-
-remove EditableDetailCell2 from MyDetailController.h file
-use UITableViewCell instead of EditableDetailCell2 in CellForRowAtIndexPath, use [cell.contentView addSubView:UITextView]
-in MyDetailControll.h declear a UITextView variable and set the content when "save" and pass the variable to addNote()/updateNote
-</tmp note>
+<book>
+http://www.liafa.jussieu.fr/~jep/PDF/MPRI/MPRI.pdf
+</book>
 
 
