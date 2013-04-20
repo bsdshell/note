@@ -934,6 +934,10 @@ set shiftwidth=4
 set expandtab
 </vim>
 
+<vim open all files from grep>
+vim $(grep -l --include="*.java" pattern .)
+</vim>
+
 <maven create maven file>
 mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 </maven>
