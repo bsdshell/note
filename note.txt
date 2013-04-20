@@ -98,6 +98,7 @@ create user 'user1'@'localhost' identified by 'password';
 GRANT select, update, delete ON *.* TO 'user1'@'localhost';
 
 GRANT ALL ON *.* to 'user1'@'localhost';	
+
 <find command> how to use ind and exec>
 find all the files or directories in the current path and copy them to new directory
 find ./ -name \*.mp3 -exec cp {} /home/user/song \;
@@ -110,6 +111,18 @@ find ./ -name "*.txt" -mtime -4  -print
 <find all php from images directory>
 find -iname images -exec ls {} \;   | grep -Hnrs '.php'
 </find all php file from images directory>
+
+<find vim open multiple files in find command under bash shell>
+find $(find ./ -name *.java -type f)
+</find>
+
+<grep and replace find and replace>
+    <desc>e.g grep all the file *.php search oldstring and replace newstring</desc>
+        sed -i -e 's/oldstring/newstring/g' *
+        find . -name "*" | xargs -n1 perl -i -ane 's/images/img/g; print;'
+</grep and replace>
+
+
 
 <ssh X11 forwarding> X11 forwarding in ssh
 ssh -Y user@domain
@@ -297,12 +310,6 @@ update products set products_price=100 where products_model >= 100 and products_
 $newline = $_POST['textarea_name'];
 $br_newline = nl2br($newline);
 </php parse textarea>
-
-<grep and replace find and replace>
-<desc>e.g grep all the file *.php search oldstring and replace newstring</desc>
-sed -i -e 's/oldstring/newstring/g' *
-find . -name "*" | xargs -n1 perl -i -ane 's/images/img/g; print;'
-</grep and replace>
 
 <ubuntu apache include directive>
 enalbe include directive in apache
@@ -493,10 +500,6 @@ find -name "*.sql" -delete
 
 //find the file that were last modified 4 days ago
 find ./ -name "*.txt" -mtime -4  -print
-
-<find all php from images directory>
-find -iname images -exec ls {} \;   | grep -Hnrs '.php'
-</find all php file from images directory>
 
 <ssh X11 forwarding> X11 forwarding in ssh
 ssh -Y user@domain
@@ -689,16 +692,6 @@ update products set products_price=100 where products_model >= 100 and products_
 $newline = $_POST['textarea_name'];
 $br_newline = nl2br($newline);
 </php parse textarea>
-
-<grep and replace find and replace>
-<desc>e.g grep all the file *.php search oldstring and replace newstring</desc>
-sed -i -e 's/oldstring/newstring/g' *
-find . -name "*" | xargs -n1 perl -i -ane 's/images/img/g; print;'
-</grep and replace>
-
-<find vim open multiple files in find command under bash shell>
-find $(find ./ -name *.java -type f)
-</find>
 
 <ubuntu apache include directive>
 enalbe include directive in apache
@@ -938,6 +931,10 @@ set expandtab
 vim $(grep -l --include="*.java" pattern .)
 </vim>
 
+<vim replace all buffers>
+:bufdo %s/pattern/replacement
+</vim>
+
 <maven create maven file>
 mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 </maven>
@@ -951,7 +948,7 @@ add unit test
 </intellj>
 
 
-<intellj shortcut key>
+<intellij shortcut key>
 Ctrl Alt B	goto implementation
 Ctrl E	go back to implementation
 Ctrl Alt F7	shows usages
@@ -963,7 +960,7 @@ Alt Shift F7 goto usage
 Alt Shit f global search
 Alt g find name
 Ctrl F12 show all current methods
-</intellj>
+</intellij>
 
 <maven create maven file>
 mvn archetype:generate -DgroupId=Project -DartifactId=MyApp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
