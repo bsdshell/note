@@ -919,13 +919,6 @@ jar tf jar-file
 history -d  xxx //remove line number from history
 </command>
 
-<java intellj>
-add unit test
-1 Place the cursor and highlight the class name.
-2 Press ALT+Enter to show the list of intention actions
-3 Choose create Test from the suggestion list
-</java intellj>
-
 <zencart forget password, reset admin password>
 zencart v1.5.1
 
@@ -936,7 +929,6 @@ VALUES ('Admin', 'admin@localhost', '351683ea4e19efe34874b501fdbf9792:9b', 1);
 
 <vim change tabs to space>
 add to vimrc file
-
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -947,15 +939,32 @@ mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -Darchety
 </maven>
 
 
+<intellj unit test>
+add unit test
+1 Place the cursor and highlight the class name.
+2 Press ALT+Enter to show the list of intention actions
+3 Choose create Test from the suggestion list
+</intellj>
+
+
 <intellj shortcut key>
 Ctrl Alt B	goto implementation
 Ctrl E	go back to implementation
 Ctrl Alt F7	shows usages
 Alt Right/Left	cycle through tabs
-Ctrl Shit F12 Max code window
-Ctrl 1 from max window to origin window
-Shift-F search recent file by typing
+Shift Tab   move block of code(code selection) to left
+Ctrl Shift #  book mark line
+Ctrl #  goto book mark #
+Alt Shift F7 goto usage
+Alt Shit f global search
+Alt g find name
+Ctrl F12 show all current methods
 </intellj>
+
+<maven create maven file>
+mvn archetype:generate -DgroupId=Project -DartifactId=MyApp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+</maven>
+
 
 <xcode shortcut key>
 CTRL 6 show all current methods
