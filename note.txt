@@ -991,6 +991,8 @@ Command [] shift hightlight code left/right
 Command double click jump to definition
 Ctrl Command J jump to definition
 Ctrl Command Left jump back
+ALT Left/Right  move word by word
+Shift Command Left/Right  selection whole line
 
 sqlite pass2.db
 /Users/cat/Library/Application Support/iPhone Simulator/6.1/Applications/66026FA2-3C01-4653-B0B8-EC4C6F7F1C05/Documents
