@@ -122,6 +122,13 @@ GRANT ALL ON *.* to 'user1'@'localhost';
         find . -name "*" | xargs -n1 perl -i -ane 's/images/img/g; print;'
 </grep and replace>
 
+<grep all java file recursively from current directory>
+grep --include="*.java" "\"[a-zA-Z]\+\""  ./
+</grep>
+
+<awk print the first column from file>
+awk '{for(i=0; i<NF; i++) print $1}' inputfile
+</awk>
 
 
 <ssh X11 forwarding> X11 forwarding in ssh
@@ -955,6 +962,7 @@ Alt Right/Left	cycle through tabs
 Alt Shift F7 goto usage
 Alt Shit f global search
 Alt g find name
+Alt UP/Down move to previous/next method
 Ctrl F12 show all current methods
 Ctrl W select code block. e.g {..}
 Ctrl-Shift F12  max/unmaxed window
@@ -967,6 +975,7 @@ Ctrl E	go back to implementation
 Ctrl Alt F7	shows usages
 Ctrl w select whole word
 Ctrl Left/Right  move cursor previous/next
+Ctrl Shift R  find and replace
 </intellij>
 
 
