@@ -597,10 +597,6 @@ insert into wrote values (3, '3', 3)
 
 ============================================
 
-<history command>
-CTRL-R to search the history commmand
-!10 to execute  10 line history
-
 <craftysyntax live chat>
 install file 
 mtheme/common/tpl_header.php
@@ -942,6 +938,11 @@ vim $(grep -l --include="*.java" pattern .)
 :bufdo %s/pattern/replacement
 </vim>
 
+<history command>
+CTRL-R to search the history commmand
+!10 to execute  10 line history
+</history>
+
 <maven create maven file>
 mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 </maven>
@@ -1004,8 +1005,12 @@ ALT Left/Right  move word by word
 Shift Command Left/Right  selection whole line
 
 sqlite pass2.db
-/Users/cat/Library/Application Support/iPhone Simulator/6.1/Applications/66026FA2-3C01-4653-B0B8-EC4C6F7F1C05/Documents
 NSLog("%s", __PRETTY_FUNCTION__);
+</xcode>
+
+<xcode note>
+/Users/cat/Library/Application Support/iPhone Simulator/6.1/Applications/66026FA2-3C01-4653-B0B8-EC4C6F7F1C05/Documents
+http://publications.csail.mit.edu/tmp/MIT-CSAIL-TR-2005-014.pdf
 </xcode>
 
 <book>
