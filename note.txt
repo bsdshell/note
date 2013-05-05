@@ -100,20 +100,20 @@ GRANT select, update, delete ON *.* TO 'user1'@'localhost';
 GRANT ALL ON *.* to 'user1'@'localhost';	
 
 <find command> how to use ind and exec>
-find all the files or directories in the current path and copy them to new directory
-find ./ -name \*.mp3 -exec cp {} /home/user/song \;
+    find all the files or directories in the current path and copy them to new directory
+    find ./ -name \*.mp3 -exec cp {} /home/user/song \;
 </find>
 
 <find the file that were last modified 4 days ago>
-find ./ -name "*.txt" -mtime -4  -print
+    find ./ -name "*.txt" -mtime -4  -print
 </find>
 
 <find all php from images directory>
-find -iname images -exec ls {} \;   | grep -Hnrs '.php'
+    find -iname images -exec ls {} \;   | grep -Hnrs '.php'
 </find all php file from images directory>
 
 <find vim open multiple files in find command under bash shell>
-find $(find ./ -name *.java -type f)
+    find $(find ./ -name *.java -type f)
 </find>
 
 <grep and replace find and replace>
@@ -949,18 +949,26 @@ add unit test
 
 
 <intellij shortcut key>
-Ctrl Alt B	goto implementation
-Ctrl E	go back to implementation
-Ctrl Alt F7	shows usages
-Alt Right/Left	cycle through tabs
 Shift Tab   move block of code(code selection) to left
-Ctrl Shift #  book mark line
-Ctrl #  goto book mark #
+Tab/Shift+Tab indent/unintented selected line
+Alt Right/Left	cycle through tabs
 Alt Shift F7 goto usage
 Alt Shit f global search
 Alt g find name
 Ctrl F12 show all current methods
+Ctrl W select code block. e.g {..}
+Ctrl-Shift F12  max/unmaxed window
+Ctrl UP/Down  movine window up/down
+Ctrl [/] Move to code block star/end
+Ctrl Shift #  book mark line
+Ctrl #  goto book mark #
+Ctrl Alt B	goto implementation
+Ctrl E	go back to implementation
+Ctrl Alt F7	shows usages
+Ctrl w select whole word
+Ctrl Left/Right  move cursor previous/next
 </intellij>
+
 
 <maven create maven file>
 mvn archetype:generate -DgroupId=Project -DartifactId=MyApp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
