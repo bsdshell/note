@@ -977,6 +977,7 @@ Ctrl Alt F7	shows usages
 Ctrl w select whole word
 Ctrl Left/Right  move cursor previous/next
 Ctrl Shift R  find and replace
+Ctrl Shift j  join line
 </intellij>
 
 
