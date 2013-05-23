@@ -122,6 +122,13 @@ GRANT ALL ON *.* to 'user1'@'localhost';
         find . -name "*" | xargs -n1 perl -i -ane 's/images/img/g; print;'
 </grep and replace>
 
+<grep all java file recursively from current directory>
+grep --include="*.java" "\"[a-zA-Z]\+\""  ./
+</grep>
+
+<awk print the first column from file>
+awk '{for(i=0; i<NF; i++) print $1}' inputfile
+</awk>
 
 
 <ssh X11 forwarding> X11 forwarding in ssh
@@ -590,10 +597,6 @@ insert into wrote values (3, '3', 3)
 
 ============================================
 
-<history command>
-CTRL-R to search the history commmand
-!10 to execute  10 line history
-
 <craftysyntax live chat>
 install file 
 mtheme/common/tpl_header.php
@@ -935,6 +938,11 @@ vim $(grep -l --include="*.java" pattern .)
 :bufdo %s/pattern/replacement
 </vim>
 
+<history command>
+CTRL-R to search the history commmand
+!10 to execute  10 line history
+</history>
+
 <maven create maven file>
 mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 </maven>
@@ -955,6 +963,7 @@ Alt Right/Left	cycle through tabs
 Alt Shift F7 goto usage
 Alt Shit f global search
 Alt g find name
+Alt UP/Down move to previous/next method
 Ctrl F12 show all current methods
 Ctrl W select code block. e.g {..}
 Ctrl-Shift F12  max/unmaxed window
@@ -967,6 +976,7 @@ Ctrl E	go back to implementation
 Ctrl Alt F7	shows usages
 Ctrl w select whole word
 Ctrl Left/Right  move cursor previous/next
+Ctrl Shift R  find and replace
 </intellij>
 
 
@@ -1001,12 +1011,17 @@ Command E use selection to find
 
 
 sqlite pass2.db
-/Users/cat/Library/Application Support/iPhone Simulator/6.1/Applications/66026FA2-3C01-4653-B0B8-EC4C6F7F1C05/Documents
 NSLog("%s", __PRETTY_FUNCTION__);
+</xcode>
+
+<xcode note>
+/Users/cat/Library/Application Support/iPhone Simulator/6.1/Applications/66026FA2-3C01-4653-B0B8-EC4C6F7F1C05/Documents
+http://publications.csail.mit.edu/tmp/MIT-CSAIL-TR-2005-014.pdf
 </xcode>
 
 <book>
 http://www.liafa.jussieu.fr/~jep/PDF/MPRI/MPRI.pdf
+http://www.math.brown.edu/~jhs/Presentations/WyomingEllipticCurve.pdf
 </book>
 </antlr>
 java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
