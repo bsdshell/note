@@ -991,13 +991,16 @@ CTRL WindowKey left/right  navigate backward/backward
 CTRL Command UP/Down .h and .m file
 CTRL Command J jump to definition
 CTRL Command Left jump back
+CTRL Command F full screen mode
 
 ALT Command .(dot) change focus
 ALT Left/Right  move word by word
+ALT Command Left/Right code fold/unfolded
 
 Shift Command f  global find
 Shift Command Left/Right  selection whole line
 Shift Command right/left highlight line
+Shift ALT Command Left/Right  fold all code/unfolded all code
 
 Command left/right move cursor to begin/end of line(no highligh)
 Command , show setting(xcode)
@@ -1008,6 +1011,7 @@ Command double click jump to definition
 Command D mark line
 Command L goto line
 Command E use selection to find
+Command Shift Y close debug window
 
 
 sqlite pass2.db
