@@ -1021,6 +1021,7 @@ Command L goto line
 Command E, Command F use selection to find
 Command Shift Y close debug window
 Command Shift 2 Open Organizer
+Command E + Command F search word under cursor
 
 sqlite pass2.db
 NSLog("%s", __PRETTY_FUNCTION__);
