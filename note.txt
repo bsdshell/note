@@ -1032,6 +1032,10 @@ NSLog("%s", __PRETTY_FUNCTION__);
 http://publications.csail.mit.edu/tmp/MIT-CSAIL-TR-2005-014.pdf
 </xcode>
 
+<visual studio>
+CTRL-Tab show tab files
+</visua studiol 
+
 <book>
 http://www.liafa.jussieu.fr/~jep/PDF/MPRI/MPRI.pdf
 http://www.math.brown.edu/~jhs/Presentations/WyomingEllipticCurve.pdf
