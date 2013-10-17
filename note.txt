@@ -1037,6 +1037,10 @@ can not find framework library
 ->Framework Search Paths, Add the full path to *.framework directory
 </xcode>
 
+<visual studio>
+CTRL-Tab show tab files
+</visua studiol 
+
 <book>
 http://www.liafa.jussieu.fr/~jep/PDF/MPRI/MPRI.pdf
 http://www.math.brown.edu/~jhs/Presentations/WyomingEllipticCurve.pdf
