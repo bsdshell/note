@@ -1032,11 +1032,17 @@ NSLog("%s", __PRETTY_FUNCTION__);
 http://publications.csail.mit.edu/tmp/MIT-CSAIL-TR-2005-014.pdf
 </xcode>
 
-<visual studio>
-CTRL-Tab show tab files
-</visua studiol 
 
-<book>
+<visual_studio shortcut key>
+ALT Shift Enter maximize code window
+CTRL-Tab        show tab files
+CTRL -          navigate backward
+CTRL Shift -    navigate forward  
+CTRL g          goto line number
+Shift F12       find all references
+</visua_studio> 
+
+<book math>
 http://www.liafa.jussieu.fr/~jep/PDF/MPRI/MPRI.pdf
 http://www.math.brown.edu/~jhs/Presentations/WyomingEllipticCurve.pdf
 http://swtch.com/~rsc/regexp/regexp1.html
@@ -1045,8 +1051,9 @@ http://www.math.sjsu.edu/~alperin/pt.pdf
 http://theory.caltech.edu/~chan/Ph129b/sol3.pdf
 http://www.math.uh.edu/~wagner/2331/Schurs_theorem.pdf
 </book>
-</antlr>
+
+</java antlr>
 java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
-<antlr>
+<java antlr>
 
 
