@@ -497,9 +497,7 @@ flush privileges
 
 <mysql> how to create new user
 create user 'user1'@'localhost' identified by 'password';
-
 GRANT select, update, delete ON *.* TO 'user1'@'localhost';
-
 GRANT ALL ON *.* to 'user1'@'localhost';	
 <ind command> how to use ind and exec 
 
@@ -999,9 +997,11 @@ Shift ALT Command Left/Right  fold all code/unfolded all code
 
 CTRL 6 type search show all current methods
 CTRL WindowKey left/right  navigate backward/backward
-ALT Command .(dot) change focus
+CTRL 1 show recent items
 ALT Left/Right  move word by word
-ALT Command Left/Right code fold/unfolded
+Command ALT .(dot) change focus
+Command ALT Left/Right code fold/unfolded
+Command ALT 0 close utilities window
 
 Command left/right move cursor to begin/end of line(no highligh)
 Command , show setting(xcode)
@@ -1022,6 +1022,9 @@ Command CTRL UP/Down .h and .m file
 Command CTRL J jump to definition
 Command CTRL Left jump back
 Command CTRL F full/maximize screen mode
+Command CTRL Y debug/continue 
+Command ` window fit screen
+
 
 </xcode>
 
@@ -1035,11 +1038,14 @@ NSLog("%s", __PRETTY_FUNCTION__);
 can not find framework library
 ->Build Settings
 ->Framework Search Paths, Add the full path to *.framework directory
-</xcode>
 
-<visual studio>
-CTRL-Tab show tab files
-</visua studiol 
+ld: symbol(s) not found for architecture armv7 
+check Build Phases with "Link Binary With Libraries" all the framework files has to be same as in the file navigator window 
+
+If framework file can't be found, then check "Framework Search Paths" in Build Settings
+you can use absolute path for the  /User/Library/myframework.framework   path=/User/Library
+
+</xcode>
 
 <book>
 http://www.liafa.jussieu.fr/~jep/PDF/MPRI/MPRI.pdf
