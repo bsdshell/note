@@ -130,6 +130,9 @@ grep --include="*.java" "\"[a-zA-Z]\+\""  ./
 awk '{for(i=0; i<NF; i++) print $1}' inputfile
 </awk>
 
+<ssh change shell>
+chsh -m /bin/bash username
+</ssh change shell>
 
 <ssh X11 forwarding> X11 forwarding in ssh
 ssh -Y user@domain
@@ -911,10 +914,6 @@ javac -d ./classes -cp src/  src/com/mycompany/myproject/Test.java
 jar tf jar-file
 </java>
 
-<command history>
-history -d  xxx //remove line number from history
-</command>
-
 <zencart forget password, reset admin password>
 zencart v1.5.1
 
@@ -923,29 +922,38 @@ INSERT INTO admin (admin_name, admin_email, admin_pass, admin_profile)
 VALUES ('Admin', 'admin@localhost', '351683ea4e19efe34874b501fdbf9792:9b', 1);
 </zencart>
 
-<vim change tabs to space>
-add to vimrc file
-set tabstop=4
-set shiftwidth=4
-set expandtab
+<vim command>
+    vim $(grep -l --include="*.java" pattern .) #vim open all files from grep
+    :bufdo %s/pattern/replacement #vim replace all buffers
 </vim>
-
 <vim open all files from grep>
 vim $(grep -l --include="*.java" pattern .)
-</vim>
-
-<vim replace all buffers>
-:bufdo %s/pattern/replacement
+:bufdo %s/pattern/replacement #replace all buffers
+/pattern\c #ignorecase
 </vim>
 
 <history command>
 CTRL-R to search the history commmand
 !10 to execute  10 line history
 </history>
+=======
+    history -d  xxx #remove history 
+    add to vimrc file #vim change tabs to space
+    set tabstop=4
+    set shiftwidth=4
+    set expandtab
+</vim>
+
 
 <maven create maven file>
 mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 </maven>
+
+<linux command>
+    CTRL-R to search the history commmand #search history
+    !10 to execute  10 line history #execute nth line in history
+    tar xvjf file.tar.bz2 #unzip tar.bz2 file
+</linux command>
 
 
 <intellj unit test>
@@ -980,36 +988,40 @@ Ctrl Shift R  find and replace
 Ctrl Shift j  join line
 </intellij>
 
-
 <maven create maven file>
 mvn archetype:generate -DgroupId=Project -DartifactId=MyApp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 </maven>
 
 
 <xcode shortcut key>
-CTRL 6 show all current methods
+CTRL 6 type search show all current methods
 CTRL WindowKey left/right  navigate backward/backward
 CTRL Command UP/Down .h and .m file
 CTRL Command J jump to definition
 CTRL Command Left jump back
+CTRL Command F full screen mode
 
 ALT Command .(dot) change focus
 ALT Left/Right  move word by word
+ALT Command Left/Right code fold/unfolded
 
 Shift Command f  global find
 Shift Command Left/Right  selection whole line
 Shift Command right/left highlight line
+Shift ALT Command Left/Right  fold all code/unfolded all code
 
 Command left/right move cursor to begin/end of line(no highligh)
 Command , show setting(xcode)
 Command 3 global search
-Command-W close window (not just xcode)
+Command w close window (not just xcode)
 Command [] shift hightlight code left/right
 Command double click jump to definition
 Command D mark line
 Command L goto line
-Command E use selection to find
-
+Command E, Command F use selection to find
+Command Shift Y close debug window
+Command Shift 2 Open Organizer
+Command E + Command F search word under cursor
 
 sqlite pass2.db
 NSLog("%s", __PRETTY_FUNCTION__);
@@ -1020,9 +1032,18 @@ NSLog("%s", __PRETTY_FUNCTION__);
 http://publications.csail.mit.edu/tmp/MIT-CSAIL-TR-2005-014.pdf
 </xcode>
 
+<visual studio>
+CTRL-Tab show tab files
+</visua studiol 
+
 <book>
 http://www.liafa.jussieu.fr/~jep/PDF/MPRI/MPRI.pdf
 http://www.math.brown.edu/~jhs/Presentations/WyomingEllipticCurve.pdf
+http://swtch.com/~rsc/regexp/regexp1.html
+http://glyphicons.com
+http://www.math.sjsu.edu/~alperin/pt.pdf
+http://theory.caltech.edu/~chan/Ph129b/sol3.pdf
+http://www.math.uh.edu/~wagner/2331/Schurs_theorem.pdf
 </book>
 </antlr>
 java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
