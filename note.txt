@@ -1028,9 +1028,7 @@ Command CTRL J jump to definition
 Command CTRL Left jump back
 Command CTRL F full/maximize screen mode
 Command CTRL Y debug/continue 
-Command ` window fit screen
-
-
+Command `  window fit screen
 </xcode>
 
 <xcode note>
