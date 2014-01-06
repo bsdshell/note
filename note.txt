@@ -1060,6 +1060,9 @@ Shift F12       find all references
 CTRL-Delete     delete word to right of cursor 
 CTRL-BackSpace  delete word to left of cursor 
 CTRL W          highlight word
+CTRL M + O      collapse all
+CTRL M + L      expand all
+CTRL M + M      expand/collapse the current region
 </visua_studio> 
 
 <book math>
