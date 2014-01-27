@@ -1079,4 +1079,12 @@ http://www.math.uh.edu/~wagner/2331/Schurs_theorem.pdf
 java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
 <java antlr>
 
+<octopress>
+link code from local dir
+
+1 edit source/_posts/xxx.markdown
+2 add absoluate path to code
+3 rake generate
+4 copy octopress/* to /var/www/octopress
+</octopress>
 
