@@ -992,12 +992,11 @@ mvn archetype:generate -DgroupId=Project -DartifactId=MyApp -DarchetypeArtifactI
 
 
 <xcode shortcut key>
-
 Shift ALT Command Left/Right  fold all code/unfolded all code
-
 CTRL 6 type search show all current methods
 CTRL WindowKey left/right  navigate backward/backward
 CTRL 1 show recent items
+CTRL C delete current line
 ALT Left/Right  move word by word
 Command ALT .(dot) change focus
 Command ALT Left/Right code fold/unfolded
@@ -1024,8 +1023,6 @@ Command CTRL Left jump back
 Command CTRL F full/maximize screen mode
 Command CTRL Y debug/continue 
 Command ` window fit screen
-
-
 </xcode>
 
 <xcode note>
@@ -1069,5 +1066,3 @@ http://www.math.uh.edu/~wagner/2331/Schurs_theorem.pdf
 </java antlr>
 java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
 <java antlr>
-
-
