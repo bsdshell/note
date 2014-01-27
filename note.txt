@@ -924,10 +924,11 @@ VALUES ('Admin', 'admin@localhost', '351683ea4e19efe34874b501fdbf9792:9b', 1);
     vim $(grep -l --include="*.java" pattern .) #vim open all files from grep
     :bufdo %s/pattern/replacement #vim replace all buffers
 </vim>
+
 <vim open all files from grep>
-vim $(grep -l --include="*.java" pattern .)
-:bufdo %s/pattern/replacement #replace all buffers
-/pattern\c #ignorecase
+    vim $(grep -l --include="*.java" pattern .)
+    :bufdo %s/pattern/replacement #replace all buffers
+    /pattern\c #ignorecase
 </vim>
 
 <history command>
@@ -940,6 +941,10 @@ CTRL-R to search the history commmand
     set tabstop=4
     set shiftwidth=4
     set expandtab
+</vim>
+
+<vim command>
+    :hi clear SpellBad # Reset SpellBad bad spell highlight to default
 </vim>
 
 
@@ -1022,7 +1027,7 @@ Command CTRL J jump to definition
 Command CTRL Left jump back
 Command CTRL F full/maximize screen mode
 Command CTRL Y debug/continue 
-Command ` window fit screen
+Command `  window fit screen
 </xcode>
 
 <xcode note>
@@ -1051,6 +1056,12 @@ CTRL -          navigate backward
 CTRL Shift -    navigate forward  
 CTRL g          goto line number
 Shift F12       find all references
+CTRL-Delete     delete word to right of cursor 
+CTRL-BackSpace  delete word to left of cursor 
+CTRL W          highlight word
+CTRL M + O      collapse all
+CTRL M + L      expand all
+CTRL M + M      expand/collapse the current region
 </visua_studio> 
 
 <book math>
@@ -1066,3 +1077,12 @@ http://www.math.uh.edu/~wagner/2331/Schurs_theorem.pdf
 </java antlr>
 java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
 <java antlr>
+
+<octopress>
+link code from local dir
+
+1 edit source/_posts/xxx.markdown
+2 add absoluate path to code
+3 rake generate
+4 copy octopress/* to /var/www/octopress
+</octopress>
