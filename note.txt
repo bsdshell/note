@@ -1085,4 +1085,8 @@ link code from local dir
 2 add absoluate path to code
 3 rake generate
 4 copy octopress/* to /var/www/octopress
+5. Fixed relative path {% include_code java/Count.java %} from source/_post/xxx.markdown file
+6. Fixed github gist 
+7. Installed Kramdown for latex
+
 </octopress>
