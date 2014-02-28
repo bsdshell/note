@@ -270,6 +270,10 @@ chsh -s /bin/bash user
 <add user to in ubuntu>
 useradd -d /home/username -m username 
 </end>
+<add user to sudo>
+vim /etc/sudoer
+    Add 'username ALL=(ALL) ALL`
+</add>
 
 <change ntp time>
 apt-get install ntp
