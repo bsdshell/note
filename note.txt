@@ -1087,6 +1087,10 @@ Command CTRL Y debug/continue
 Command `  window fit screen
 </xcode>
 
+</xcode_lldb>
+
+<xcode_lldb>
+
 <xcode note>
 /Users/cat/Library/Application Support/iPhone Simulator/6.1/Applications/66026FA2-3C01-4653-B0B8-EC4C6F7F1C05/Documents
 http://publications.csail.mit.edu/tmp/MIT-CSAIL-TR-2005-014.pdf
