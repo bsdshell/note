@@ -115,6 +115,9 @@ GRANT ALL ON *.* to 'user1'@'localhost';
 <find vim open multiple files in find command under bash shell>
     find $(find ./ -name *.java -type f)
 </find>
+<find directory>
+    find ./ -name "dirName"
+<find>
 
 <grep and replace find and replace>
     <desc>e.g grep all the file *.php search oldstring and replace newstring</desc>
@@ -958,6 +961,10 @@ mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -Darchety
     tar xvjf file.tar.bz2 #unzip tar.bz2 file
 </linux command>
 
+<add package to cygwin>
+find -name "setup-x86_64.exe" -print //find the setup app to add package to cygwin
+</>
+
 
 <intellj unit test>
 add unit test
@@ -1063,6 +1070,9 @@ CTRL W          highlight word
 CTRL M + O      collapse all
 CTRL M + L      expand all
 CTRL M + M      expand/collapse the current region
+CTRL K + K      toggle bookmark 
+CTRL K + N      next bookmark 
+CTRL K + P      previous bookmark 
 </visua_studio> 
 
 <book math>
@@ -1079,4 +1089,16 @@ http://www.math.uh.edu/~wagner/2331/Schurs_theorem.pdf
 java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
 <java antlr>
 
+<code snippet>
+    <csharp c#>
+        <list skip: listskip>
+            var list = new[] { "dog", "cow", "cat" };
+            System.Console.WriteLine(string.Join(",", list));
+            var list1 = list.Skip(1);
+            System.Console.WriteLine(string.Join(",", list1));
+            //"cow", "cat"
+            System.Console.ReadLine();
+        </list skip>
+    </csharp>
+</code snipple>
 
