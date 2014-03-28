@@ -129,10 +129,6 @@ GRANT ALL ON *.* to 'user1'@'localhost';
 grep --include="*.java" "\"[a-zA-Z]\+\""  ./
 </grep>
 
-<awk print the first column from file>
-awk '{for(i=0; i<NF; i++) print $1}' inputfile
-</awk>
-
 <ssh change shell>
 chsh -s /bin/bash username
 </ssh change shell>
@@ -980,12 +976,6 @@ INSERT INTO admin (admin_name, admin_email, admin_pass, admin_profile)
 VALUES ('Admin', 'admin@localhost', '351683ea4e19efe34874b501fdbf9792:9b', 1);
 </zencart>
 
-<history command>
-CTRL-R to search the history commmand
-!10 to execute  10 line history
-</history>
-<vim command>
-=======
 <vim command>
     vim $(grep -l --include="*.java" pattern .) #vim open all files from grep
     :bufdo %s/pattern/replacement #vim replace all buffers
@@ -1023,25 +1013,26 @@ CTRL-R to search the history commmand
     y$                  //copy character from cursor to the end of line     [:help yank] 
     vaw                 //highlight word under cursor including white space [:help text-object]
     viw                 //hightlight word under cursor excluding white space[:help text-object]
+    awk '{for(i=0; i<NF; i++) print $1}' inputfile //print the first column from file>
 </vim>
 
-<history command>
-CTRL-R to search the history commmand
-!10 to execute  10 line history
-</history>
+<linux command>
+    CTRL-R to search the history commmand
+    !10 to execute  10 line history
+    tar xvjf file.tar.bz2 #unzip tar.bz2 file
+    cat /tmp/file.txt | awk -F ':' '{print $1}' //print first field with delimeter ':'
+
+    split window vertically //screen command
+    :split -v
+    
+    :C-a [ copy             //screen command scroll screen
+    :C-a ] paste
+</linux command>
+
 
 <maven create maven file>
 mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 </maven>
-
-<linux command>
-    CTRL-R to search the history commmand #search history
-    !10 to execute  10 line history #execute nth line in history
-    tar xvjf file.tar.bz2 #unzip tar.bz2 file
-    
-    cat /tmp/file.txt | awk -F ':' '{print $1}' //print first field with delimeter ':'
-
-</linux command>
 
 <add package to cygwin>
     C:\aronfile\cygwin_setup\setup-x86_64.exe //install cygwin packages
