@@ -985,6 +985,16 @@ CTRL-R to search the history commmand
 !10 to execute  10 line history
 </history>
 <vim command>
+=======
+<vim command>
+    vim $(grep -l --include="*.java" pattern .) #vim open all files from grep
+    :bufdo %s/pattern/replacement #vim replace all buffers
+    vim $(grep -l --include="*.java" pattern .)
+    :bufdo %s/pattern/replacement #replace all buffers
+    /pattern\c #ignorecase
+    :hi clear SpellBad # Reset SpellBad bad spell highlight to default
+    :g/-\s*(\w\+)\w+/z#.1 //print all xcode methods with line number #
+
     history -d  xxx #remove history 
     add to vimrc file #vim change tabs to space
     set tabstop=4
@@ -1001,8 +1011,24 @@ CTRL-R to search the history commmand
 
     vim $(grep -l --include="*.java" pattern .) //vim open all files from grep
     :bufdo %s/pattern/replacement/ge | update   //vim replace all buffers
+    :zf                 //Create fold under cursor
+    :zd                 //Delete fold under cursor
+    5gt                 //goto tab 5, [in insert mode]
+    :tabmove 4           //move the current tab to position 4 [help :tabmove] 
+    :tabc 11            //close tab 11
+
+    :set modeline       //display file name in each tabs page 
+    :set ls=2
+    
+    y$                  //copy character from cursor to the end of line     [:help yank] 
+    vaw                 //highlight word under cursor including white space [:help text-object]
+    viw                 //hightlight word under cursor excluding white space[:help text-object]
 </vim>
 
+<history command>
+CTRL-R to search the history commmand
+!10 to execute  10 line history
+</history>
 
 <maven create maven file>
 mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
@@ -1184,5 +1210,16 @@ link code from local dir
     self.searchBar.text = @"";
     [self.view addSubview:self.searchBar]; 
 ================================================================================
+
+================================================================================
+    NSMutableDictionary* Dictionary     = [NSMutableDictionary dictionaryWithCapacity:0]; //dictionary
+--------------------------------------------------------------------------------
+    NSString* strValue = [Dictionary objectForKey:key];
+    [Dictionary setObject:value forKey:key];
+================================================================================
+    [self.searchBar becomeFirstResponder];
+    [self.searchBar resignFirstResponder];
+    NSMutableArray* mutableArray = [NSMutableArray arrayWithArray:oldMutableArray];     //copy mutable array
+    NSUInteger* myNSUInteger   = [myNSNumber integerValue];                             //Convert NSNumber to NSUInteger
 </xcode snippet>
 
