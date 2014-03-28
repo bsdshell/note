@@ -1163,31 +1163,28 @@ http://www.math.uh.edu/~wagner/2331/Schurs_theorem.pdf
 java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
 <java antlr>
 
-<code snippet>
-    <csharp c#>
-        <list skip: listskip>
-            var list = new[] { "dog", "cow", "cat" };
-            System.Console.WriteLine(string.Join(",", list));
-            var list1 = list.Skip(1);
-            System.Console.WriteLine(string.Join(",", list1));
-            //"cow", "cat"
-            System.Console.ReadLine();
-        </list skip>
-    </csharp>
-</code snipple>
+<csharp c#>
+================================================================================
+    list skip: listskip
+--------------------------------------------------------------------------------
+    var list = new[] { "dog", "cow", "cat" };
+    System.Console.WriteLine(string.Join(",", list));
+    var list1 = list.Skip(1);
+    System.Console.WriteLine(string.Join(",", list1));
+    //"cow", "cat"
+    System.Console.ReadLine();
+</csharp>
 
-=======
 <octopress>
-link code from local dir
+    link code from local dir
 
-1 edit source/_posts/xxx.markdown
-2 add absoluate path to code
-3 rake generate
-4 copy octopress/* to /var/www/octopress
-5. Fixed relative path {% include_code java/Count.java %} from source/_post/xxx.markdown file
-6. Fixed github gist 
-7. Installed Kramdown for latex
-
+    1 edit source/_posts/xxx.markdown
+    2 add absoluate path to code
+    3 rake generate
+    4 copy octopress/* to /var/www/octopress
+    5. Fixed relative path {% include_code java/Count.java %} from source/_post/xxx.markdown file
+    6. Fixed github gist 
+    7. Installed Kramdown for latex
 </octopress>
 
 <xcode snippet>
