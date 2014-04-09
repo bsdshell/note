@@ -115,20 +115,10 @@ GRANT ALL ON *.* to 'user1'@'localhost';
 <find vim open multiple files in find command under bash shell>
     find $(find ./ -name *.java -type f)
 </find>
+<find directory>
+    find ./ -name "dirName"
+<find>
 
-<grep and replace find and replace>
-    <desc>e.g grep all the file *.php search oldstring and replace newstring</desc>
-        sed -i -e 's/oldstring/newstring/g' *
-        find . -name "*" | xargs -n1 perl -i -ane 's/images/img/g; print;'
-</grep and replace>
-
-<grep all java file recursively from current directory>
-grep --include="*.java" "\"[a-zA-Z]\+\""  ./
-</grep>
-
-<awk print the first column from file>
-awk '{for(i=0; i<NF; i++) print $1}' inputfile
-</awk>
 
 <ssh change shell>
 chsh -s /bin/bash username
@@ -978,6 +968,7 @@ VALUES ('Admin', 'admin@localhost', '351683ea4e19efe34874b501fdbf9792:9b', 1);
 </zencart>
 
 <vim command>
+    grep --include="*.java" "\"[a-zA-Z]\+\""  ./
     vim $(grep -l --include="*.java" pattern .) #vim open all files from grep
     :bufdo %s/pattern/replacement #vim replace all buffers
     vim $(grep -l --include="*.java" pattern .)
@@ -992,6 +983,18 @@ VALUES ('Admin', 'admin@localhost', '351683ea4e19efe34874b501fdbf9792:9b', 1);
     set shiftwidth=4
     set expandtab
     set showcmd
+    :hi clear SpellBad # Reset SpellBad bad spell highlight to default
+
+    :g/-\s*(\w\+)\w+/z#.1 //print all xcode methods with line number #
+    :tabmove 4           //move the current tab to position 4 [help :tabmove] 
+    vim $(grep -l --include="*.java" pattern .)
+    :bufdo %s/pattern/replacement #replace all buffers
+    /pattern\c #ignorecase
+
+    vim $(grep -l --include="*.java" pattern .) //vim open all files from grep
+    vim $(find ./ -name \*.java -print)         //open all java file from find
+
+    :bufdo %s/pattern/replacement/ge | update   //vim replace all buffers
     :zf                 //Create fold under cursor
     :zd                 //Delete fold under cursor
     5gt                 //goto tab 5, [in insert mode]
@@ -999,59 +1002,77 @@ VALUES ('Admin', 'admin@localhost', '351683ea4e19efe34874b501fdbf9792:9b', 1);
     :tabc 11            //close tab 11
 
     :set modeline       //display file name in each tabs page 
-    :set ls=2
+    :set ls=2           
+
+    :set modeline        //display full file name in statusline [:help :statuline] 
+    :set statusline=%F           
+
+
     
     y$                  //copy character from cursor to the end of line     [:help yank] 
     vaw                 //highlight word under cursor including white space [:help text-object]
     viw                 //hightlight word under cursor excluding white space[:help text-object]
+    awk '{for(i=0; i<NF; i++) print $1}' inputfile //print the first column from file>
+
+    sed 's/.*\(Name=\"[^"]*\"\)\s\(ContentFolder=\"[^"]*\"\).*/\1 \2/g' /tmp/c.txt  > /tmp/norm.txt     //Match Name=xxx  and ContentFolder=xxx two columns from c.txt and direct to norm.txt
+
+    sed -i -e 's/oldstring/newstring/g' *   //grep all the file *.php search oldstring and replace newstring
+    find . -name "*" | xargs -n1 perl -i -ane 's/images/img/g; print;'
 </vim>
 
-<history command>
-CTRL-R to search the history commmand
-!10 to execute  10 line history
-</history>
+<linux command>
+    CTRL-R to search the history commmand
+    !10 to execute  10 line history
+    tar xvjf file.tar.bz2 #unzip tar.bz2 file
+    cat /tmp/file.txt | awk -F ':' '{print $1}' //print first field with delimeter ':'
+
+    split window vertically //screen command
+    :split -v
+    
+    :C-a [ copy             //screen command scroll screen
+    :C-a ] paste
+</linux command>
+
 
 <maven create maven file>
 mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 </maven>
 
-<linux command>
-    CTRL-R to search the history commmand #search history
-    !10 to execute  10 line history #execute nth line in history
-    tar xvjf file.tar.bz2 #unzip tar.bz2 file
-</linux command>
+<add package to cygwin>
+    C:\aronfile\cygwin_setup\setup-x86_64.exe //install cygwin packages
+</>
 
 
 <intellj unit test>
-add unit test
-1 Place the cursor and highlight the class name.
-2 Press ALT+Enter to show the list of intention actions
-3 Choose create Test from the suggestion list
+    add unit test
+    1 Place the cursor and highlight the class name.
+    2 Press ALT+Enter to show the list of intention actions
+    3 Choose create Test from the suggestion list
 </intellj>
 
 
 <intellij shortcut key>
-Shift Tab   move block of code(code selection) to left
-Tab/Shift+Tab indent/unintented selected line
-Alt Right/Left	cycle through tabs
-Alt Shift F7 goto usage
-Alt Shit f global search
-Alt g find name
-Alt UP/Down move to previous/next method
-Ctrl F12 show all current methods
-Ctrl W select code block. e.g {..}
-Ctrl-Shift F12  max/unmaxed window
-Ctrl UP/Down  movine window up/down
-Ctrl [/] Move to code block star/end
-Ctrl Shift #  book mark line
-Ctrl #  goto book mark #
-Ctrl Alt B	goto implementation
-Ctrl E	go back to implementation
-Ctrl Alt F7	shows usages
-Ctrl w select whole word
-Ctrl Left/Right  move cursor previous/next
-Ctrl Shift R  find and replace
-Ctrl Shift j  join line
+    Shift Tab   move block of code(code selection) to left
+    Tab/Shift+Tab indent/unintented selected line
+    Alt Right/Left	cycle through tabs
+    Alt Shift F7 goto usage
+    Alt Shit f global search
+    Alt g find name
+    Alt UP/Down move to previous/next method
+    Ctrl F12 show all current methods
+    Ctrl W select code block. e.g {..}
+    Ctrl-Shift F12  max/unmaxed window
+    Ctrl UP/Down  movine window up/down
+    Ctrl [/] Move to code block star/end
+    Ctrl Shift #  book mark line
+    Ctrl #  goto book mark #
+    Ctrl Alt B	goto implementation
+    Ctrl E	go back to implementation
+    Ctrl Alt F7	shows usages
+    Ctrl w select whole word
+    Ctrl Left/Right  move cursor previous/next
+    Ctrl Shift R  find and replace
+    Ctrl Shift j  join line
 </intellij>
 
 <maven create maven file>
@@ -1060,43 +1081,40 @@ mvn archetype:generate -DgroupId=Project -DartifactId=MyApp -DarchetypeArtifactI
 
 
 <xcode shortcut key>
-Shift ALT Command Left/Right  fold all code/unfolded all code
-CTRL 6 type search show all current methods
-CTRL WindowKey left/right  navigate backward/backward
-CTRL 1 show recent items
-CTRL C delete current line
-ALT Left/Right  move word by word
-Command ALT .(dot) change focus
-Command ALT Left/Right code fold/unfolded
-Command ALT 0 close utilities window
+    Shift ALT Command Left/Right  fold all code/unfolded all code
+    CTRL 6 type search show all current methods
+    CTRL WindowKey left/right  navigate backward/backward
+    CTRL 1 show recent items
+    CTRL C delete current line
+    ALT Left/Right  move word by word
+    Command ALT .(dot) change focus
+    Command ALT Left/Right code fold/unfolded
+    Command ALT 0 close utilities window
 
-Command left/right move cursor to begin/end of line(no highligh)
-Command , show setting(xcode)
-Command 3 global search
-Command w close window (not just xcode)
-Command [] shift hightlight code left/right
-Command double click jump to definition
-Command D mark line
-Command L goto line
-Command E, Command F use selection to find
-Command Shift Y close debug window
-Command Shift 2 Open Organizer
-Command E + Command F search word under cursor
-Command Shift f  global find
-Command Shift Left/Right  selection whole line
-Command Shift right/left highlight line
-Command CTRL UP/Down .h and .m file
-Command CTRL J jump to definition
-Command CTRL Left jump back
-Command CTRL F full/maximize screen mode
-Command CTRL Y debug/continue 
-Command `  window fit screen
+    Command left/right move cursor to begin/end of line(no highligh)
+    Command , show setting(xcode)
+    Command 3 global search
+    Command w close window (not just xcode)
+    Command [] shift hightlight code left/right
+    Command double click jump to definition
+    Command D mark line
+    Command L goto line
+    Command E, Command F use selection to find
+    Command Shift Y close debug window
+    Command Shift 2 Open Organizer
+    Command E + Command F search word under cursor
+    Command Shift f  global find
+    Command Shift Left/Right  selection whole line
+    Command Shift right/left highlight line
+    Command CTRL UP/Down .h and .m file
+    Command CTRL J jump to definition
+    Command CTRL Left jump back
+    Command CTRL F full/maximize screen mode
+    Command CTRL Y debug/continue 
+    Command `  window fit screen
 </xcode>
 
 
-</xcode_lldb>
-
-<xcode_lldb>
 
 <xcode note>
 /Users/cat/Library/Application Support/iPhone Simulator/6.1/Applications/66026FA2-3C01-4653-B0B8-EC4C6F7F1C05/Documents
@@ -1118,18 +1136,21 @@ you can use absolute path for the  /User/Library/myframework.framework   path=/U
 </xcode>
 
 <visual_studio shortcut key>
-ALT Shift Enter maximize code window
-CTRL-Tab        show tab files
-CTRL -          navigate backward
-CTRL Shift -    navigate forward  
-CTRL g          goto line number
-Shift F12       find all references
-CTRL-Delete     delete word to right of cursor 
-CTRL-BackSpace  delete word to left of cursor 
-CTRL W          highlight word
-CTRL M + O      collapse all
-CTRL M + L      expand all
-CTRL M + M      expand/collapse the current region
+    ALT Shift Enter maximize code window
+    CTRL-Tab        show tab files
+    CTRL -          navigate backward
+    CTRL Shift -    navigate forward  
+    CTRL g          goto line number
+    Shift F12       find all references
+    CTRL-Delete     delete word to right of cursor 
+    CTRL-BackSpace  delete word to left of cursor 
+    CTRL W          highlight word
+    CTRL M + O      collapse all
+    CTRL M + L      expand all
+    CTRL M + M      expand/collapse the current region
+    CTRL K + K      toggle bookmark 
+    CTRL K + N      next bookmark 
+    CTRL K + P      previous bookmark 
 </visua_studio> 
 
 <book math>
@@ -1146,17 +1167,28 @@ http://www.math.uh.edu/~wagner/2331/Schurs_theorem.pdf
 java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
 <java antlr>
 
+<csharp c#>
+================================================================================
+    list skip: listskip
+--------------------------------------------------------------------------------
+    var list = new[] { "dog", "cow", "cat" };
+    System.Console.WriteLine(string.Join(",", list));
+    var list1 = list.Skip(1);
+    System.Console.WriteLine(string.Join(",", list1));
+    //"cow", "cat"
+    System.Console.ReadLine();
+</csharp>
+
 <octopress>
-link code from local dir
+    link code from local dir
 
-1 edit source/_posts/xxx.markdown
-2 add absoluate path to code
-3 rake generate
-4 copy octopress/* to /var/www/octopress
-5. Fixed relative path {% include_code java/Count.java %} from source/_post/xxx.markdown file
-6. Fixed github gist 
-7. Installed Kramdown for latex
-
+    1 edit source/_posts/xxx.markdown
+    2 add absoluate path to code
+    3 rake generate
+    4 copy octopress/* to /var/www/octopress
+    5. Fixed relative path {% include_code java/Count.java %} from source/_post/xxx.markdown file
+    6. Fixed github gist 
+    7. Installed Kramdown for latex
 </octopress>
 
 <xcode snippet>
