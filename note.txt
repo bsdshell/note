@@ -1170,8 +1170,6 @@ link code from local dir
     self.searchBar.text = @"";
     [self.view addSubview:self.searchBar]; 
 ================================================================================
-
-================================================================================
     NSMutableDictionary* Dictionary     = [NSMutableDictionary dictionaryWithCapacity:0]; //dictionary
 --------------------------------------------------------------------------------
     NSString* strValue = [Dictionary objectForKey:key];
@@ -1181,6 +1179,9 @@ link code from local dir
     [self.searchBar resignFirstResponder];
     NSMutableArray* mutableArray = [NSMutableArray arrayWithArray:oldMutableArray];     //copy mutable array
     NSUInteger* myNSUInteger   = [myNSNumber integerValue];                             //Convert NSNumber to NSUInteger
+================================================================================
+NSString* firstString = @"first string";
+NSString* concatstring = [firstString stringByAppendingString:@"appending string"];
 </xcode snippet>
 
 
