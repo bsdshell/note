@@ -1203,8 +1203,6 @@ java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
     self.searchBar.text = @"";
     [self.view addSubview:self.searchBar]; 
 ================================================================================
-
-================================================================================
     NSMutableDictionary* Dictionary     = [NSMutableDictionary dictionaryWithCapacity:0]; //dictionary
 --------------------------------------------------------------------------------
     NSString* strValue = [Dictionary objectForKey:key];
@@ -1214,6 +1212,9 @@ java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
     [self.searchBar resignFirstResponder];
     NSMutableArray* mutableArray = [NSMutableArray arrayWithArray:oldMutableArray];     //copy mutable array
     NSUInteger* myNSUInteger   = [myNSNumber integerValue];                             //Convert NSNumber to NSUInteger
+================================================================================
+NSString* firstString = @"first string";
+NSString* concatstring = [firstString stringByAppendingString:@"appending string"];
 </xcode snippet>
 
 
