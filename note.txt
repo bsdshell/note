@@ -1018,7 +1018,13 @@ VALUES ('Admin', 'admin@localhost', '351683ea4e19efe34874b501fdbf9792:9b', 1);
 
     sed -i -e 's/oldstring/newstring/g' *   //grep all the file *.php search oldstring and replace newstring
     find . -name "*" | xargs -n1 perl -i -ane 's/images/img/g; print;'
-</vim>
+    :bufdo e!           //Save reload all buffers :syntax on  to enable syntax highlight
+    '< and >'           //first cursor position/last cursor position in registers in visual mode/selection
+    
+    :echo getline(".")  //get current line string
+    :echo match("mystring", "st")       //return 2 
+
+</vim
 
 <linux command>
     CTRL-R to search the history commmand
@@ -1212,8 +1218,24 @@ java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
     NSMutableArray* mutableArray = [NSMutableArray arrayWithArray:oldMutableArray];     //copy mutable array
     NSUInteger* myNSUInteger   = [myNSNumber integerValue];                             //Convert NSNumber to NSUInteger
 ================================================================================
-NSString* firstString = @"first string";
-NSString* concatstring = [firstString stringByAppendingString:@"appending string"];
+    NSString* firstString = @"first string";
+    NSString* concatstring = [firstString stringByAppendingString:@"appending string"]; //appending string to other string
+================================================================================
+    UITabBarController reload problem                                                   
+    - (void)viewWillAppear:(BOOL)animated                                               //The method will be callen when tabbar is switched
+    Use [[self tableView] reloadData]; to reload data
+================================================================================
+    NSString* strInt = @"123";                                                          //Convert NSString to int
+    int intValue     = [strInt intValue];
+================================================================================
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];              //Convert NSString to NSNumber
+    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    NSNumber* myNumber = [numberFormatter numberFromString:@"123"];
+    [numberFormatter release];
+================================================================================
+    NSNumber* nsnumber = [NSNumber numberWithInteger:123];                              //Convert NSNumber to NSString
+    NSString* numString = [nsnumber stringValue];
+================================================================================
 </xcode snippet>
 
 
