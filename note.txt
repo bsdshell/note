@@ -1118,6 +1118,11 @@ mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -Darchety
 mvn archetype:generate -DgroupId=Project -DartifactId=MyApp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 </maven>
 
+<git command>
+    rm -rf directory //delete directory 
+    git commit -a  
+    git push origin master
+</git command>
 
 <xcode shortcut key>
     Shift ALT Command Left/Right  fold all code/unfolded all code
