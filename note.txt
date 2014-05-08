@@ -1242,7 +1242,26 @@ java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
     UIImageView *imageView = [[UIImageView alloc]initWithFrame:self.window.bounds];                 // Add image as main screen in UIApplication
     imageView.image=[UIImage imageNamed:@"image.png"];
     [self.window addSubview:imageView];
+    ================================================================================
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:self.window.bounds];                 // Draw circle on top of image/UIImageView
+    imageView.image=[UIImage imageNamed:@"image.png"];
+    CAShapeLayer* circleLayer = [CAShapeLayer layer];
+    CGFloat leftX = 100.0f;
+    CGFloat leftY = 100.0f;
+    CGFloat Width = 200.0f;
+    CGFloat Height = 200.0f;
+    UIBezierPath* path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(leftX, leftY, Width, Height)];
+    [circleLayer setPath:[path CGPath]];
+    CGFloat component[4];
+    component[0] = 100.0;
+    component[1] = 1.0;
+    component[2] = 2.0;
+    component[3] = 2.0;
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    [circleLayer setStrokeColor:CGColorCreate(colorSpace, component)];
+    [circleLayer setLineWidth:1.0f];
+    [circleLayer setFillColor:[[UIColor blueColor] CGColor]];
+    [[imageView layer] addSublayer:circleLayer];
 ================================================================================
+
 </xcode snippet>
-
-
