@@ -1199,7 +1199,7 @@ java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
 </octopress>
 
 <xcode snippet>
-================================================================================
+====================================================================================
     UISearchBar *_searchBar;                                                                         // searchBar in ios 7
     --------------------------------------------------------------------------------
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.SEARCHBAR_WIDTH, 40)];
@@ -1221,6 +1221,9 @@ java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
     ================================================================================
     NSString* firstString = @"first string";
     NSString* concatstring = [firstString stringByAppendingString:@"appending string"];              // appending string to other string
+    ================================================================================
+    NSString* firstString = @"first string";
+    NSString* fullPathFileName = [fullPath stringByAppendingPathComponent:@"fileName"];              // appending string to other string
     ================================================================================
     UITabBarController reload problem
     - (void)viewWillAppear:(BOOL)animated                                                            // The method will be callen when tabbar is switched
@@ -1262,6 +1265,27 @@ java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
     [circleLayer setLineWidth:1.0f];
     [circleLayer setFillColor:[[UIColor blueColor] CGColor]];
     [[imageView layer] addSublayer:circleLayer];
-================================================================================
+    ================================================================================
+    UIBarButtonItem title font size
+    --------------------------------------------------------------------------------
+    UIBarButtonItem* deleteItem = [[UIBarButtonItem alloc] initWithTitle:@"Delete" style:UIBarButtonItemStyleBordered target:self action:@selector(deleteImageButton:)];
+    UIFont* font = [UIFont boldSystemFontOfSize:18.0f];
+    NSDictionary* attribute = @{NSFontAttributeName: font};
+    [deleteItem setTitleTextAttributes:attribute forState:UIControlStateNormal];
+    ================================================================================
+    Get the file name from full path 
+    --------------------------------------------------------------------------------
+    NSString* thumbName                = [fullPathFileThumbEncrypt lastPathComponent];
+    ================================================================================
+    OpenES/OpenGL is like a state machine
+    OpenGL/OpenES has three primitives: point, line and triangle
+    Each point is formed by one vertex 
+    Each line is formed by two vertices 
+    Each triangle is formed by three vertices
+
+    Vertex Shader/Fragment Shader
+    Frame Buffer, Render Buffer, Depth Buffer, Stencil Buffer
+    --------------------------------------------------------------------------------
+====================================================================================
 
 </xcode snippet>
