@@ -923,10 +923,10 @@ touch mypack/com/mycompany/myproject/MyClass.java
 //put the code inside your MyClass.java file
 package com.mycompany.myproject;
 public class MyClass{
-				public void print()
-				{
-								System.out.println("MyClass");
-				}
+            public void print()
+            {
+                            System.out.println("MyClass");
+            }
 }
 
 //compile MyClass
@@ -942,11 +942,11 @@ package com.mycompany.myproject;
 import com.mycompany.myproject.*;
 class Test
 {
-				public static void main(String args[])
-				{
-					MyClass c = new MyClass();
-					c.print();
-				}
+    public static void main(String args[])
+    {
+        MyClass c = new MyClass();
+        c.print();
+    }
 }
 
 //compile your Test.java 
@@ -991,6 +991,27 @@ VALUES ('Admin', 'admin@localhost', '351683ea4e19efe34874b501fdbf9792:9b', 1);
     :bufdo %s/pattern/replacement #replace all buffers
     /pattern\c #ignorecase
 
+    vim $(grep -l --include="*.java" pattern .)        // vim open all files from grep
+    vim $(find ./ -name \*.java -print)                // open all java file from find
+
+    :bufdo %s/pattern/replacement/ge | update          // vim replace all buffers
+    :zf                // Create fold under cursor
+    :zd                // Delete fold under cursor
+    :5gt               // goto tab 5, [in insert mode]
+    :tabmove 4         // move the current tab to position 4 [help :tabmove]
+    :tabc 11           // close tab 11
+
+    :set modeline      // display file name in each tabs page
+    :set ls=2
+
+    :set modeline      // display full file name in statusline [:help :statusline]
+    :set statusline=%F
+
+    y$                 // copy character from cursor to the end of line     [:help yank]
+    vaw                // highlight word under cursor including white space [:help text-object]
+    viw                // hightlight word under cursor excluding white space[:help text-object]
+    awk '{for(i=0; i<NF; i++) print $1}' inputfile //print the first column from file>
+=======
     vim $(grep -l --include="*.java" pattern .)                                                     // vim open all files from grep
     vim $(find ./ -name \*.java -print)                                                             // open all java file from find
 
@@ -1019,6 +1040,18 @@ VALUES ('Admin', 'admin@localhost', '351683ea4e19efe34874b501fdbf9792:9b', 1);
     :bufdo e!                                                                                       // Save reload all buffers :syntax on  to enable syntax highlight
     '< and >'                                                                                       // first cursor position/last cursor position in registers in visual mode/selection
     
+    :echo getline(".")                 // get current line string
+    :echo match("mystring", "st")      // return 2
+    :echo line(".")                    // line number of cursor
+    :echo line("'t")                   // line number of mark t
+    :echo getpos(".")                  // [bufferNumber, col, lnum, off] [:help getpos]
+    :echo setpos(".", {list})          // [bufferNumber, col, lnum, off]
+    :echo [col, lnum] = searchpos("=") // return = position in current line and move the cursor to =
+    :help debug-mode                   // debug vim script
+
+    :%sort                             // sort lines
+    :%sort u                           // remove duplicated lines 
+=======
     :echo getline(".")                                                                              // get current line string
     :echo match("mystring", "st")                                                                   // return 2
     :Align \*\zs\s\+ =                                                                              // *'  ' and '=' separator
@@ -1085,6 +1118,11 @@ mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -Darchety
 mvn archetype:generate -DgroupId=Project -DartifactId=MyApp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 </maven>
 
+<git command>
+    rm -rf directory //delete directory 
+    git commit -a  
+    git push origin master
+</git command>
 
 <xcode shortcut key>
     Shift ALT Command Left/Right  fold all code/unfolded all code
@@ -1123,22 +1161,21 @@ mvn archetype:generate -DgroupId=Project -DartifactId=MyApp -DarchetypeArtifactI
 
 
 <xcode note>
-/Users/cat/Library/Application Support/iPhone Simulator/6.1/Applications/66026FA2-3C01-4653-B0B8-EC4C6F7F1C05/Documents
-http://publications.csail.mit.edu/tmp/MIT-CSAIL-TR-2005-014.pdf
-sqlite pass2.db
-NSLog("%s", __PRETTY_FUNCTION__);
-~/Library/Developer/Xcode/DerivedData delete xcode caches
+    /Users/cat/Library/Application Support/iPhone Simulator/6.1/Applications/66026FA2-3C01-4653-B0B8-EC4C6F7F1C05/Documents
+    http://publications.csail.mit.edu/tmp/MIT-CSAIL-TR-2005-014.pdf
+    sqlite pass2.db
+    NSLog("%s", __PRETTY_FUNCTION__);
+    ~/Library/Developer/Xcode/DerivedData delete xcode caches
 
-can not find framework library
-->Build Settings
-->Framework Search Paths, Add the full path to *.framework directory
+    can not find framework library
+    ->Build Settings
+    ->Framework Search Paths, Add the full path to *.framework directory
 
-ld: symbol(s) not found for architecture armv7 
-check Build Phases with "Link Binary With Libraries" all the framework files has to be same as in the file navigator window 
+    ld: symbol(s) not found for architecture armv7 
+    check Build Phases with "Link Binary With Libraries" all the framework files has to be same as in the file navigator window 
 
-If framework file can't be found, then check "Framework Search Paths" in Build Settings
-you can use absolute path for the  /User/Library/myframework.framework   path=/User/Library
-
+    If framework file can't be found, then check "Framework Search Paths" in Build Settings
+    you can use absolute path for the  /User/Library/myframework.framework   path=/User/Library
 </xcode>
 
 <visual_studio shortcut key>
