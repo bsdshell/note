@@ -1284,6 +1284,8 @@ java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
     Each triangle is formed by three vertices
 
     Vertex Shader/Fragment Shader
+    Vertex Shader and Fragment Shader is like a little program, it run inside the GPU
+
     Frame Buffer, Render Buffer, Depth Buffer, Stencil Buffer
     --------------------------------------------------------------------------------
 ====================================================================================
