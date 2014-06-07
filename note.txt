@@ -1314,6 +1314,16 @@ java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
     --------------------------------------------------------------------------------
     NSString* thumbName                = [fullPathFileThumbEncrypt lastPathComponent];
     ================================================================================
+    Redirect output to file
+    --------------------------------------------------------------------------------
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *logPath = [documentsDirectory stringByAppendingPathComponent:@"xoutput.log"];
+    //NSString *logPath = @"/Users/cat/try/xoutput.log 
+    NSLog(@"redirecting STDERR: %@", logPath);
+    freopen([logPath cStringUsingEncoding:NSASCIIStringEncoding],"a+",stderr);
+    ================================================================================
+
     OpenES/OpenGL is like a state machine
     OpenGL/OpenES has three primitives: point, line and triangle
     Each point is formed by one vertex 
