@@ -1059,6 +1059,8 @@ VALUES ('Admin', 'admin@localhost', '351683ea4e19efe34874b501fdbf9792:9b', 1);
     :'<,>'sort /\ze\%V/                                                                             // sort all selected lines in visual mode
     :g/^$/d                             //delete empty line 
     :let @a=substitue(@a, 'pattern', 'sub', 'g')                                                    // substitute 'pattern' with 'sub' in register @a 
+    :'<,'>s/^\s*\zs\w/#\0/gc        //comment all selected lines in python
+    :set ma                             // set file modifiable on  [:h modifiable]
 </vim
 
 <linux command>
@@ -1128,6 +1130,7 @@ mvn archetype:generate -DgroupId=Project -DartifactId=MyApp -DarchetypeArtifactI
 
 <xcode shortcut key>
     Shift ALT Command Left/Right  fold all code/unfolded all code
+    CTRL 5 search files name(.h *.m)
     CTRL 6 type search show all current methods
     CTRL WindowKey left/right  navigate backward/backward
     CTRL 1 show recent items
@@ -1226,6 +1229,38 @@ java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
     System.Console.ReadLine();
 </csharp>
 
+<python>
+    mode	description
+    r	read in text mode
+    w	write in text mode, overwrite old file if exists
+    a	append in text mode
+    r+	read and write
+    w+	read and write, overwrite old file if exists
+    a+	read and append
+    rb	read in binary mode
+    wb	write in binary mode, overwrite old file if exists
+    ab	append in binary mode
+    rb+	read and write in binary mode
+    wb+	write and read in binary mode, overwrite old file if exists
+    ab+	append and read in binary mode
+
+    python -m pdb script.py        // debug python
+    str = str.strip(' \r\n\t')     // trim whitespace
+    str = str.ltrip(' \r\n\t')     // trim the left side of str
+    str = str.rtrip(' \r\n\t')     // trim the right side of str
+    is_number(mystring)            // convert string to number/integer
+    arglist = sys.argv;            // argument list
+    arglist[0]                     // first argument which is the script name
+    len(mystring)                  // length of string
+    len(list)                      // number of element inside the list
+    mylist = []                    // create list
+    handler = open(fileName, "r+") // open file for read
+    int(str)                       // convert string to integer
+    list.pop(0)                     // Delete first element from list
+    list.append("str")              // Append str to list 
+    basename = ntpath.basename(path)// Basename of path
+</python>
+
 <octopress>
     link code from local dir
 
@@ -1236,6 +1271,11 @@ java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
     5. Fixed relative path {% include_code java/Count.java %} from source/_post/xxx.markdown file
     6. Fixed github gist 
     7. Installed Kramdown for latex
+    
+    rake 'new_post[title]'
+
+    put image file in  zsurface/public/images
+    {% img  center /images/torus.png 400 400 %}
 </octopress>
 
 <xcode snippet>
@@ -1326,7 +1366,6 @@ java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
     NSLog(@"redirecting STDERR: %@", logPath);
     freopen([logPath cStringUsingEncoding:NSASCIIStringEncoding],"a+",stderr);
     ================================================================================
-
     OpenES/OpenGL is like a state machine
     OpenGL/OpenES has three primitives: point, line and triangle
     Each point is formed by one vertex 
@@ -1338,6 +1377,30 @@ java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
 
     Frame Buffer, Render Buffer, Depth Buffer, Stencil Buffer
     --------------------------------------------------------------------------------
+    ================================================================================
+    formatting
+    --------------------------------------------------------------------------------
+    %@ Objective-C object, printed as the string returned by descriptionWithLocale: if available, or description otherwise. Also works with CFTypeRef objects, returning the result of the CFCopyDescription function.
+    %% '%' character.
+    %d, %D Signed 32-bit integer (int).
+    %u, %U Unsigned 32-bit integer (unsigned int).
+    %x Unsigned 32-bit integer (unsigned int), printed in hexadecimal using the digits 0–9 and lowercase a–f.
+    %X Unsigned 32-bit integer (unsigned int), printed in hexadecimal using the digits 0–9 and uppercase A–F.
+    %o, %O Unsigned 32-bit integer (unsigned int), printed in octal.
+    %f 64-bit floating-point number (double).
+    %e 64-bit floating-point number (double), printed in scientific notation using a lowercase e to introduce the exponent.
+    %E 64-bit floating-point number (double), printed in scientific notation using an uppercase E to introduce the exponent.
+    %g 64-bit floating-point number (double), printed in the style of %e if the exponent is less than –4 or greater than or equal to the precision, in the style of %f otherwise.
+    %G 64-bit floating-point number (double), printed in the style of %E if the exponent is less than –4 or greater than or equal to the precision, in the style of %f otherwise.
+    %c 8-bit unsigned character (unsigned char), printed by NSLog() as an ASCII character, or, if not an ASCII character, in the octal format \\ddd or the Unicode hexadecimal format \\udddd, where d is a digit.
+    %C 16-bit Unicode character (unichar), printed by NSLog() as an ASCII character, or, if not an ASCII character, in the octal format \\ddd or the Unicode hexadecimal format \\udddd, where d is a digit.
+    %s Null-terminated array of 8-bit unsigned characters. Because the %s specifier causes the characters to be interpreted in the system default encoding, the results can be variable, especially with right-to-left languages. For example, with RTL, %s inserts direction markers when the characters are not strongly directional. For this reason, it’s best to avoid %s and specify encodings explicitly.
+    %S Null-terminated array of 16-bit Unicode characters.
+    %p Void pointer (void *), printed in hexadecimal with the digits 0–9 and lowercase a–f, with a leading 0x.
+    %a 64-bit floating-point number (double), printed in scientific notation with a leading 0x and one hexadecimal digit before the decimal point using a lowercase p to introduce the exponent.
+    %A 64-bit floating-point number (double), printed in scientific notation with a leading 0X and one hexadecimal digit before the decimal point using a uppercase P to introduce the exponent.
+    %F 64-bit floating-point number (double), printed in decimal notation.
+    ================================================================================
 ====================================================================================
 
 </xcode snippet>
