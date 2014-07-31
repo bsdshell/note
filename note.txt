@@ -108,9 +108,6 @@ GRANT ALL ON *.* to 'user1'@'localhost';
     find ./ -name "*.txt" -mtime -4  -print
 </find>
 
-<find all php from images directory>
-    find -iname images -exec ls {} \;   | grep -Hnrs '.php'
-</find all php file from images directory>
 
 <find vim open multiple files in find command under bash shell>
     find $(find ./ -name *.java -type f)
@@ -1011,7 +1008,7 @@ VALUES ('Admin', 'admin@localhost', '351683ea4e19efe34874b501fdbf9792:9b', 1);
     vaw                // highlight word under cursor including white space [:help text-object]
     viw                // hightlight word under cursor excluding white space[:help text-object]
     awk '{for(i=0; i<NF; i++) print $1}' inputfile //print the first column from file>
-=======
+
     vim $(grep -l --include="*.java" pattern .)                                                     // vim open all files from grep
     vim $(find ./ -name \*.java -print)                                                             // open all java file from find
 
@@ -1049,9 +1046,7 @@ VALUES ('Admin', 'admin@localhost', '351683ea4e19efe34874b501fdbf9792:9b', 1);
     :echo [col, lnum] = searchpos("=") // return = position in current line and move the cursor to =
     :help debug-mode                   // debug vim script
 
-    :%sort                             // sort lines
-    :%sort u                           // remove duplicated lines 
-=======
+    
     :echo getline(".")                                                                              // get current line string
     :echo match("mystring", "st")                                                                   // return 2
     :Align \*\zs\s\+ =                                                                              // *'  ' and '=' separator
@@ -1059,6 +1054,16 @@ VALUES ('Admin', 'admin@localhost', '351683ea4e19efe34874b501fdbf9792:9b', 1);
     :'<,>'sort /\ze\%V/                                                                             // sort all selected lines in visual mode
     :g/^$/d                             //delete empty line 
     :let @a=substitue(@a, 'pattern', 'sub', 'g')                                                    // substitute 'pattern' with 'sub' in register @a 
+    :q: or q/                          // vim command history
+
+    :hi Search guifg=Brown guibg=Gray
+    :hi Search cterm=Brown ctermbg=Gray                                                             // change search backgroun/foreground [:h hl-Search]
+
+    :sort n                            //sort lines by the first digital in the line, [n] is first decimal number, [x] is first hexadecimal number [:help :sort]
+    :sort! n                           //reverse sorting
+
+    :syn match MyKeyWord /MyName/               //Highlight defined keyword [:help syn-match]
+    :highlight MyKeyWord guifg=Green 
 </vim
 
 <linux command>
@@ -1072,6 +1077,8 @@ VALUES ('Admin', 'admin@localhost', '351683ea4e19efe34874b501fdbf9792:9b', 1);
     
     :C-a [ copy             //screen command scroll screen
     :C-a ] paste
+    :pandoc -s mymarkdown.md -o myhtml.html     //covert markdown file to html in pandoc
+    find -iname images -exec ls {} \;   | grep -Hnrs '.php'
 </linux command>
 
 
@@ -1124,6 +1131,16 @@ mvn archetype:generate -DgroupId=Project -DartifactId=MyApp -DarchetypeArtifactI
     rm -rf directory //delete directory 
     git commit -a  
     git push origin master
+
+
+    rm *.txt                // Delete *.txt file from git
+    git add --all            
+    git commit -m "delete"
+    git push origin master
+
+    //ignore file
+    touch .gitignore
+    add *.txt pattern to .gitignore 
 </git command>
 
 <xcode shortcut key>
@@ -1197,6 +1214,8 @@ mvn archetype:generate -DgroupId=Project -DartifactId=MyApp -DarchetypeArtifactI
     CTRL K + N      next bookmark 
     CTRL K + P      previous bookmark 
     CTRL E          Recent files
+    Shift CTRL + }  Select block code curly bracket
+    CTRL + }        Jump to { or }
 </visua_studio> 
 
 <book math>
@@ -1215,15 +1234,24 @@ java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
 <java antlr>
 
 <csharp c#>
-================================================================================
+    ================================================================================
     list skip: listskip
---------------------------------------------------------------------------------
+    --------------------------------------------------------------------------------
     var list = new[] { "dog", "cow", "cat" };
     System.Console.WriteLine(string.Join(",", list));
     var list1 = list.Skip(1);
     System.Console.WriteLine(string.Join(",", list1));
     //"cow", "cat"
     System.Console.ReadLine();
+
+    ================================================================================
+    dictionary uses for loop 
+    --------------------------------------------------------------------------------
+    for (int index = 0; index < dictionary.Count; index++) {
+      var item = dictionary.ElementAt(index);
+      var itemKey = item.Key;
+      var itemValue = item.Value;
+    }
 </csharp>
 
 <octopress>
@@ -1238,8 +1266,21 @@ java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
     7. Installed Kramdown for latex
 </octopress>
 
+<c# snippet>
+
+</c# snippet>
+    ====================================================================================
+    Control Validating event 
+    --------------------------------------------------------------------------------
+    TextBox textbox = new TextBox()
+    textbox.Validating += ValidationRule                    // Register event handler
+
+    private void ValidationRule(object sender, EventArg e) 
+    { //define your validation rules }
+    --------------------------------------------------------------------------------
+
 <xcode snippet>
-====================================================================================
+    ====================================================================================
     UISearchBar *_searchBar;                                                                         // searchBar in ios 7
     --------------------------------------------------------------------------------
     self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.SEARCHBAR_WIDTH, 40)];
