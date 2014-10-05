@@ -1004,10 +1004,11 @@ VALUES ('Admin', 'admin@localhost', '351683ea4e19efe34874b501fdbf9792:9b', 1);
     :set modeline      // display full file name in statusline [:help :statusline]
     :set statusline=%F
 
-    y$                 // copy character from cursor to the end of line     [:help yank]
-    vaw                // highlight word under cursor including white space [:help text-object]
-    viw                // hightlight word under cursor excluding white space[:help text-object]
-    awk '{for(i=0; i<NF; i++) print $1}' inputfile //print the first column from file>
+    y$                                             // copy character from cursor to the end of line     [:help yank]
+    vaw                                            // highlight word under cursor including white space [:help text-object]
+    viw                                            // hightlight word under cursor excluding white space[:help text-object]
+    awk '{for(i=0; i<NF; i++) print $1}' inputfile // print the first column from file>
+    kill -9 $(ps aux | awk '/Safari/ {print $2}')  // kill Safari brower
 
     vim $(grep -l --include="*.java" pattern .)                                                     // vim open all files from grep
     vim $(find ./ -name \*.java -print)                                                             // open all java file from find
@@ -1322,6 +1323,17 @@ java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
     put image file in  zsurface/public/images
     {% img  center /images/torus.png 400 400 %}
 </octopress>
+
+<java snippet>
+====================================================================================
+    int array[][] = new int[][]{
+    { 1, 2, 3, 4, 5 },
+    { 1, 2, 3, 4, 5 },
+    { 1, 2, 3, 4, 5 },
+    { 1, 2, 3, 4, 5 }
+    };
+====================================================================================
+</java snippet>
 
 <c# snippet>
 
