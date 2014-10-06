@@ -1510,6 +1510,29 @@ java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
     %A 64-bit floating-point number (double), printed in scientific notation with a leading 0X and one hexadecimal digit before the decimal point using a uppercase P to introduce the exponent.
     %F 64-bit floating-point number (double), printed in decimal notation.
     ================================================================================
-====================================================================================
-
 </xcode snippet>
+
+================================================================================
+Algebraic Curve in Projective Plane
+Point on Projective Plane
+(X, Y, Z) ~ (aX, aY, aZ) a != zero 
+Embed Affine plane to projective plane
+Add infinite line (x:y:0)
+Embed (x:y)->(1:x:z)
+Embed (x:y)->(x:1:z)
+Embed (x:y)->(x:y:1)
+
+F(X, Y, Z) = 0 
+X = aX', Y = aY', Z = aZ'
+F(aX', aY', aZ') = a^nF(X', Y', Z') = 0
+If F(X', Y', Z') => a^nF(X', Y', Z') = 0
+
+Any affine curve C can be extended to projective plane curve by following process
+F(X, Y) = 0 
+Z^nF(X/Z, Y/Z) = 0, Let Z != 0
+e.g. X^2 + y  + 3 = 0
+     (X/Z)^2 + Y/Z + 3 = 0
+    =>X^2 + ZY + 3Z^2 = 0
+      Add (X:Y:0) as infinite line
+
+================================================================================
