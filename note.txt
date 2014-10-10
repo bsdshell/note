@@ -1536,3 +1536,20 @@ e.g. X^2 + y  + 3 = 0
       Add (X:Y:0) as infinite line
 
 ================================================================================
+([1, 2, 3, 0, 5]U{Infinite}, max, +, 0, 1)
+max is associative
++ is associative
+0 is the identify of +
+since a = a + 0
+
+Infinite is annihilator for max
+Infinite = max(Infinite, a)
+
+m = max(1, 2)
+2 = max(2, 0)
+2 = max(0, 2)
+    max(max(a, b), c) = max(a, max(b, c)) 
+    3 = 3 + 0
+    3 = 0 + 3
+
+================================================================================
