@@ -1090,6 +1090,7 @@ VALUES ('Admin', 'admin@localhost', '351683ea4e19efe34874b501fdbf9792:9b', 1);
     :pandoc -s mymarkdown.md -o myhtml.html     //covert markdown file to html in pandoc
     find -iname images -exec ls {} \;   | grep -Hnrs '.php'
     grep -Hrns --include="*.java" string        //search pattern and display filename includes the pattern 
+    remove -i !(*.avi|*.png|*.mov)              //remove files without these extensions
 </linux command>
 
 
@@ -1189,7 +1190,9 @@ mvn archetype:generate -DgroupId=Project -DartifactId=MyApp -DarchetypeArtifactI
     Command `  window fit screen
 </xcode>
 
-
+<mac shortcut>
+    Command Space   open spotlight
+</mac>
 
 <xcode note>
     /Users/cat/Library/Application Support/iPhone Simulator/6.1/Applications/66026FA2-3C01-4653-B0B8-EC4C6F7F1C05/Documents
@@ -1272,7 +1275,7 @@ java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
     w	write in text mode, overwrite old file if exists
     a	append in text mode
     r+	read and write
-    w+	read and write, overwrite old file if exists
+    w+	read and write, overwrite old file/create file
     a+	read and append
     rb	read in binary mode
     wb	write in binary mode, overwrite old file if exists
@@ -1296,6 +1299,10 @@ java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
     list.pop(0)                      // Delete first element from list
     list.append("str")               // Append str to list
     basename = ntpath.basename(path) // Basename of path
+    os.path.basename("/dog/dog/dog.txt") //import os;
+    pair = os.path.splitext("file.txt")  // pair[0] = file  pair[1]=".txt" 
+    str(num)                         // String to integer
+    os.getcwd()                      
 </python>
 
 <latex>
@@ -1509,9 +1516,15 @@ java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
     %a 64-bit floating-point number (double), printed in scientific notation with a leading 0x and one hexadecimal digit before the decimal point using a lowercase p to introduce the exponent.
     %A 64-bit floating-point number (double), printed in scientific notation with a leading 0X and one hexadecimal digit before the decimal point using a uppercase P to introduce the exponent.
     %F 64-bit floating-point number (double), printed in decimal notation.
-    ================================================================================
+================================================================================
 </xcode snippet>
-
+--------------------------------------------------------------------------------
+<gpg_encryption>
+tar -czf myencrypt.tar.gz myencrypt
+tar -xzf myencrypt.tar.gz 
+gpg -c myencrypt.tar.gz
+gpg -c -o myencrypt.tar.gz myencrypt.tar.gz.gpg
+</gpg_encryption>
 ================================================================================
 Algebraic Curve in Projective Plane
 Point on Projective Plane
