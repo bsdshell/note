@@ -89,21 +89,26 @@ mysql> select * from Employee INNER JOIN EmpJob ON ID > E_ID;
 
 
 <mysql>
-
-
-//dump all tables with/out data
+// dump all tables with/out data
 mysqldump -u user -p password --all-databases > db.sql //dump all tables and data
 mysqldump -u user -p password  mydatabase > dumpfile.sql    //dump one database schema without data
 
-
-//how to create new user
+// how to create new user
 create user 'user1'@'localhost' identified by 'password';
 GRANT select, update, delete ON *.* TO 'user1'@'localhost';
 GRANT ALL ON *.* to 'user1'@'localhost';
 flush privileges
 
-<mysql> 
 
+// change password in mysql
+1. login with old password
+mysql -u root -p 
+2. SET PASSWORD FOR 'root'@'localhost' = PASSWORD('newpassword');
+
+// update password in mysql
+UPDATE mysql.user SET Password=PASSWORD('new-password') WHERE User='root' AND Host='localhost';
+
+</mysql>
 	
 
 <find command> how to use ind and exec>
@@ -1226,6 +1231,268 @@ mvn archetype:generate -DgroupId=Project -DartifactId=MyApp -DarchetypeArtifactI
     you can use absolute path for the  /User/Library/myframework.framework   path=/User/Library
 </xcode>
 
+<xcode snippet>
+    ====================================================================================
+    UISearchBar *_searchBar;                                                                         // searchBar in ios 7
+    --------------------------------------------------------------------------------
+    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.SEARCHBAR_WIDTH, 40)];
+    self.searchBar.delegate = self;
+    self.searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    self.searchBar.hidden = NO;
+    self.searchBar.text = @"";
+    [self.view addSubview:self.searchBar];
+    ================================================================================
+
+    NSMutableDictionary* Dictionary     = [NSMutableDictionary dictionaryWithCapacity:0];            // dictionary
+    --------------------------------------------------------------------------------
+    NSString* strValue = [Dictionary objectForKey:key];
+    [Dictionary setObject:value forKey:key];
+    ================================================================================
+    [self.searchBar becomeFirstResponder];
+    [self.searchBar resignFirstResponder];
+    NSMutableArray* mutableArray = [NSMutableArray arrayWithArray:oldMutableArray];                  // copy mutable array
+    NSUInteger* myNSUInteger   = [myNSNumber integerValue];                                          // Convert NSNumber to NSUInteger
+    ================================================================================
+
+    NSString* firstString = @"first";
+    NSString* concatstring = [firstString stringByAppendingString:@"appending string"];              // appending string to other string
+    // concatstring = "firstappending string"; 
+    ================================================================================
+
+    NSString* fullPath = @"/home";
+    NSString* fullPathFileName = [fullPath stringByAppendingPathComponent:@"fileName.txt"];              // appending string to other string
+    //fullPathFileName -> /home/fileName.txt 
+    ================================================================================
+
+    NSString* baseName = [imageFileName stringByDeletingPathExtension]; //myimage.png -> myimage         //delete extension
+    “/tmp/scratch.tiff” -> “/tmp/scratch”
+    “/tmp/”             -> “/tmp”
+    “scratch.bundle/”   -> “scratch”
+    “scratch..tiff”     -> “scratch.”
+    “.tiff”             -> “.tiff”
+    “/”                 -> “/”
+    ================================================================================
+
+    NSString fullPathFileThumbEncrypt = "/home/dog/image.txt";
+    NSString* thumbName                = [fullPathFileThumbEncrypt lastPathComponent];  //get last component of a path
+    //thumbName = "image.txt"
+    ================================================================================
+
+    NSString* path = "/home/dog";
+    NSArray* array = [path pathComponents];
+    array[0] = "/"
+    array[1] = "home"
+    array[2] = "dog"
+
+    NSString* path = "home/dog";
+    NSArray* array = [path pathComponents];
+    array[0] = "home"
+    array[1] = "dog"
+    ================================================================================
+
+    NSString* mystring = @"home_dog_cat";
+    NSArray* componentArray = [mystring componentsSeparateByString:@"_"];
+    ================================================================================
+
+    NSString* stringFormat = @"file_%u.txt";
+    int num = 10;
+    NSString* fileName = [NSString stringWithFormat:stringFormat, num];
+    //fileName = @"file_10.txt";
+    ================================================================================
+
+    NSString* path = "/home/dog/file.txt";
+    NSString* extension = [path pathExtension];
+    //extension = "txt"
+
+    NSString* path = "/home/dog/file..txt";
+    //extension = "txt"
+
+    NSString* path = "/home/dog/file/";
+    //extension = ""
+    ================================================================================
+
+    UITabBarController reload problem
+    - (void)viewWillAppear:(BOOL)animated                                                            // The method will be callen when tabbar is switched
+    Use [[self tableView] reloadData]; to reload data
+    ================================================================================
+
+    NSString* strInt = @"123";                                                                       // Convert NSString to int
+    int intValue     = [strInt intValue];
+    ================================================================================
+
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];                           // Convert NSString to NSNumber
+    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    NSNumber* myNumber = [numberFormatter numberFromString:@"123"];
+    [numberFormatter release];
+    ================================================================================
+
+    NSNumber* nsnumber = [NSNumber numberWithInteger:123];                                           // Convert NSNumber to NSString
+    NSString* numString = [nsnumber stringValue];
+    ================================================================================
+
+    NSString* nstring = [NSString stringWithFormat:@"%d", (int)nsinteger];
+    ================================================================================
+
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:self.window.bounds];                 // Add image as main screen in UIApplication
+    imageView.image=[UIImage imageNamed:@"image.png"];
+    [self.window addSubview:imageView];
+    ================================================================================
+
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:self.window.bounds];                 // Draw circle on top of image/UIImageView
+    imageView.image=[UIImage imageNamed:@"image.png"];
+    CAShapeLayer* circleLayer = [CAShapeLayer layer];
+    CGFloat leftX = 100.0f;
+    CGFloat leftY = 100.0f;
+    CGFloat Width = 200.0f;
+    CGFloat Height = 200.0f;
+    UIBezierPath* path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(leftX, leftY, Width, Height)];
+    [circleLayer setPath:[path CGPath]];
+    CGFloat component[4];
+    component[0] = 100.0;
+    component[1] = 1.0;
+    component[2] = 2.0;
+    component[3] = 2.0;
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    [circleLayer setStrokeColor:CGColorCreate(colorSpace, component)];
+    [circleLayer setLineWidth:1.0f];
+    [circleLayer setFillColor:[[UIColor blueColor] CGColor]];
+    [[imageView layer] addSublayer:circleLayer];
+    ================================================================================
+
+    UIBarButtonItem title font size
+    --------------------------------------------------------------------------------
+    UIBarButtonItem* deleteItem = [[UIBarButtonItem alloc] initWithTitle:@"Delete" style:UIBarButtonItemStyleBordered target:self action:@selector(deleteImageButton:)];
+    UIFont* font = [UIFont boldSystemFontOfSize:18.0f];
+    NSDictionary* attribute = @{NSFontAttributeName: font};
+    [deleteItem setTitleTextAttributes:attribute forState:UIControlStateNormal];
+    ================================================================================
+
+    Redirect output to file
+    --------------------------------------------------------------------------------
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *logPath = [documentsDirectory stringByAppendingPathComponent:@"xoutput.log"];             //append file to path
+    //NSString *logPath = @"/Users/cat/try/xoutput.log 
+    NSLog(@"redirecting STDERR: %@", logPath);
+    freopen([logPath cStringUsingEncoding:NSASCIIStringEncoding],"a+",stderr);
+    ================================================================================
+
+    OpenES/OpenGL is like a state machine
+    OpenGL/OpenES has three primitives: point, line and triangle
+    Each point is formed by one vertex 
+    Each line is formed by two vertices 
+    Each triangle is formed by three vertices
+
+    Vertex Shader/Fragment Shader
+    Vertex Shader and Fragment Shader is like a little program, it run inside the GPU
+
+    Frame Buffer, Render Buffer, Depth Buffer, Stencil Buffer
+    --------------------------------------------------------------------------------
+    ================================================================================
+
+    formatting
+    --------------------------------------------------------------------------------
+    %@ Objective-C object, printed as the string returned by descriptionWithLocale: if available, or description otherwise. Also works with CFTypeRef objects, returning the result of the CFCopyDescription function.
+    %% '%' character.
+    %d, %D Signed 32-bit integer (int).
+    %u, %U Unsigned 32-bit integer (unsigned int).
+    %x Unsigned 32-bit integer (unsigned int), printed in hexadecimal using the digits 0–9 and lowercase a–f.
+    %X Unsigned 32-bit integer (unsigned int), printed in hexadecimal using the digits 0–9 and uppercase A–F.
+    %o, %O Unsigned 32-bit integer (unsigned int), printed in octal.
+    %f 64-bit floating-point number (double).
+    %e 64-bit floating-point number (double), printed in scientific notation using a lowercase e to introduce the exponent.
+    %E 64-bit floating-point number (double), printed in scientific notation using an uppercase E to introduce the exponent.
+    %g 64-bit floating-point number (double), printed in the style of %e if the exponent is less than –4 or greater than or equal to the precision, in the style of %f otherwise.
+    %G 64-bit floating-point number (double), printed in the style of %E if the exponent is less than –4 or greater than or equal to the precision, in the style of %f otherwise.
+    %c 8-bit unsigned character (unsigned char), printed by NSLog() as an ASCII character, or, if not an ASCII character, in the octal format \\ddd or the Unicode hexadecimal format \\udddd, where d is a digit.
+    %C 16-bit Unicode character (unichar), printed by NSLog() as an ASCII character, or, if not an ASCII character, in the octal format \\ddd or the Unicode hexadecimal format \\udddd, where d is a digit.
+    %s Null-terminated array of 8-bit unsigned characters. Because the %s specifier causes the characters to be interpreted in the system default encoding, the results can be variable, especially with right-to-left languages. For example, with RTL, %s inserts direction markers when the characters are not strongly directional. For this reason, it’s best to avoid %s and specify encodings explicitly.
+    %S Null-terminated array of 16-bit Unicode characters.
+    %p Void pointer (void *), printed in hexadecimal with the digits 0–9 and lowercase a–f, with a leading 0x.
+    %a 64-bit floating-point number (double), printed in scientific notation with a leading 0x and one hexadecimal digit before the decimal point using a lowercase p to introduce the exponent.
+    %A 64-bit floating-point number (double), printed in scientific notation with a leading 0X and one hexadecimal digit before the decimal point using a uppercase P to introduce the exponent.
+    %F 64-bit floating-point number (double), printed in decimal notation.
+================================================================================
+
+// draw circle[location and radius]
+- (CAShapeLayer*)drawCircle:(CGPoint)location radius:(CGFloat)radius {
+    CAShapeLayer* shapeLayer = [CAShapeLayer layer];
+    
+    UIBezierPath *path = [UIBezierPath bezierPath];
+    [path addArcWithCenter:location
+                    radius:radius
+                startAngle:0.0
+                  endAngle:M_PI * 2.0
+                 clockwise:YES];
+    
+    shapeLayer.path = [path CGPath];
+    shapeLayer.strokeColor = [[UIColor redColor] CGColor];
+    shapeLayer.fillColor = nil;
+    shapeLayer.lineWidth = 5.0;
+    return shapeLayer;
+}
+================================================================================
+
+// draw oval[location and semiMajor and semiMinor]
+-(CAShapeLayer*)drawOval:(CGPoint) location semimajor:(CGFloat)semimajor semiminor:(CGFloat) semiminor{
+    CAShapeLayer* shapeLayer = [CAShapeLayer layer];
+    
+    UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(location.x-semimajor, location.y-semiminor, 2*semimajor, 2*semiminor)];
+    
+    shapeLayer.path = [path CGPath];
+    
+    shapeLayer.strokeColor = [[UIColor greenColor] CGColor];
+    shapeLayer.fillColor = [[UIColor blackColor] CGColor];
+    shapeLayer.lineWidth = 1.0;
+    return shapeLayer;
+}
+
+// draw rectangle[location semiWith and semiHeight]
+-(CAShapeLayer*)drawRectangle:(CGPoint) location semiWidth:(CGFloat) semiWidth semiHeight:(CGFloat)semiHeight{
+    CAShapeLayer* shapeLayer = [CAShapeLayer layer];
+    UIBezierPath* path = [UIBezierPath bezierPath];
+    
+    // start point
+    [path moveToPoint:CGPointMake(location.x - semiWidth, location.y - semiHeight)];
+    
+    // draw lines
+    [path addLineToPoint:CGPointMake(location.x + semiWidth, location.y - semiHeight)];
+    [path addLineToPoint:CGPointMake(location.x + semiWidth, location.y + semiHeight)];
+    [path addLineToPoint:CGPointMake(location.x - semiWidth, location.y + semiHeight)];
+    [path addLineToPoint:CGPointMake(location.x - semiWidth, location.y - semiHeight)];
+    //[path closePath];
+    
+    shapeLayer.path = [path CGPath];
+    
+    shapeLayer.strokeColor = [[UIColor yellowColor] CGColor];
+    shapeLayer.fillColor = [[UIColor blackColor] CGColor];
+    shapeLayer.lineWidth = 1.0;
+    return shapeLayer;
+}
+
+================================================================================
+    UIImageView* _imageView;
+
+    @property (nonatomic, retain) UIImageView* imageView;
+
+    @synthesize imageView = _imageView;
+
+    self.imageView = [[UIImageView alloc]initWithFrame:self.window.bounds];
+    self.imageView.image=[UIImage imageNamed:@"myimage.jpg"];
+    [self.window addSubview:self.imageView];
+================================================================================
+    // create simple text label
+    UILabel *myLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 50, 300, 300)];
+    [myLabel setTextColor:[UIColor redColor]];
+    [myLabel setBackgroundColor:[UIColor clearColor]];
+    [myLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 20.0f]];
+    [myLabel setText:@"Supper Simple Application"];
+    
+    [self.window addSubview:myLabel];
+================================================================================
+</xcode snippet>
+
+
 <visual_studio shortcut key>
     ALT Shift Enter maximize code window
     CTRL-Tab        show tab files
@@ -1368,170 +1635,6 @@ java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
     { //define your validation rules }
     --------------------------------------------------------------------------------
 
-<xcode snippet>
-    ====================================================================================
-    UISearchBar *_searchBar;                                                                         // searchBar in ios 7
-    --------------------------------------------------------------------------------
-    self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.SEARCHBAR_WIDTH, 40)];
-    self.searchBar.delegate = self;
-    self.searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    self.searchBar.hidden = NO;
-    self.searchBar.text = @"";
-    [self.view addSubview:self.searchBar];
-    ================================================================================
-    NSMutableDictionary* Dictionary     = [NSMutableDictionary dictionaryWithCapacity:0];            // dictionary
-    --------------------------------------------------------------------------------
-    NSString* strValue = [Dictionary objectForKey:key];
-    [Dictionary setObject:value forKey:key];
-    ================================================================================
-    [self.searchBar becomeFirstResponder];
-    [self.searchBar resignFirstResponder];
-    NSMutableArray* mutableArray = [NSMutableArray arrayWithArray:oldMutableArray];                  // copy mutable array
-    NSUInteger* myNSUInteger   = [myNSNumber integerValue];                                          // Convert NSNumber to NSUInteger
-    ================================================================================
-    NSString* firstString = @"first";
-    NSString* concatstring = [firstString stringByAppendingString:@"appending string"];              // appending string to other string
-    // concatstring = "firstappending string"; 
-    ================================================================================
-    NSString* fullPath = @"/home";
-    NSString* fullPathFileName = [fullPath stringByAppendingPathComponent:@"fileName.txt"];              // appending string to other string
-    //fullPathFileName -> /home/fileName.txt 
-    ================================================================================
-    NSString* baseName = [imageFileName stringByDeletingPathExtension]; //myimage.png -> myimage         //delete extension
-    “/tmp/scratch.tiff” -> “/tmp/scratch”
-    “/tmp/”             -> “/tmp”
-    “scratch.bundle/”   -> “scratch”
-    “scratch..tiff”     -> “scratch.”
-    “.tiff”             -> “.tiff”
-    “/”                 -> “/”
-    ================================================================================
-    NSString fullPathFileThumbEncrypt = "/home/dog/image.txt";
-    NSString* thumbName                = [fullPathFileThumbEncrypt lastPathComponent];  //get last component of a path
-    //thumbName = "image.txt"
-    ================================================================================
-    NSString* path = "/home/dog";
-    NSArray* array = [path pathComponents];
-    array[0] = "/"
-    array[1] = "home"
-    array[2] = "dog"
-
-    NSString* path = "home/dog";
-    NSArray* array = [path pathComponents];
-    array[0] = "home"
-    array[1] = "dog"
-    ================================================================================
-    NSString* mystring = @"home_dog_cat";
-    NSArray* componentArray = [mystring componentsSeparateByString:@"_"];
-    ================================================================================
-    NSString* stringFormat = @"file_%u.txt";
-    int num = 10;
-    NSString* fileName = [NSString stringWithFormat:stringFormat, num];
-    //fileName = @"file_10.txt";
-    ================================================================================
-    NSString* path = "/home/dog/file.txt";
-    NSString* extension = [path pathExtension];
-    //extension = "txt"
-
-    NSString* path = "/home/dog/file..txt";
-    //extension = "txt"
-
-    NSString* path = "/home/dog/file/";
-    //extension = ""
-    ================================================================================
-    UITabBarController reload problem
-    - (void)viewWillAppear:(BOOL)animated                                                            // The method will be callen when tabbar is switched
-    Use [[self tableView] reloadData]; to reload data
-    ================================================================================
-    NSString* strInt = @"123";                                                                       // Convert NSString to int
-    int intValue     = [strInt intValue];
-    ================================================================================
-    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];                           // Convert NSString to NSNumber
-    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    NSNumber* myNumber = [numberFormatter numberFromString:@"123"];
-    [numberFormatter release];
-    ================================================================================
-    NSNumber* nsnumber = [NSNumber numberWithInteger:123];                                           // Convert NSNumber to NSString
-    NSString* numString = [nsnumber stringValue];
-    ================================================================================
-    NSString* nstring = [NSString stringWithFormat:@"%d", (int)nsinteger];
-    ================================================================================
-    UIImageView *imageView = [[UIImageView alloc]initWithFrame:self.window.bounds];                 // Add image as main screen in UIApplication
-    imageView.image=[UIImage imageNamed:@"image.png"];
-    [self.window addSubview:imageView];
-    ================================================================================
-    UIImageView *imageView = [[UIImageView alloc]initWithFrame:self.window.bounds];                 // Draw circle on top of image/UIImageView
-    imageView.image=[UIImage imageNamed:@"image.png"];
-    CAShapeLayer* circleLayer = [CAShapeLayer layer];
-    CGFloat leftX = 100.0f;
-    CGFloat leftY = 100.0f;
-    CGFloat Width = 200.0f;
-    CGFloat Height = 200.0f;
-    UIBezierPath* path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(leftX, leftY, Width, Height)];
-    [circleLayer setPath:[path CGPath]];
-    CGFloat component[4];
-    component[0] = 100.0;
-    component[1] = 1.0;
-    component[2] = 2.0;
-    component[3] = 2.0;
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    [circleLayer setStrokeColor:CGColorCreate(colorSpace, component)];
-    [circleLayer setLineWidth:1.0f];
-    [circleLayer setFillColor:[[UIColor blueColor] CGColor]];
-    [[imageView layer] addSublayer:circleLayer];
-    ================================================================================
-    UIBarButtonItem title font size
-    --------------------------------------------------------------------------------
-    UIBarButtonItem* deleteItem = [[UIBarButtonItem alloc] initWithTitle:@"Delete" style:UIBarButtonItemStyleBordered target:self action:@selector(deleteImageButton:)];
-    UIFont* font = [UIFont boldSystemFontOfSize:18.0f];
-    NSDictionary* attribute = @{NSFontAttributeName: font};
-    [deleteItem setTitleTextAttributes:attribute forState:UIControlStateNormal];
-    
-    ================================================================================
-    Redirect output to file
-    --------------------------------------------------------------------------------
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *logPath = [documentsDirectory stringByAppendingPathComponent:@"xoutput.log"];             //append file to path
-    //NSString *logPath = @"/Users/cat/try/xoutput.log 
-    NSLog(@"redirecting STDERR: %@", logPath);
-    freopen([logPath cStringUsingEncoding:NSASCIIStringEncoding],"a+",stderr);
-    ================================================================================
-    OpenES/OpenGL is like a state machine
-    OpenGL/OpenES has three primitives: point, line and triangle
-    Each point is formed by one vertex 
-    Each line is formed by two vertices 
-    Each triangle is formed by three vertices
-
-    Vertex Shader/Fragment Shader
-    Vertex Shader and Fragment Shader is like a little program, it run inside the GPU
-
-    Frame Buffer, Render Buffer, Depth Buffer, Stencil Buffer
-    --------------------------------------------------------------------------------
-    ================================================================================
-    formatting
-    --------------------------------------------------------------------------------
-    %@ Objective-C object, printed as the string returned by descriptionWithLocale: if available, or description otherwise. Also works with CFTypeRef objects, returning the result of the CFCopyDescription function.
-    %% '%' character.
-    %d, %D Signed 32-bit integer (int).
-    %u, %U Unsigned 32-bit integer (unsigned int).
-    %x Unsigned 32-bit integer (unsigned int), printed in hexadecimal using the digits 0–9 and lowercase a–f.
-    %X Unsigned 32-bit integer (unsigned int), printed in hexadecimal using the digits 0–9 and uppercase A–F.
-    %o, %O Unsigned 32-bit integer (unsigned int), printed in octal.
-    %f 64-bit floating-point number (double).
-    %e 64-bit floating-point number (double), printed in scientific notation using a lowercase e to introduce the exponent.
-    %E 64-bit floating-point number (double), printed in scientific notation using an uppercase E to introduce the exponent.
-    %g 64-bit floating-point number (double), printed in the style of %e if the exponent is less than –4 or greater than or equal to the precision, in the style of %f otherwise.
-    %G 64-bit floating-point number (double), printed in the style of %E if the exponent is less than –4 or greater than or equal to the precision, in the style of %f otherwise.
-    %c 8-bit unsigned character (unsigned char), printed by NSLog() as an ASCII character, or, if not an ASCII character, in the octal format \\ddd or the Unicode hexadecimal format \\udddd, where d is a digit.
-    %C 16-bit Unicode character (unichar), printed by NSLog() as an ASCII character, or, if not an ASCII character, in the octal format \\ddd or the Unicode hexadecimal format \\udddd, where d is a digit.
-    %s Null-terminated array of 8-bit unsigned characters. Because the %s specifier causes the characters to be interpreted in the system default encoding, the results can be variable, especially with right-to-left languages. For example, with RTL, %s inserts direction markers when the characters are not strongly directional. For this reason, it’s best to avoid %s and specify encodings explicitly.
-    %S Null-terminated array of 16-bit Unicode characters.
-    %p Void pointer (void *), printed in hexadecimal with the digits 0–9 and lowercase a–f, with a leading 0x.
-    %a 64-bit floating-point number (double), printed in scientific notation with a leading 0x and one hexadecimal digit before the decimal point using a lowercase p to introduce the exponent.
-    %A 64-bit floating-point number (double), printed in scientific notation with a leading 0X and one hexadecimal digit before the decimal point using a uppercase P to introduce the exponent.
-    %F 64-bit floating-point number (double), printed in decimal notation.
-================================================================================
-</xcode snippet>
 --------------------------------------------------------------------------------
 <gpg_encryption>
 tar -czf myencrypt.tar.gz myencrypt
