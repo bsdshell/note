@@ -1130,30 +1130,6 @@ mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -Darchety
 </intellj>
 
 
-<intellij shortcut key>
-    Shift Tab       // move block of code(code selection) to left
-    Tab/Shift+Tab   // indent/unintented selected line
-    Alt Right/Left  // cycle through tabs
-    Alt Shift F7    // goto usage
-    Alt Shit f      // global search
-    Alt g           // find name
-    Alt UP/Down     // move to previous/next method
-    Ctrl F12        // show all current methods
-    Ctrl W          // select code block. e.g {..}
-    Ctrl-Shift F12  // max/unmaxed window
-    Ctrl UP/Down    // movine window up/down
-    Ctrl [/]        // Move to code block star/end
-    Ctrl Shift #    // book mark line
-    Ctrl #          // goto book mark #
-    Ctrl Alt B      // goto implementation
-    Ctrl E          // go back to implementation
-    Ctrl Alt F7     // shows usages
-    Ctrl w          // select whole word
-    Ctrl Left/Right // move cursor previous/next
-    Ctrl Shift R    // find and replace
-    Ctrl Shift j    // join line
-</intellij>
-
 <maven create maven file>
 mvn archetype:generate -DgroupId=Project -DartifactId=MyApp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 </maven>
@@ -1174,40 +1150,6 @@ mvn archetype:generate -DgroupId=Project -DartifactId=MyApp -DarchetypeArtifactI
     add *.txt pattern to .gitignore 
 </git command>
 
-<xcode shortcut key>
-    Shift ALT Command Left/Right  fold all code/unfolded all code
-    CTRL 5 search files name(.h *.m)
-    CTRL 6 type search show all current methods
-    CTRL WindowKey left/right  navigate backward/backward
-    CTRL 1 show recent items
-    CTRL C delete current line
-    ALT Left/Right  move word by word
-    Command ALT .(dot) change focus
-    Command ALT Left/Right code fold/unfolded
-    Command ALT 0 close utilities window
-
-    Command left/right move cursor to begin/end of line(no highligh)
-    Command , show setting(xcode)
-    Command 3 global search
-    Command w close window (not just xcode)
-    Command [] shift hightlight code left/right
-    Command double click jump to definition
-    Command D mark line
-    Command L goto line
-    Command E, Command F use selection to find
-    Command Shift Y close debug window
-    Command Shift 2 Open Organizer
-    Command E + Command F search word under cursor
-    Command Shift f  global find
-    Command Shift Left/Right  selection whole line
-    Command Shift right/left highlight line
-    Command CTRL UP/Down .h and .m file
-    Command CTRL J jump to definition
-    Command CTRL Left jump back
-    Command CTRL F full/maximize screen mode
-    Command CTRL Y debug/continue 
-    Command `  window fit screen
-</xcode>
 
 <mac shortcut>
     Command Space   open spotlight
@@ -1390,30 +1332,6 @@ mvn archetype:generate -DgroupId=Project -DartifactId=MyApp -DarchetypeArtifactI
     --------------------------------------------------------------------------------
     ================================================================================
 
-    formatting
-    --------------------------------------------------------------------------------
-    %@ Objective-C object, printed as the string returned by descriptionWithLocale: if available, or description otherwise. Also works with CFTypeRef objects, returning the result of the CFCopyDescription function.
-    %% '%' character.
-    %d, %D Signed 32-bit integer (int).
-    %u, %U Unsigned 32-bit integer (unsigned int).
-    %x Unsigned 32-bit integer (unsigned int), printed in hexadecimal using the digits 0–9 and lowercase a–f.
-    %X Unsigned 32-bit integer (unsigned int), printed in hexadecimal using the digits 0–9 and uppercase A–F.
-    %o, %O Unsigned 32-bit integer (unsigned int), printed in octal.
-    %f 64-bit floating-point number (double).
-    %e 64-bit floating-point number (double), printed in scientific notation using a lowercase e to introduce the exponent.
-    %E 64-bit floating-point number (double), printed in scientific notation using an uppercase E to introduce the exponent.
-    %g 64-bit floating-point number (double), printed in the style of %e if the exponent is less than –4 or greater than or equal to the precision, in the style of %f otherwise.
-    %G 64-bit floating-point number (double), printed in the style of %E if the exponent is less than –4 or greater than or equal to the precision, in the style of %f otherwise.
-    %c 8-bit unsigned character (unsigned char), printed by NSLog() as an ASCII character, or, if not an ASCII character, in the octal format \\ddd or the Unicode hexadecimal format \\udddd, where d is a digit.
-    %C 16-bit Unicode character (unichar), printed by NSLog() as an ASCII character, or, if not an ASCII character, in the octal format \\ddd or the Unicode hexadecimal format \\udddd, where d is a digit.
-    %s Null-terminated array of 8-bit unsigned characters. Because the %s specifier causes the characters to be interpreted in the system default encoding, the results can be variable, especially with right-to-left languages. For example, with RTL, %s inserts direction markers when the characters are not strongly directional. For this reason, it’s best to avoid %s and specify encodings explicitly.
-    %S Null-terminated array of 16-bit Unicode characters.
-    %p Void pointer (void *), printed in hexadecimal with the digits 0–9 and lowercase a–f, with a leading 0x.
-    %a 64-bit floating-point number (double), printed in scientific notation with a leading 0x and one hexadecimal digit before the decimal point using a lowercase p to introduce the exponent.
-    %A 64-bit floating-point number (double), printed in scientific notation with a leading 0X and one hexadecimal digit before the decimal point using a uppercase P to introduce the exponent.
-    %F 64-bit floating-point number (double), printed in decimal notation.
-================================================================================
-
 // draw circle[location and radius]
 - (CAShapeLayer*)drawCircle:(CGPoint)location radius:(CGFloat)radius {
     CAShapeLayer* shapeLayer = [CAShapeLayer layer];
@@ -1447,30 +1365,6 @@ mvn archetype:generate -DgroupId=Project -DartifactId=MyApp -DarchetypeArtifactI
     return shapeLayer;
 }
 
-// draw rectangle[location semiWith and semiHeight]
--(CAShapeLayer*)drawRectangle:(CGPoint) location semiWidth:(CGFloat) semiWidth semiHeight:(CGFloat)semiHeight{
-    CAShapeLayer* shapeLayer = [CAShapeLayer layer];
-    UIBezierPath* path = [UIBezierPath bezierPath];
-    
-    // start point
-    [path moveToPoint:CGPointMake(location.x - semiWidth, location.y - semiHeight)];
-    
-    // draw lines
-    [path addLineToPoint:CGPointMake(location.x + semiWidth, location.y - semiHeight)];
-    [path addLineToPoint:CGPointMake(location.x + semiWidth, location.y + semiHeight)];
-    [path addLineToPoint:CGPointMake(location.x - semiWidth, location.y + semiHeight)];
-    [path addLineToPoint:CGPointMake(location.x - semiWidth, location.y - semiHeight)];
-    //[path closePath];
-    
-    shapeLayer.path = [path CGPath];
-    
-    shapeLayer.strokeColor = [[UIColor yellowColor] CGColor];
-    shapeLayer.fillColor = [[UIColor blackColor] CGColor];
-    shapeLayer.lineWidth = 1.0;
-    return shapeLayer;
-}
-
-================================================================================
     UIImageView* _imageView;
 
     @property (nonatomic, retain) UIImageView* imageView;
@@ -1492,27 +1386,6 @@ mvn archetype:generate -DgroupId=Project -DartifactId=MyApp -DarchetypeArtifactI
 ================================================================================
 </xcode snippet>
 
-
-<visual_studio shortcut key>
-    ALT Shift Enter maximize code window
-    CTRL-Tab        show tab files
-    CTRL -          navigate backward
-    CTRL Shift -    navigate forward  
-    CTRL g          goto line number
-    Shift F12       find all references
-    CTRL-Delete     delete word to right of cursor 
-    CTRL-BackSpace  delete word to left of cursor 
-    CTRL W          highlight word
-    CTRL M + O      collapse all
-    CTRL M + L      expand all
-    CTRL M + M      expand/collapse the current region
-    CTRL K + K      toggle bookmark 
-    CTRL K + N      next bookmark 
-    CTRL K + P      previous bookmark 
-    CTRL E          Recent files
-    Shift CTRL + }  Select block code curly bracket
-    CTRL + }        Jump to { or }
-</visua_studio> 
 
 <book math>
     http://www.liafa.jussieu.fr/~jep/PDF/MPRI/MPRI.pdf
@@ -1550,42 +1423,6 @@ java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
     }
 </csharp>
 
-<python>
-    mode	description
-    r	read in text mode
-    w	write in text mode, overwrite old file if exists
-    a	append in text mode
-    r+	read and write
-    w+	read and write, overwrite old file/create file
-    a+	read and append
-    rb	read in binary mode
-    wb	write in binary mode, overwrite old file if exists
-    ab	append in binary mode
-    rb+	read and write in binary mode
-    wb+	write and read in binary mode, overwrite old file if exists
-    ab+	append and read in binary mode
-
-    python -m pdb script.py          // debug python
-    str = str.strip(' \r\n\t')       // trim whitespace
-    str = str.ltrip(' \r\n\t')       // trim the left side of str
-    str = str.rtrip(' \r\n\t')       // trim the right side of str
-    is_number(mystring)              // convert string to number/integer
-    arglist = sys.argv;              // argument list
-    arglist[0]                       // first argument which is the script name
-    len(mystring)                    // length of string
-    len(list)                        // number of element inside the list
-    mylist = []                      // create list
-    handler = open(fileName, "r+")   // open file for read
-    int(str)                         // convert string to integer
-    list.pop(0)                      // Delete first element from list
-    list.append("str")               // Append str to list
-    basename = ntpath.basename(path) // Basename of path
-    os.path.basename("/dog/dog/dog.txt") //import os;
-    pair = os.path.splitext("file.txt")  // pair[0] = file  pair[1]=".txt" 
-    str(num)                         // String to integer
-    os.getcwd()                      
-</python>
-
 <latex>
     \langle \vec{v_1} \vec{v_2} \rangle            // inner product
     \overline{\langle \vec{v_1} \vec{v_2} \rangle} // conjugate inner product
@@ -1611,17 +1448,6 @@ java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
     {% img  center /images/torus.png 400 400 %}
 </octopress>
 
-<java snippet>
-====================================================================================
-    int array[][] = new int[][]{
-    { 1, 2, 3, 4, 5 },
-    { 1, 2, 3, 4, 5 },
-    { 1, 2, 3, 4, 5 },
-    { 1, 2, 3, 4, 5 }
-    };
-====================================================================================
-</java snippet>
-
 <c# snippet>
 
 </c# snippet>
@@ -1635,14 +1461,6 @@ java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
     { //define your validation rules }
     --------------------------------------------------------------------------------
 
---------------------------------------------------------------------------------
-<gpg_encryption>
-tar -czf myencrypt.tar.gz myencrypt
-tar -xzf myencrypt.tar.gz 
-gpg -c myencrypt.tar.gz
-gpg -c -o myencrypt.tar.gz myencrypt.tar.gz.gpg
-</gpg_encryption>
-================================================================================
 Algebraic Curve in Projective Plane
 Point on Projective Plane
 (X, Y, Z) ~ (aX, aY, aZ) a != zero 

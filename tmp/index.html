@@ -1,0 +1,1786 @@
+<pre style="backgroun:#000;color:#333;>
+        *GPG encrypt directory*
+        tar -czf myencrypt.tar.gz myencrypttar directory
+        tar -xzf myencrypt.tar.gz tar directory
+        gpg -c myencrypt.tar.gz                        encrypt your tar file
+        gpg -c -o myencrypt.tar.gz myencrypt.tar.gz.gpgencrypt your tar file
+
+        *Git Stuff*
+        git branch myfeature_branchcreate git feature branch
+        git branch -d delete_branchdelete feature branch
+        git branch -D delete_branchdelete unmerged feature branch
+        git checkout mastergit merge --no-ff feature_branchmerge feature branch to master
+        git rm -r --cached myfileremove tracked file in .gitignore
+        git rm -r --cached myfileremove file from your index
+        git refloghow all the reference log
+
+        *Regular Expression [:help pattern]*
+        * zero or more
+        + one or more
+        ? zero or one
+        *? zero or more non-greedy
+        +? one or more non-greedy
+        ?? zero or one non-greedy
+        \=vim zero or one [:help \=]
+        \{n,m} match from n to m, greedy
+        \{-n,m} match from n to m, non-greedy
+        \{-} = * vim non-greedy [:help non-greedy]
+        \{-1,} = \+vim non-greedy [:help non-greedy]
+        %s/cat\zs\w\{3}/KK/gc Replace catdog catcow->catKK catKK [Set the first match to pattern after \zs [:help \zs]
+        /^\s*\zsif/ Match white space following if [:help \zs]
+        %s/\s*\ze$/KK/gc Replace white space to the end of line with KK [:help \ze]
+
+
+        *vim command*
+        // PHP and Java class declaration
+        grep --color -Hnirs class\s\+\w\+\s\+\(extends\s\+[A-Za-z_\]\+\)*\s\+\(implements\s\+\([A-Za-z_\]\+\)\)\?\(\s\+\)*\(,\s\+[A-Za-z_\]\+\)*
+        grep --include="*.java" "\"[a-zA-Z]\+\""  ./
+        :2,10d          //delete line from 2 to 10
+        :2,10d | :w!    // delete line from 2 to 10 and save file
+
+        vim $(grep -l --include="*.java" pattern .) #vim open all files from grep
+        :bufdo %s/pattern/replacement #vim replace all buffers
+        vim $(grep -l --include="*.java" pattern .)
+        :bufdo %s/pattern/replacement #replace all buffers
+        /pattern\c #ignorecase
+        :hi clear SpellBad # Reset SpellBad bad spell highlight to default
+        :g/-\s*(\w\+)\w+/z#.1                                                                           // print all xcode methods with line number #
+        :bufdo %s/pattern/replacement/ge | update          // vim replace all buffers
+        :zf                // Create fold under cursor
+        :zd                // Delete fold under cursor
+        :5gt               // goto tab 5, [in insert mode]
+        :tabmove 4         // move the current tab to position 4 [help :tabmove]
+        :tabc 11           // close tab 11
+
+        :set modeline      // display file name in each tabs page
+        :set ls=2
+
+        :set modeline      // display full file name in statusline [:help :statusline]
+        :set statusline=%F
+
+        history -d  xxx #remove history
+        add to vimrc file #vim change tabs to space
+        set tabstop=4
+        set shiftwidth=4
+        set expandtab
+        set showcmd
+        :hi clear SpellBad # Reset SpellBad bad spell highlight to default
+
+        :g/-\s*(\w\+)\w+/z#.1                                                                           // print all xcode methods with line number #
+        :tabmove 4                                                                                      // move the current tab to position 4 [help :tabmove]
+        vim $(grep -l --include="*.java" pattern .)
+        :bufdo %s/pattern/replacement #replace all buffers
+        /pattern\c #ignorecase
+        vim $(grep -l --include="*.java" pattern .)        // vim open all files from grep
+        vim $(find ./ -name \*.java -print)                // open all java file from find
+        y$                                             // copy character from cursor to the end of line     [:help yank]
+        vaw                                            // highlight word under cursor including white space [:help text-object]
+        viw                                            // hightlight word under cursor excluding white space[:help text-object]
+        cat /tmp/file.txt | awk -F ':' '{print $1}' //print first field with delimeter ':'
+        awk '{for(i=0; i<NF; i++) print $1}' inputfile // print the first column from file>
+        kill -9 $(ps aux | awk '/Safari/ {print $2}')  // kill Safari brower
+        vim $(grep -l --include="*.java" pattern .)                                                     // vim open all files from grep
+        :bufdo %s/pattern/replacement/ge | update                                                       // vim replace all buffers
+        :zf                                                                                             // Create fold under cursor
+        :zd                                                                                             // Delete fold under cursor
+        5gt                                                                                             // goto tab 5, [in insert mode]
+        :tabmove 4                                                                                      // move the current tab to position 4 [help :tabmove]
+        :tabc 11                                                                                        // close tab 11
+
+        :set modeline                                                                                   // display file name in each tabs page
+        :set ls=2
+
+        :set modeline                                                                                   // display full file name in statusline [:help :statusline]
+        :set statusline=%F
+
+        // Match Name=xxx  and ContentFolder=xxx two columns from c.txt and direct to norm.txt
+        sed 's/.*\(Name=\"[^"]*\"\)\s\(ContentFolder=\"[^"]*\"\).*/\1 \2/g' /tmp/c.txt  > /tmp/norm.txt 
+        sed -i -e 's/oldstring/newstring/g' *                                                           // grep all the file *.php search oldstring and replace newstring
+        sed -i -e '/pattern/d' *.html       // delete all line match pattern in *.html
+
+        :bufdo e!                                                                                       // Save reload all buffers :syntax on  to enable syntax highlight
+        '< and >'                                         // first cursor position/last cursor position in registers in visual mode/selection
+        :echo getline(".")                 // get current line string
+        :echo match("mystring", "st")      // return 2
+        :echo line(".")                    // line number of cursor
+        :echo line("'t")                   // line number of mark t
+        :echo getpos(".")                  // [bufferNumber, col, lnum, off] [:help getpos]
+        :echo setpos(".", {list})          // [bufferNumber, col, lnum, off]
+        :echo [col, lnum] = searchpos("=") // return = position in current line and move the cursor to =
+        :help debug-mode                   // debug vim script
+        :echo getline(".")                                                                              // get current line string
+        :echo match("mystring", "st")                                                                   // return 2
+        :Align \*\zs\s\+ =                                                                              // *'  ' and '=' separator
+        \%V                                                                                             // visual selection block [:help \%V]
+        :'<,>'sort /\ze\%V/                                                                             // sort all selected lines in visual mode
+        :g/^$/d                             //delete empty line
+        :let @a=substitue(@a, 'pattern', 'sub', 'g')                                                    // substitute 'pattern' with 'sub' in register @a
+        :q: or q/                          // vim command history
+
+        :hi Search guifg=Brown guibg=Gray
+        :hi Search cterm=Brown ctermbg=Gray                                                             // change search backgroun/foreground [:h hl-Search]
+        :sort n                            //sort lines by the first digital in the line, [n] is first decimal number, [x] is first hexadecimal number [:help :sort]
+        :sort! n                           //reverse sorting
+        :syn match MyKeyWord /MyName/               //Highlight defined keyword [:help syn-match]
+        :highlight MyKeyWord guifg=Green
+        :'<,'>s/^\s*\zs\w/#\0/gc        //comment all selected lines in python
+        :set ma                             // set file modifiable on  [:h modifiable]
+
+        ctrl-]                              //class definition
+        ctrl-t                              //back to previous window
+
+        non-greedy
+        |/star|	*	\*	0 or more	as many as possible
+        |/\+|	\+	\+	1 or more	as many as possible (*)
+        |/\=|	\=	\=	0 or 1		as many as possible (*)
+        |/\?|	\?	\?	0 or 1		as many as possible (*)
+
+        |/\{|	\{n,m}	\{n,m}	n to m		as many as possible (*)
+            \{n}	\{n}	n		exactly (*)
+            \{n,}	\{n,}	at least n	as many as possible (*)
+            \{,m}	\{,m}	0 to m		as many as possible (*)
+            \{}	\{}	0 or more	as many as possible (same as *) (*)
+
+        |/\{-|	\{-n,m}	\{-n,m}	n to m		as few as possible (*)
+            \{-n}	\{-n}	n		exactly (*)
+            \{-n,}	\{-n,}	at least n	as few as possible (*)
+            \{-,m}	\{-,m}	0 to m		as few as possible (*)
+            \{-}	\{-}	0 or more	as few as possible (*)
+
+        // register
+        :echo @0    // print out the content of register 0
+        :echo @a    // print out the content of register a
+
+        Redirect ex command to register or file
+        :redir @a
+        :echo "dog"
+        :redir END
+        Vim command composition |  or (<bar> in map)
+        :.,$s/\S.*\S$/\\[ \0 \\]/gc <bar> :nohlsearch
+        Search for the first printable char to the last printable char of a line<br>
+        /\S.*\S [:h \S]
+        Vim High Light Search [:hls]
+        hi search ctermbg=Black ctermfg=Brown
+        //history command
+        CTRL-R to search the history commmand
+        !10 to execute  10 line history
+        //add user to in ubuntu
+        useradd -d /home/username -m username
+        //add user to sudo
+        vim /etc/sudoer
+        Add 'username ALL=(ALL) ALL`
+        //change ubuntu shell
+        chsh -s /bin/bash user
+        // screen command
+        split window vertically
+        :split -v
+        scroll screen
+        :C-a [ copy
+        :C-a ] paste
+        highligh
+        C-a h
+        dump all data to file hardcopy.0
+
+        //put this script on your .bashrc file, shell script auto email
+        echo 'ALERT - Root Shell Access on:' `date` `who` | mail -s "Alert: Root Access from `who | cut -d"(" -f2 | cut -d")" -f1 `"  name@gmail.com
+
+        // MySql command
+        drop table Employee;
+        drop table EmpJob;
+        create table Employee
+        (
+            ID INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+            name CHAR(20),
+            school CHAR(30)
+        );
+        create table EmpJob
+        (
+            E_ID	INT NOT NULL,
+            job_title CHAR(20),
+            project   CHAR(30)
+        );
+        insert into Employee (name, school) VALUES('dog', 'uw');
+        insert into EmpJob(E_ID, job_title, project) VALUES(1, 'manager', 'windows');
+
+        insert into Employee (name, school) VALUES('kelvin', 'UT');
+        insert into EmpJob(E_ID, job_title, project) VALUES(2, 'debugger', 'Intel');
+
+        insert into Employee (name, school) VALUES('johnny', 'School');
+        insert into EmpJob(E_ID, job_title, project) VALUES(3, 'clearing', 'apple');
+
+        insert into Employee (name, school) VALUES('Joh', 'Cool School');
+        insert into EmpJob(E_ID, job_title, project) VALUES(4, 'Designer', 'google');
+
+
+        *inner join example* 
+        mysql: inner join
+        mysql> select * from Employee INNER JOIN EmpJob ON ID > E_ID;
+        +----+--------+-------------+------+-----------+---------+
+        | ID | name   | school      | E_ID | job_title | project |
+        +----+--------+-------------+------+-----------+---------+
+        |  2 | kelvin | UT          |    1 | manager   | windows |
+        |  3 | johnny | School      |    1 | manager   | windows |
+        |  4 | Joh    | Cool School |    1 | manager   | windows |
+        |  3 | johnny | School      |    2 | debugger  | Intel   |
+        |  4 | Joh    | Cool School |    2 | debugger  | Intel   |
+        |  4 | Joh    | Cool School |    3 | clearing  | apple   |
+        +----+--------+-------------+------+-----------+---------+
+
+        mysql> select * from Employee NATURE JOIN EmpJob;
+        +----+--------+-------------+------+-----------+---------+
+        | ID | name   | school      | E_ID | job_title | project |
+        +----+--------+-------------+------+-----------+---------+
+        |  1 | dog    | uw          |    1 | manager   | windows |
+        |  2 | kelvin | UT          |    1 | manager   | windows |
+        |  3 | johnny | School      |    1 | manager   | windows |
+        |  4 | Joh    | Cool School |    1 | manager   | windows |
+        |  1 | dog    | uw          |    2 | debugger  | Intel   |
+        |  2 | kelvin | UT          |    2 | debugger  | Intel   |
+        |  3 | johnny | School      |    2 | debugger  | Intel   |
+        |  4 | Joh    | Cool School |    2 | debugger  | Intel   |
+        |  1 | dog    | uw          |    3 | clearing  | apple   |
+        |  2 | kelvin | UT          |    3 | clearing  | apple   |
+        |  3 | johnny | School      |    3 | clearing  | apple   |
+        |  4 | Joh    | Cool School |    3 | clearing  | apple   |
+        |  1 | dog    | uw          |    4 | Designer  | google  |
+        |  2 | kelvin | UT          |    4 | Designer  | google  |
+        |  3 | johnny | School      |    4 | Designer  | google  |
+        |  4 | Joh    | Cool School |    4 | Designer  | google  |
+        +----+--------+-------------+------+-----------+---------+
+
+        // dump all tables with/out data
+        mysqldump -u user -p password --all-databases > db.sql //dump all tables and data
+        mysqldump -u user -p password  mydatabase > dumpfile.sql    //dump one database schema without data
+
+        // how to create new user
+        create user 'user1'@'localhost' identified by 'password';
+        GRANT select, update, delete ON *.* TO 'user1'@'localhost';
+        GRANT ALL ON *.* to 'user1'@'localhost';
+        flush privileges
+
+        // change password in mysql
+        1. login with old password
+        mysql -u root -p
+        2. SET PASSWORD FOR 'root'@'localhost' = PASSWORD('newpassword');
+
+        // update password in mysql
+        UPDATE mysql.user SET Password=PASSWORD('new-password') WHERE User='root' AND Host='localhost';
+
+        // mysqldump
+        mysqldump -uuser -ppassword --all-databases > db.sql
+
+        flush privileges
+
+        //how to create new user
+        create user 'user1'@'localhost' identified by 'password';
+        GRANT select, update, delete ON *.* TO 'user1'@'localhost';
+        GRANT ALL ON *.* to 'user1'@'localhost';
+
+        // apache setup vitual host
+        <apache virtual domain name>
+        <VirtualHost *:80>
+        ServerAdmin webmaster@localhost
+        ServerName domain.com
+        ServerAlias www.domain.com
+        DocumentRoot /var/www/site
+        <Directory />
+            Options FollowSymLinks
+            AllowOverride None
+        </Directory>
+        <Directory /var/www/>
+            Options Indexes FollowSymLinks MultiViews
+            AllowOverride None
+            Order allow,deny
+            allow from all
+        </Directory>
+
+        ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
+        <Directory "/usr/lib/cgi-bin">
+            AllowOverride None
+            Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+            Order allow,deny
+            Allow from all
+        </Directory>
+
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+
+        # Possible values include: debug, info, notice, warn, error, crit,
+        # alert, emerg.
+        LogLevel warn
+
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+        Alias /doc/ "/usr/share/doc/"
+        <Directory "/usr/share/doc/">
+            Options Indexes MultiViews FollowSymLinks
+            AllowOverride None
+            Order deny,allow
+            Deny from all
+            Allow from 127.0.0.0/255.0.0.0 ::1/128
+        </Directory>
+        </VirtualHost>
+
+        </apache virtual domain name>
+
+        *Command line tips*
+
+        *Vim Tips*
+        CTRL-E CTRL-YScroll up/down window [:help CTRL-E/CTRL-Y]
+        :mksession  sess.vimStore vim session [:help mksession]
+        vim -S sess.vimRestore vim session
+        :help pattern and /\\w Search the meaning of \w in Vim
+        cab  me :g/[-+]\s*(\w\+\s*\*\?)\s*\w\+/z#.1 abbreviate [iab insert mode, cab command mode, !ab both] 
+        syn match MyLiteral /'\w\+'/ 
+                hi  MyLiteral ctermfg=Red guifg=Blue ctermbg=Red guibg=Blue 
+                Define your own highlight color group, put two lines in .vimrc/_vimrc file [:help :match :hi]
+        q/ Edit command line buffer 
+        zf Create fold in visual mode [:help :zf]
+        zd Delete fold under cursor[:help :zd]
+        viw Visual mode, select the current word [:help text-ojbect]
+        vis Visual mode, select the current sentence [:help text-object]
+        a[ , a]Visual mode, select [] block including [ and ] select block [:help text-object]
+        i[ , i]Visual mode, select [] block excluding [ and ] inner block  [:help text-object]
+        a{ , a}Visual mode, select {} block including { and } {} block  [:help text-object]
+        i{ , i}Visual mode, select {} block excluding { and } inner block  [:help text-object]
+        a( , a)Visual mode, select () block including ( and ) () block  [:help text-object]
+        i( , i)Visual mode, select () block excluding ( and ) inner block  [:help text-object]
+
+        String "123" vim script variables[:help variables]
+
+        :saveas! newfile Rename file in the current buffer [:help :saveas]
+        :%s/\d\+/\=submatch(0) + 1/gc newfile Add one to each integer [:help submatch] 
+
+        :%s/String/\=tolower(submatch(0))/gc :s/pat/\=expr/  expr is interpreted as expression[:help sub-replace-expression]
+        :%s/String/\=tolower(submatch(0)) | %s/pattern/\=toupper(submatch(0))/gc Execute more than one commands [:help :\]
+        /pattern\c/ Search pattern ignorecase [:h /] /ignore
+        /{\(\_s.*\)\{0,4}} Search multiple lines e.g. {xxx\r xxx\r xxx} [:h \_s]
+
+        :set guifont Check what font Vim is using currently [:help guifont] 
+        :set guifont=Courier_New:h12:cANSI Set different font in Vim [:help guifont] 
+        :syn match MyKeyWord /MyName/  :highlight MyKeyWord guifg=Green Highlight defined keyword in Vim[:help syn-match] 
+        
+            \s whitespace character: Space and Tab    */\s* 
+            Check what font Vim is using currently [:help guifont]
+         
+        CTRL-a [ Copy mode 
+        CTRL-a ] Writ the content of paste buffer to stdin 
+        git fetch  git checkout origin/master filepath git overwrite single file 
+        Align = Install DrChip Alignment tool for Vim(Vim Align.vba :% :q) 
+
+        pbpaste Command-C copy and paste to clipboard. Provide copying and pasteing to the clipboard from command line. [man phpaste]  
+        ls -la | pbcopy pipe to pasteboard [man pbcopy] 
+
+        *Window Tips*
+        Close current active window Alt-F4
+        Mininum all windows Winkey-d
+
+        *iOS Dev Tips*
+                if you get linking error, the most scenarious problems are linking libraries errors
+                e.g. when you use some new API in your code, the API need dynamic libraries to run
+        Linking error
+        First Add the dynamic libraries to your framework Add Lib to framework
+        
+                (1) Select a target that you want to build a library
+                (2) Click on Build Phases
+                (3) Click on (+) sign
+                (4) Select a library or framwwork from the list and click Add
+        Add Lib to framework
+
+        *Xcode shortcut* 
+        Shift ALT Command Left/Right  fold all code/unfolded all code
+        CTRL 5 search files name(.h *.m)
+        CTRL 6 type search show all current methods
+        CTRL WindowKey left/right  navigate backward/backward
+        CTRL 1 show recent items
+        CTRL C delete current line
+        ALT Left/Right  move word by word
+        Command ALT .(dot) change focus
+        Command ALT Left/Right code fold/unfolded
+        Command ALT 0 close utilities window
+
+        Command left/right move cursor to begin/end of line(no highligh)
+        Command , show setting(xcode)
+        Command 3 global search
+        Command w close window (not just xcode)
+        Command [] shift hightlight code left/right
+        Command double click jump to definition
+        Command D mark line
+        Command L goto line
+        Command E select current word
+        Command E + Command F search word under cursor
+        Command Shift Y close debug window
+        Command Shift 2 Open Organizer
+        Command Shift f  global find
+        Command Shift Left/Right  selection whole line
+        Command Shift right/left highlight line
+        Command CTRL UP/Down .h and .m file
+        Command CTRL J jump to definition
+        Command CTRL Left jump back
+        Command CTRL F full/maximize screen mode
+        Command CTRL Y debug/continue 
+        Command `  window fit screen
+        Command /  comment block code
+        //  jump code snippet ^/  jump back ^?
+
+        //ssh change shell
+        chsh -s /bin/bash username
+
+        //ssh X11 forwarding> X11 forwarding in ssh
+        ssh -Y user@domain
+        ============================================
+
+        drop table author
+        create table author ( \
+        aid			integer not null, \
+        name        char(22) not null, \
+        url         char(42) , \
+        primary key (aid) )
+
+        drop table publication
+        create table publication ( \
+        pubid		char(10) not null, \
+        title		char(70) not null, \
+        primary key (pubid) )
+
+        drop table wrote
+        create table wrote ( \
+        aid			integer not null, \
+        pubid		char(10) not null, \
+        aorder		integer not null, \
+        primary key (aid, pubid), \
+        foreign key (aid) references author (aid), \
+        foreign key (pubid) references publication (pubid) )
+
+        drop table proceedings
+        create table proceedings ( \
+        pubid		char(10) not null, \
+        year		integer not null, \
+        primary key (pubid) )
+
+        drop table journal
+        create table journal ( \
+        pubid		char(10) not null, \
+        volume		integer not null, \
+        number		integer not null, \
+        year		integer not null, \
+        primary key (pubid), \
+        foreign key (pubid) references publication (pubid) )
+
+        drop table book
+        create table book ( \
+        pubid		char(10) not null, \
+        publisher	char(50) not null, \
+        year		integer not null, \
+        primary key (pubid), \
+        foreign key (pubid) references publication (pubid) )
+
+        drop table article
+        create table article ( \
+        pubid		char(10) not null, \
+        appearsin	char(10) not null, \
+        startpage	integer not null, \
+        endpage		integer not null, \
+        primary key (pubid), \
+        foreign key (pubid) references publication (pubid) )
+
+        insert into publication values ('1', 'love book1')
+        insert into publication values ('2', 'love book2')
+        insert into publication values ('3', 'love book3')
+
+        insert into proceedings values ('1', 2001)
+        insert into proceedings values ('2', 2002)
+        insert into proceedings values ('3', 2003)
+
+        insert into journal values ('1', 100, 50, 2009)
+        insert into journal values ('2', 101, 51, 2010)
+        insert into journal values ('3', 102, 52, 2011)
+
+        insert into book 	values ('1', 'publisher 1', 1933)
+        insert into book 	values ('2', 'publisher 2', 1934)
+        insert into book 	values ('3', 'publisher 3', 1935)
+
+        insert into article values ('1', 'appear1', 1, 11)
+        insert into article values ('2', 'appear2', 2, 12)
+        insert into article values ('3', 'appear3', 3, 13)
+
+        insert into author values (1, 'name1', 'http://google1.com')
+        insert into author values (2, 'name2', 'http://google2.com')
+        insert into author values (3, 'name3', 'http://google3.com')
+
+        insert into wrote values (1, '1', 1)
+        insert into wrote values (2, '2', 2)
+        insert into wrote values (3, '3', 3)
+
+        ============================================
+        <mysql update>
+        update products set products_quantity=0 where products_model=12345;
+        <end>
+
+        <zen cart scale down image>
+        /var/www/domainname/../include/moudle/product_listing.php
+        replace listing->fileds[product_image] as listName
+
+        /var/www/domainname/../include/moudle/new_products.php
+        replace new_products->fileds[product_image] as listName
+
+        $imgName = $listing->fields['products_image'];
+        $ext = end(explode(".", $imgName));
+        $name = reset(explode(".", $imgName));
+        $listName = $name."KK.".$ext;
+
+        update center column images,
+        modified file: css/stylesheet.css
+
+        modified class: centerContent
+        modified class: kkkcenterBoxContentsNew
+        add margin-left:30px;
+        add margin-right:30px;
+
+        modified modules/new_products.php
+        modified modules/product_listing.php
+        add style: text-align:center;
+
+        <end>
+
+        <add modle # in product title>
+        update TABLE products_descriptions
+        field: products_name
+        <end>
+
+        <mysql shell command>
+        \! ls -la
+        <end>
+        <zen cart user login error>
+        error: There was a security error when trying to login"
+        include/template/mtheme/templates/tpl_login_default.php
+        include/template/mtheme/templates/tpl_timeout_default.php
+        <end>
+
+
+        <update price>
+        update products set products_price=100 where products_model >= 100 and products_model <= 200;
+        </update price>
+        <php in order parse split html textarea line by line>
+        $newline = $_POST['textarea_name'];
+        $br_newline = nl2br($newline);
+        </php parse textarea>
+
+        <ubuntu apache include directive>
+        enalbe include directive in apache
+
+        make sure you have enabled modes_include
+        check whether you have mod_include.so
+        /usr/lib/apache2/modules/mod_include.so
+
+        if you have the mod_include, then you can just use a2enmode to enable it
+
+        <Directory /var/www/yourdomainname>
+            Options Indexes FollowSymLinks MultiViews
+            AllowOverride ALL
+            Order allow,deny
+            allow from all
+
+            # for include directive
+            Options +Includes
+            XBitHack on
+        </Directory>
+        </ubuntu apache include directive>
+
+        <merge two tables>
+        insert into customers (
+        `customers_gender` ,
+        `customers_firstname` ,
+        `customers_lastname` ,
+        `customers_dob` ,
+        `customers_email_address` ,
+        `customers_nick` ,
+        `customers_default_address_id` ,
+        `customers_telephone` ,
+        `customers_fax` ,
+        `customers_password` ,
+        `customers_newsletter` ,
+        `customers_group_pricing` ,
+        `customers_email_format` ,
+        `customers_authorization` ,
+        `customers_referral` ,
+        `customers_paypal_payerid` ,
+        `customers_paypal_ec`)
+        select
+        `customers_gender` ,
+        `customers_firstname` ,
+        `customers_lastname` ,
+        `customers_dob` ,
+        `customers_email_address` ,
+        `customers_nick` ,
+        `customers_default_address_id` ,
+        `customers_telephone` ,
+        `customers_fax` ,
+        `customers_password` ,
+        `customers_newsletter` ,
+        `customers_group_pricing` ,
+        `customers_email_format` ,
+        `customers_authorization` ,
+        `customers_referral` ,
+        `customers_paypal_payerid` ,
+        `customers_paypal_ec` from cu order by customers_id asc
+        <merge two tables>
+
+        <screen commands>
+        <update price>
+        update products set products_price = (products_price * 1.5) where products_id >= 0;
+        update products set products_model = products_model + 1000000 where products_id >= 0;
+        <update price>
+        <zencart>
+        add paypal email
+        /var/www/domainname/zencart138/includes/languages/english/modules/payment/moneyorder.php
+        languages/english/html_includes/define_checkout_success.php
+        </zencart>
+
+        <zencart>
+        import/export user
+        need all following tables
+        customers
+        customers_info
+        countries
+        address_book
+        </zencart>
+
+        <zencart>
+        <date>Sun Mar 13 23:57:36 EDT 2011</date>
+        <topic>how to turn off random products</topic>
+        change file: include/modules/new_products.php
+                 include/modified/featured_products.php
+        change all function:
+        ExecuteRandomMulti() to Execute()
+        MoveNextRandom(); to MoveNext()
+        </zencart>
+
+        <zencart>
+        353453453454
+        include/modules/new_products.php
+        control the priority of display image when page is loading
+        </zencart>
+
+        <zencart change category image size>
+        /var/www/domain/zencart138/includes/templates/mtheme/templates/tpl_product_info_display.php
+        change tempates/mtheme/css/stylesheet.css
+        </zencart>
+
+        <change main category left margin>
+        .pos5 {margin-left:2px; margin-bottom:30px;
+        /var/www/*/zencart138/includes/templates/mtheme/css/style.css
+        </change main category left margin>
+        <update products_status>
+        update products set products_status=0 where products_model='1012124';
+        </update products_status>
+        <mysql regular express>
+        select products_id, products_model, products_image from products where products_image regexp 'hair'
+        </mysql regular express>
+
+        <zencart table>
+        add column to products table
+        add: products_show_sorter varchar(10) NOT NULL default '0'
+        change sorted order by products_show_sorter
+        </zencart table>
+
+        <zencart update smaller display image>
+        update purchased products to display smaller images
+        /var/www/itemsdeal/zencart138/includes/modules/also_purchased_products.php
+        </zencart update smaller display image>
+
+        update sorted order
+        update products set products_show_sorter=55 where products_image regexp 'something'
+
+        add linke to footer
+        template/yourtemp/common/tpl_footer.php
+
+        find all the files or directories in the current path and copy them to new directory
+        find ./ -name \*.mp3 -exec cp {} /home/user/song \;
+        find -name "*.sql" -print
+        find -name "*.sql" -delete
+        find all the files or directories in the current path and copy them to new directory
+        find ./ -name \*.mp3 -exec cp {} /home/user/song \;
+        find -iname images -exec ls {} \;   | grep -Hnrs '.php'
+        find ./ -name "*.txt" -mtime -4  -print
+        find . -name "*" | xargs -n1 perl -i -ane 's/images/img/g; print;'
+        find $(find ./ -name *.java -type f)
+        //find the file that were last modified 4 days ago
+        find ./ -name "*.txt" -mtime -4  -print
+        vim $(find ./ -name \*.java -print)                // open all java file from find
+
+        <ssh X11 forwarding> X11 forwarding in ssh
+        ssh -Y user@domain
+        ============================================
+
+        drop table author
+        create table author ( \
+        aid			integer not null, \
+        name        char(22) not null, \
+        url         char(42) , \
+        primary key (aid) )
+
+        drop table publication
+        create table publication ( \
+        pubid		char(10) not null, \
+        title		char(70) not null, \
+        primary key (pubid) )
+
+        drop table wrote
+        create table wrote ( \
+        aid			integer not null, \
+        pubid		char(10) not null, \
+        aorder		integer not null, \
+        primary key (aid, pubid), \
+        foreign key (aid) references author (aid), \
+        foreign key (pubid) references publication (pubid) )
+
+        drop table proceedings
+        create table proceedings ( \
+        pubid		char(10) not null, \
+        year		integer not null, \
+        primary key (pubid) )
+
+        drop table journal
+        create table journal ( \
+        pubid		char(10) not null, \
+        volume		integer not null, \
+        number		integer not null, \
+        year		integer not null, \
+        primary key (pubid), \
+        foreign key (pubid) references publication (pubid) )
+
+        drop table book
+        create table book ( \
+        pubid		char(10) not null, \
+        publisher	char(50) not null, \
+        year		integer not null, \
+        primary key (pubid), \
+        foreign key (pubid) references publication (pubid) )
+
+        drop table article
+        create table article ( \
+        pubid		char(10) not null, \
+        appearsin	char(10) not null, \
+        startpage	integer not null, \
+        endpage		integer not null, \
+        primary key (pubid), \
+        foreign key (pubid) references publication (pubid) )
+
+        insert into publication values ('1', 'love book1')
+        insert into publication values ('2', 'love book2')
+        insert into publication values ('3', 'love book3')
+
+        insert into proceedings values ('1', 2001)
+        insert into proceedings values ('2', 2002)
+        insert into proceedings values ('3', 2003)
+
+        insert into journal values ('1', 100, 50, 2009)
+        insert into journal values ('2', 101, 51, 2010)
+        insert into journal values ('3', 102, 52, 2011)
+
+        insert into book 	values ('1', 'publisher 1', 1933)
+        insert into book 	values ('2', 'publisher 2', 1934)
+        insert into book 	values ('3', 'publisher 3', 1935)
+
+        insert into article values ('1', 'appear1', 1, 11)
+        insert into article values ('2', 'appear2', 2, 12)
+        insert into article values ('3', 'appear3', 3, 13)
+
+        insert into author values (1, 'name1', 'http://google1.com')
+        insert into author values (2, 'name2', 'http://google2.com')
+        insert into author values (3, 'name3', 'http://google3.com')
+
+        insert into wrote values (1, '1', 1)
+        insert into wrote values (2, '2', 2)
+        insert into wrote values (3, '3', 3)
+
+        =====================================================
+        update Nov 11, 2010
+        change zencart model: number color
+        file mtheme/templates/tpl_products_info_display.php
+        <font color=red>' . TEXT_PRODUCT_MODEL . $products_model . '</font></li>
+        =====================================================
+        update Nov 27, 2010
+        add products_model to customers info, $p_products_model
+        file mtheme/templates/tpl_products_info_display.php
+        =====================================================
+        remove social bookmark from templates/tpl_products_info_display
+        =====================================================
+        Date: Nov 5, 2010
+        fixed bug to add some items to current order.
+        can't get products_quantity from orders_products table
+
+        load customer order images from user account
+        =======================================================
+        templates/mtheme/templates/tpl_account_history_info_default.php
+        <end>
+
+        <mysql update>
+        update products set products_quantity=0 where products_model=12345;
+        <end>
+
+
+
+        <change ntp time>
+        apt-get install ntp
+        tzdate
+        <end>
+        <zen cart scale down image>
+        /var/www/domainname/../include/moudle/product_listing.php
+        replace listing->fileds[product_image] as listName
+
+        /var/www/domainname/../include/moudle/new_products.php
+        replace new_products->fileds[product_image] as listName
+
+        $imgName = $listing->fields['products_image'];
+        $ext = end(explode(".", $imgName));
+        $name = reset(explode(".", $imgName));
+        $listName = $name."KK.".$ext;
+
+        //Feb 07, 2011
+        update center column images,
+        modified file: css/stylesheet.css
+
+        modified class: centerContent
+        modified class: kkkcenterBoxContentsNew
+        add margin-left:30px;
+        add margin-right:30px;
+
+        modified modules/new_products.php
+        modified modules/product_listing.php
+        add style: text-align:center;
+
+        update TABLE products_descriptions
+        field: products_name
+
+        //mysql shell command
+        \! ls -la
+
+        //zen cart user login error
+        error: There was a security error when trying to login"
+        include/template/mtheme/templates/tpl_login_default.php
+        include/template/mtheme/templates/tpl_timeout_default.php
+
+        //zen cart
+        add paypal email
+        /var/www/domainname/zencart138/includes/languages/english/modules/payment/moneyorder.php
+        languages/english/html_includes/define_checkout_success.php
+
+        //update price
+        update products set products_price=100 where products_model >= 100 and products_model <= 200;
+
+        //php in order parse split html textarea line by line
+        $newline = $_POST['textarea_name'];
+        $br_newline = nl2br($newline);
+
+        //change ubuntu shell
+        chsh -s /bin/bash user
+        apt-get install python-pip //install python in ubuntu
+
+        //ubuntu apache include directive
+        enalbe include directive in apache
+
+        make sure you have enabled modes_include
+        check whether you have mod_include.so
+        /usr/lib/apache2/modules/mod_include.so
+
+        if you have the mod_include, then you can just use a2enmode to enable it
+
+        <Directory /var/www/yourdomainname>
+            Options Indexes FollowSymLinks MultiViews
+            AllowOverride ALL
+            Order allow,deny
+            allow from all
+
+            # for include directive
+            Options +Includes
+            XBitHack on
+        </Directory>
+
+        </ubuntu apache include directive>
+
+        <zencart>
+        import/export user
+        need all following tables
+        customers
+        customers_info
+        countries
+        address_book
+        </zencart>
+
+        <zencart>
+        <date>Sun Mar 13 23:57:36 EDT 2011</date>
+        <topic>how to turn off random products</topic>
+        change file: include/modules/new_products.php
+                 include/modified/featured_products.php
+        change all function:
+        ExecuteRandomMulti() to Execute()
+        MoveNextRandom(); to MoveNext()
+        </zencart>
+
+        <screen commands>
+        split window vertically
+        :split -v
+
+        scroll screen
+        :C-a [ copy
+        :C-a ] paste
+        highligh
+        <space>
+        copy
+        <space>
+
+        or use vim commands to move around the window
+
+        C-a h
+        dump all data to file hardcopy.0
+
+        </screen command>
+        <update price>
+        update products set products_price = (products_price * 1.5) where products_id >= 0
+        update products set products_model = products_model + 1000000 where products_id >= 0;
+        update products set products_price=65 where products_model>= 1051976 AND products_model <= 1052160
+        <update price>
+
+        <zencart change category image size>
+        /var/www/domain/zencart138/includes/templates/mtheme/templates/tpl_product_info_display.php
+        change tempates/mtheme/css/stylesheet.css
+        </zencart>
+
+        <change main category left margin>
+        .pos5 {margin-left:2px; margin-bottom:30px;
+        /var/www/*/zencart138/includes/templates/mtheme/css/style.css
+        </change main category left margin>
+        <update products_status>
+        update products set products_status=0 where products_model='1012124';
+        </update products_status>
+        <mysql regular express>
+        select products_id, products_model, products_image from products where products_image regexp 'hair'
+        </mysql regular express>
+
+        <zencart table>
+        add column to products table
+        add: products_show_sorter varchar(10) NOT NULL default '0'
+        change sorted order by products_show_sorter
+        </zencart table>
+
+
+        update sorted order
+        update products set products_show_sorter=56 where products_image regexp 'something'
+
+        add linke to footer
+        template/yourtemp/common/tpl_footer.php
+
+
+        <put this script on your .bashrc file, shell script auto email>
+        echo 'ALERT - Root Shell Access on:' `date` `who` | mail -s "Alert: Root Access from `who | cut -d"(" -f2 | cut -d")" -f1 `"  name@gmail.com
+        </put this script on your .bashrc file>
+
+
+        <update smaller display image>
+        update purchased products to display smaller images
+        /var/www/itemsdeal/zencart138/includes/modules/also_purchased_products.php
+        </update smaller display image>
+        <add facebook button>
+        templates/mtheme/templates/tpl_product_info_display.php
+        </add facebook button>
+        <add pinterest button>
+        includes/templates/mtheme/templates/tpl_products_info_display
+        </add pinterest button>
+
+        <display iamge with edge>
+        /css/stylesheet.css
+        kkkcenterBoxContentsNew
+        </display image with edge>
+
+        <change main image size>
+        zencart138/includes/templates/mtheme_dog/templates/tpl_modules_main_product_image.php
+        </change main image size>
+
+
+        <java_package>
+        1 create package
+        create directory mypack
+        cd mypack
+        mkdir mypack/com
+        mkdir mypack/com/mycompany
+        mkdir mypack/com/mycompany/myproject
+        touch mypack/com/mycompany/myproject/MyClass.java
+
+
+        //put the code inside your MyClass.java file
+        package com.mycompany.myproject;
+        public class MyClass
+        {
+        public void print()
+        {
+            System.out.println("MyClass");
+        }
+        }
+
+        //compile MyClass
+        javac -d ./classes src/com/mycompany/myproject/MyClass.java
+
+        //you will see the MyClass.class under classes/com/mycompany/myproject/
+
+        touch src/com/mycompany/myproject/Test.java
+
+        //put the code inside your Test.java file
+
+        package com.mycompany.myproject;
+        import com.mycompany.myproject.*;
+        class Test
+        {
+        public static void main(String args[])
+        {
+            MyClass c = new MyClass();
+            c.print();
+        }
+        }
+
+        //compile your Test.java
+        javac -d ./classes -cp src/  src/com/mycompany/myproject/Test.java
+
+        //you will see the Test.class under classes/com/mycompany/myproject/
+        <java>
+
+        <java view the content of jar file>
+        jar tf jar-file
+        </java>
+
+        <zencart forget password, reset admin password>
+        zencart v1.5.1
+
+        DELETE FROM admin WHERE admin_name = 'Admin';
+        INSERT INTO admin (admin_name, admin_email, admin_pass, admin_profile)
+        VALUES ('Admin', 'admin@localhost', '351683ea4e19efe34874b501fdbf9792:9b', 1);
+        </zencart>
+
+
+
+        <linux command>
+        lsof -p PID // list of open file, see all file are opened by the process PID
+        /etc/init.d/tomcat7 start // In Ubuntu 14.0x
+        /usr/libexec/apache2  // check apache module in Mac OS X
+        pandoc test1.md -f markdown -t html -s -o test1.html    // markdown to html
+        CTRL-R to search the history commmand
+        !10 to execute  10 line history
+        tar xvjf file.tar.bz2 #unzip tar.bz2 file
+
+
+        split window vertically //screen command
+        :split -v
+
+        :C-a [ copy             //screen command scroll screen
+        :C-a ] paste
+
+
+        dest=xxx@tiny3.com:/home/xxx/myfile/zsurface/source/images //rsync
+        source=/Users/cat/myfile/github/libreoffice/
+
+        rsync -rvz --include "*.svg" --exclude "*" $source  $dest
+
+        :pandoc -s mymarkdown.md -o myhtml.html     //covert markdown file to html in pandoc
+        grep -Hrns --include="*.java" string        //search pattern and display filename includes the pattern
+        remove -i !(*.avi|*.png|*.mov)              //remove files without these extensions
+        ctags-exuberant -f php.tags --languages=PHP -R
+
+        sudo /usr/sbin/apachectl start  // start apache on Mac osx
+        sudo /usr/sbin/apachectl stop
+        sudo /usr/sbin/apachectl restart
+        </linux command>
+
+        <maven create maven file>
+        mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+        </maven>
+
+        <add package to cygwin>
+        C:\aronfile\cygwin_setup\setup-x86_64.exe //install cygwin packages
+        </>
+
+
+        <intellj unit test>
+        add unit test
+        1 Place the cursor and highlight the class name.
+        2 Press ALT+Enter to show the list of intention actions
+        3 Choose create Test from the suggestion list
+        </intellj>
+
+
+        <intellij shortcut key>
+        Shift Tab       // move block of code(code selection) to left
+        Tab/Shift+Tab   // indent/unintented selected line
+        Alt Right/Left  // cycle through tabs
+        Alt Shift F7    // goto usage
+        Alt Shit f      // global search
+        Alt g           // find name
+        Alt UP/Down     // move to previous/next method
+        Ctrl F12        // show all current methods
+        Ctrl W          // select code block. e.g {..}
+        Ctrl-Shift F12  // max/unmaxed window
+        Ctrl UP/Down    // movine window up/down
+        Ctrl [/]        // Move to code block star/end
+        Ctrl Shift #    // book mark line
+        Ctrl #          // goto book mark #
+        Ctrl Alt B      // goto implementation
+        Ctrl E          // go back to implementation
+        Ctrl Alt F7     // shows usages
+        Ctrl w          // select whole word
+        Ctrl Left/Right // move cursor previous/next
+        Ctrl Shift R    // find and replace
+        Ctrl Shift j    // join line
+        </intellij>
+
+        <maven create maven file>
+        mvn archetype:generate -DgroupId=Project -DartifactId=MyApp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+        </maven>
+
+        <git command>
+        rm -rf directory //delete directory
+        git commit -a
+        git push origin master
+
+
+        rm *.txt                // Delete *.txt file from git
+        git add --all
+        git commit -m "delete"
+        git push origin master
+
+        //ignore file
+        touch .gitignore
+        add *.txt pattern to .gitignore
+        </git command>
+
+        <xcode shortcut key>
+        Command `   cycle through different open windows
+        Shift ALT Command Left/Right  fold all code/unfolded all code
+        CTRL 5 search files name(.h *.m)
+        CTRL 6 type search show all current methods
+        CTRL WindowKey left/right  navigate backward/backward
+        CTRL 1 show recent items
+        CTRL C delete current line
+        ALT Left/Right  move word by word
+        Command ALT .(dot) change focus
+        Command ALT Left/Right code fold/unfolded
+        Command ALT 0 close utilities window
+
+        Command left/right move cursor to begin/end of line(no highligh)
+        Command , show setting(xcode)
+        Command 3 global search
+        Command w close window (not just xcode)
+        Command [] shift hightlight code left/right
+        Command double click jump to definition
+        Command D mark line
+        Command L goto line
+        Command E, Command F use selection to find
+        Command Shift Y close debug window
+        Command Shift 2 Open Organizer
+        Command E + Command F search word under cursor
+        Command Shift f  global find
+        Command Shift Left/Right  selection whole line
+        Command Shift right/left highlight line
+        Command CTRL UP/Down .h and .m file
+        Command CTRL J jump to definition
+        Command CTRL Left jump back
+        Command CTRL F full/maximize screen mode
+        Command CTRL Y debug/continue
+        Command `  window fit screen
+        </xcode>
+
+        <mac shortcut>
+        Command Space   open spotlight
+        </mac>
+
+        <xcode note>
+        /Users/cat/Library/Application Support/iPhone Simulator/6.1/Applications/66026FA2-3C01-4653-B0B8-EC4C6F7F1C05/Documents
+        http://publications.csail.mit.edu/tmp/MIT-CSAIL-TR-2005-014.pdf
+        sqlite pass2.db
+        NSLog("%s", __PRETTY_FUNCTION__);
+        ~/Library/Developer/Xcode/DerivedData delete xcode caches
+
+        can not find framework library
+        ->Build Settings
+        ->Framework Search Paths, Add the full path to *.framework directory
+
+        ld: symbol(s) not found for architecture armv7
+        check Build Phases with "Link Binary With Libraries" all the framework files has to be same as in the file navigator window
+
+        If framework file can't be found, then check "Framework Search Paths" in Build Settings
+        you can use absolute path for the  /User/Library/myframework.framework   path=/User/Library
+        </xcode>
+
+        <xcode snippet>
+        ====================================================================================
+        UISearchBar *_searchBar;                                                                         // searchBar in ios 7
+        --------------------------------------------------------------------------------
+        self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.SEARCHBAR_WIDTH, 40)];
+        self.searchBar.delegate = self;
+        self.searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        self.searchBar.hidden = NO;
+        self.searchBar.text = @"";
+        [self.view addSubview:self.searchBar];
+
+        ================================================================================
+        NSMutableDictionary* Dictionary     = [NSMutableDictionary dictionaryWithCapacity:0];            // dictionary
+        [Dictionary setObject:obj, forKey:key];
+        NSString* strValue = [Dictionary objectForKey:key];
+        [Dictionary setObject:value forKey:key];
+
+        ================================================================================
+        [self.searchBar becomeFirstResponder];
+        [self.searchBar resignFirstResponder];
+        NSMutableArray* mutableArray = [NSMutableArray arrayWithArray:oldMutableArray];                  // copy mutable array
+        NSUInteger* myNSUInteger   = [myNSNumber integerValue];                                          // Convert NSNumber to NSUInteger
+
+        ================================================================================
+        NSString* firstString = @"first";
+        NSString* concatstring = [firstString stringByAppendingString:@"appending string"];              // appending string to other string
+        // concatstring = "firstappending string";
+
+        ================================================================================
+        NSString* fullPath = @"/home";
+        NSString* fullPathFileName = [fullPath stringByAppendingPathComponent:@"fileName.txt"];              // appending string to other string
+        //fullPathFileName -> /home/fileName.txt
+
+        ================================================================================
+        NSString* baseName = [imageFileName stringByDeletingPathExtension]; //myimage.png -> myimage         //delete extension
+        “/tmp/scratch.tiff” -> “/tmp/scratch”
+        “/tmp/”             -> “/tmp”
+        “scratch.bundle/”   -> “scratch”
+        “scratch..tiff”     -> “scratch.”
+        “.tiff”             -> “.tiff”
+        “/”                 -> “/”
+
+        ================================================================================
+        NSString fullPathFileThumbEncrypt = "/home/dog/image.txt";
+        NSString* thumbName                = [fullPathFileThumbEncrypt lastPathComponent];  //get last component of a path
+        //thumbName = "image.txt"
+
+        ================================================================================
+        NSString* path = "/home/dog";
+        NSArray* array = [path pathComponents];
+        array[0] = "/"
+        array[1] = "home"
+        array[2] = "dog"
+
+        NSString* path = "home/dog";
+        NSArray* array = [path pathComponents];
+        array[0] = "home"
+        array[1] = "dog"
+
+        ================================================================================
+        NSString* mystring = @"home_dog_cat";
+        NSArray* componentArray = [mystring componentsSeparateByString:@"_"];
+
+        ================================================================================
+        NSString* stringFormat = @"file_%u.txt";
+        int num = 10;
+        NSString* fileName = [NSString stringWithFormat:stringFormat, num];
+        NSString* str5     = [NSString stringWithFormat:@"%d", 100];
+        //fileName = @"file_10.txt";
+
+        ================================================================================
+        NSString* path = "/home/dog/file.txt";
+        NSString* extension = [path pathExtension];
+        //extension = "txt"
+
+        NSString* path = "/home/dog/file..txt";
+        //extension = "txt"
+
+        NSString* path = "/home/dog/file/";
+        //extension = ""
+
+        ================================================================================
+        UITabBarController reload problem
+        - (void)viewWillAppear:(BOOL)animated                                                            // The method will be callen when tabbar is switched
+        Use [[self tableView] reloadData]; to reload data
+
+        ================================================================================
+        // object hash value
+        NSString* str5    = [NSString stringWithFormat:@"%d", 100];
+        NSLog(@"str5.hash = [%lu]", [str5 hash]);
+
+        ================================================================================
+        NSString* strInt = @"123";                                                                       // Convert NSString to int
+        int intValue     = [strInt intValue];
+
+        ================================================================================
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];                           // Convert NSString to NSNumber
+        [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSNumber* myNumber = [numberFormatter numberFromString:@"123"];
+        [numberFormatter release];
+
+        ================================================================================
+        NSNumber* nsnumber = [NSNumber numberWithInteger:123];                                           // Convert NSNumber to NSString
+        NSString* numString = [nsnumber stringValue];
+
+        ================================================================================
+        NSString* nstring = [NSString stringWithFormat:@"%d", (int)nsinteger];
+
+        ================================================================================
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:self.window.bounds];                 // Add image as main screen in UIApplication
+        imageView.image=[UIImage imageNamed:@"image.png"];
+        [self.window addSubview:imageView];
+
+        ================================================================================
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:self.window.bounds];                 // Draw circle on top of image/UIImageView
+        imageView.image=[UIImage imageNamed:@"image.png"];
+        CAShapeLayer* circleLayer = [CAShapeLayer layer];
+        CGFloat leftX = 100.0f;
+        CGFloat leftY = 100.0f;
+        CGFloat Width = 200.0f;
+        CGFloat Height = 200.0f;
+        UIBezierPath* path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(leftX, leftY, Width, Height)];
+        [circleLayer setPath:[path CGPath]];
+        CGFloat component[4];
+        component[0] = 100.0;
+        component[1] = 1.0;
+        component[2] = 2.0;
+        component[3] = 2.0;
+        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+        [circleLayer setStrokeColor:CGColorCreate(colorSpace, component)];
+        [circleLayer setLineWidth:1.0f];
+        [circleLayer setFillColor:[[UIColor blueColor] CGColor]];
+        [[imageView layer] addSublayer:circleLayer];
+        ================================================================================
+        UIBarButtonItem title font size
+        --------------------------------------------------------------------------------
+        UIBarButtonItem* deleteItem = [[UIBarButtonItem alloc] initWithTitle:@"Delete" 
+                style:UIBarButtonItemStyleBordered target:self action:@selector(deleteImageButton:)];
+        UIFont* font = [UIFont boldSystemFontOfSize:18.0f];
+        NSDictionary* attribute = @{NSFontAttributeName: font};
+        [deleteItem setTitleTextAttributes:attribute forState:UIControlStateNormal];
+
+        ================================================================================
+        Redirect output to file
+        --------------------------------------------------------------------------------
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *logPath = [documentsDirectory stringByAppendingPathComponent:@"xoutput.log"];             //append file to path
+        //NSString *logPath = @"/Users/cat/try/xoutput.log
+        NSLog(@"redirecting STDERR: %@", logPath);
+        freopen([logPath cStringUsingEncoding:NSASCIIStringEncoding],"a+",stderr);
+
+        ================================================================================
+        OpenES/OpenGL is like a state machine
+        OpenGL/OpenES has three primitives: point, line and triangle
+        Each point is formed by one vertex
+        Each line is formed by two vertices
+        Each triangle is formed by three vertices
+        Vertex Shader/Fragment Shader
+        Vertex Shader and Fragment Shader is like a little program, it run inside the GPU
+        Frame Buffer, Render Buffer, Depth Buffer, Stencil Buffer
+
+        ================================================================================
+        self.screenSize = [UIScreen mainScreen].bounds.size; // screen size
+
+        ================================================================================
+        format formatting
+        --------------------------------------------------------------------------------
+        %@ Objective-C object, printed string returned by descriptionWithLocale
+        %% '%' character.
+        %d, %D Signed 32-bit integer (int).
+        %u, %U Unsigned 32-bit integer (unsigned int).
+        %x Unsigned 32-bit integer (unsigned int), printed in hex using 0–9 and a–f.
+        %X Unsigned 32-bit integer (unsigned int), printed in hex using 0–9 and A–F.
+        %o, %O Unsigned 32-bit integer (unsigned int), printed in octal.
+        %f 64-bit float (double).
+        %e 64-bit float (double), e exponent.
+        %E 64-bit float (double), E exponent.
+        %g 64-bit float (double), %e if exponent < – 4 or >= to the precision, %f o.w.
+        %G 64-bit float (double), %E if exponent < – 4 or >= to the precision, %f o.w.
+        %c 8-bit unsigned character
+        %C 16-bit Unicode character
+        %s Null-terminated array of 8-bit unsigned characters.
+        %S Null-terminated array of 16-bit Unicode characters.
+        %p Void pointer (void *), printed in hex with the digits 0–9 and a–f, with a leading 0x.
+        %a 64-bit float, leading 0x and one hex before decimal pt using p as exp.
+        %A 64-bit float, leading 0X and one hex before decimal pt using P as exp.
+        %F 64-bit float, printed in decimal notation.
+
+        ================================================================================
+        /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
+
+        ================================================================================
+        // draw circle[location and radius]
+        - (CAShapeLayer*)drawCircle:(CGPoint)location radius:(CGFloat)radius {
+        CAShapeLayer* shapeLayer = [CAShapeLayer layer];
+
+        UIBezierPath *path = [UIBezierPath bezierPath];
+        [path addArcWithCenter:location
+                        radius:radius
+                    startAngle:0.0
+                      endAngle:M_PI * 2.0
+                     clockwise:YES];
+
+        shapeLayer.path = [path CGPath];
+        shapeLayer.strokeColor = [[UIColor redColor] CGColor];
+        shapeLayer.fillColor = nil;
+        shapeLayer.lineWidth = 5.0;
+        return shapeLayer;
+        }
+
+        ================================================================================
+        // draw oval[location and semiMajor and semiMinor]
+        -(CAShapeLayer*)drawOval:(CGPoint) location semimajor:(CGFloat)semimajor semiminor:(CGFloat) semiminor{
+        CAShapeLayer* shapeLayer = [CAShapeLayer layer];
+
+        UIBezierPath *path = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(location.x-semimajor, location.y-semiminor, 2*semimajor, 2*semiminor)];
+
+        shapeLayer.path = [path CGPath];
+
+        shapeLayer.strokeColor = [[UIColor greenColor] CGColor];
+        shapeLayer.fillColor = [[UIColor blackColor] CGColor];
+        shapeLayer.lineWidth = 1.0;
+        return shapeLayer;
+        }
+        // draw rectangle[location semiWith and semiHeight]
+        -(CAShapeLayer*)drawRectangle:(CGPoint) location semiWidth:(CGFloat) semiWidth semiHeight:(CGFloat)semiHeight{
+        CAShapeLayer* shapeLayer = [CAShapeLayer layer];
+        UIBezierPath* path = [UIBezierPath bezierPath];
+
+        // start point
+        [path moveToPoint:CGPointMake(location.x - semiWidth, location.y - semiHeight)];
+
+        // draw lines
+        [path addLineToPoint:CGPointMake(location.x + semiWidth, location.y - semiHeight)];
+        [path addLineToPoint:CGPointMake(location.x + semiWidth, location.y + semiHeight)];
+        [path addLineToPoint:CGPointMake(location.x - semiWidth, location.y + semiHeight)];
+        [path addLineToPoint:CGPointMake(location.x - semiWidth, location.y - semiHeight)];
+        //[path closePath];
+
+        shapeLayer.path = [path CGPath];
+
+        shapeLayer.strokeColor = [[UIColor yellowColor] CGColor];
+        shapeLayer.fillColor = [[UIColor blackColor] CGColor];
+        shapeLayer.lineWidth = 1.0;
+        return shapeLayer;
+        }
+        ================================================================================
+        // *.h
+        UIImageView* _imageView;
+        @property (nonatomic, retain) UIImageView* imageView;
+
+        // *.m
+        @synthesize imageView = _imageView;
+
+        self.imageView = [[UIImageView alloc]initWithFrame:self.window.bounds];
+        self.imageView.image=[UIImage imageNamed:@"myimage.jpg"];
+        [self.window addSubview:self.imageView];
+
+        ================================================================================
+        // create simple text label
+        UILabel *myLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 50, 300, 300)];
+        [myLabel setTextColor:[UIColor redColor]];
+        [myLabel setBackgroundColor:[UIColor clearColor]];
+        [myLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 20.0f]];
+        [myLabel setText:@"Supper Simple Application"];
+        [self.window addSubview:myLabel];
+
+        ================================================================================
+            // new line on UILabel text
+        UILabel *myLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 30, 300, 300)];
+        myLabel.numberOfLines = 0;						// new line
+        [myLabel setTextColor:[UIColor yellowColor]];
+        [myLabel setBackgroundColor:[UIColor clearColor]];
+        [myLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 12.0f]];
+        [myLabel setText:@"Remove old label and add new label \\nwith removeFromSuperView"];
+        [self.view addSubview:myLabel];
+
+        ================================================================================
+        CGRect frame;
+        frame = CGRectMake(100, 100, 100, 50);
+
+        ================================================================================
+        SubClass* sub = [[SubClass alloc]init];
+        TestClass* tt = [[TestClass alloc]init];
+
+        if([tt isKindOfClass:[SubClass class]]){
+            NSLog(@"tt is SubClass"); 
+        }
+
+        if([sub isKindOfClass:[TestClass class]]){
+            NSLog(@"sub is TestClass"); 
+        }
+        </xcode snippet>
+
+        <visual_studio shortcut key>
+            ALT Shift Enter maximize code window
+            CTRL-Tab        show tab files
+            CTRL -          navigate backward
+            CTRL Shift -    navigate forward
+            CTRL g          goto line number
+            Shift F12       find all references
+            CTRL-Delete     delete word to right of cursor
+            CTRL-BackSpace  delete word to left of cursor
+            CTRL W          highlight word
+            CTRL M + O      collapse all
+            CTRL M + L      expand all
+            CTRL M + M      expand/collapse the current region
+            CTRL K + K      toggle bookmark
+            CTRL K + N      next bookmark
+            CTRL K + P      previous bookmark
+            CTRL E          Recent files
+            Shift CTRL + }  Select block code curly bracket
+            CTRL + }        Jump to { or }
+        </visua_studio>
+
+        <book math>
+            http://www.liafa.jussieu.fr/~jep/PDF/MPRI/MPRI.pdf
+            http://www.math.brown.edu/~jhs/Presentations/WyomingEllipticCurve.pdf
+            http://swtch.com/~rsc/regexp/regexp1.html
+            http://glyphicons.com
+            http://www.math.sjsu.edu/~alperin/pt.pdf
+            http://theory.caltech.edu/~chan/Ph129b/sol3.pdf
+            http://www.math.uh.edu/~wagner/2331/Schurs_theorem.pdf
+            http://www.mathpuzzle.com/
+        </book>
+
+        </java antlr>
+            java -cp /usr/local/lib/antlr-4.0-complete.jar:. Test
+        <java antlr>
+
+        <csharp c#>
+            ================================================================================
+            list skip: listskip
+            --------------------------------------------------------------------------------
+            var list = new[] { "dog", "cow", "cat" };
+            System.Console.WriteLine(string.Join(",", list));
+            var list1 = list.Skip(1);
+            System.Console.WriteLine(string.Join(",", list1));
+            //"cow", "cat"
+            System.Console.ReadLine();
+
+            ================================================================================
+            dictionary uses for loop
+            --------------------------------------------------------------------------------
+            for (int index = 0; index < dictionary.Count; index++) {
+              var item = dictionary.ElementAt(index);
+              var itemKey = item.Key;
+              var itemValue = item.Value;
+            }
+        </csharp>
+
+        <python>
+            mode	description
+            r	read in text mode
+            w	write in text mode, overwrite old file if exists
+            a	append in text mode
+            r+	read and write
+            w+	read and write, overwrite old file/create file
+            a+	read and append
+            rb	read in binary mode
+            wb	write in binary mode, overwrite old file if exists
+            ab	append in binary mode
+            rb+	read and write in binary mode
+            wb+	write and read in binary mode, overwrite old file if exists
+            ab+	append and read in binary mode
+
+            python -m pdb script.py              // debug python
+            str = str.strip(' \r\n\t')           // trim whitespace
+            str = str.ltrip(' \r\n\t')           // trim the left side of str
+            str = str.rtrip(' \r\n\t')           // trim the right side of str
+            is_number(mystring)                  // convert string to number/integer
+            arglist = sys.argv;                  // argument list
+            arglist[0]                           // first argument which is the script name
+            len(mystring)                        // length of string
+            len(list)                            // number of element inside the list
+            mylist = []                          // create list
+            handler = open(fileName, "r+")       // open file for read
+            int(str)                             // convert string to integer
+            list.pop(0)                          // Delete first element from list
+            list.append("str")                   // Append str to list
+            basename = ntpath.basename(path)     // Basename of path
+            os.path.basename("/dog/dog/dog.txt") // import os;
+            pair = os.path.splitext("file.txt")  // pair[0] = file  pair[1]=".txt"
+            os.path.join("/home", "cat")         // /home/cat
+            os.path.join("/home/", "cat")        // /home/cat
+            str(num)                             // String to integer
+            os.getcwd()
+            arr1 = arr[:];                       // clone/copy list
+            -----------------------------------
+            line = "some stuff"
+            regex = re.compile(r'(file\W*=\W*)(\S+)\W*(title\W*=\W*)"(.*)"')
+                match = regex.search(line)
+                if match:
+                    print "(0)=", match.group(0)
+                    print "(1)=", match.group(1)
+                    print "(2)=", match.group(2)
+                    print "(3)=", match.group(3)
+                    print "(4)=", match.group(4)
+            -----------------------------------
+            subprocess.call(["pygmentize", "-f", "html", "-o", htmlFile, tmpFileName])
+            -----------------------------------
+            list = []
+            list[0] = 'cat'
+            list[1] = 'cat'
+            list.append('dog')
+            list.pop()
+            list.pop(1)
+            -----------------------------------
+            dict = {}
+            dict = {'k1':'value1', 'k2':'value2'}
+            dict['k1']
+            -----------------------------------
+            string.strip()                      // trim leading and trailing whitespace
+
+
+
+        </python>
+
+        <latex>
+            // greek letter
+            \langle \vec{v_1} \vec{v_2} \rangle            // inner product
+            \overline{\langle \vec{v_1} \vec{v_2} \rangle} // conjugate inner product
+            \iff                                           // if and only if
+            \Rightarrow                                    // imply
+            \vec{v_3^\ast}                                 // conjugation
+
+            \alpha        \theta                  \tau       \\
+            \beta         \vartheta    \pi          \upsilon \\
+            \gamma        \gamma       \varpi       \phi     \\
+            \delta        \kappa       \rho         \varphi  \\
+            \epsilon      \lambda      \varrho      \chi     \\
+            \varepsilon   \mu          \sigma       \psi     \\
+            \zeta         \nu          \varsigma    \omega   \\
+            \eta          \xi                                \\
+                                                             \\
+            \Gamma        \Lambda      \Sigma       \Psi     \\
+            \Delta        \Upsilon     \Omega                \\
+            \Theta        \Pi          \Phi
+
+        </latex>
+
+        <octopress>
+            link code from local dir
+
+            1. edit source/_posts/xxx.markdown
+            2. add absoluate path to code
+            3. rake generate
+            4. copy octopress/* to /var/www/octopress
+            5. Fixed relative path {% include_code java/Count.java %} from source/_post/xxx.markdown file
+            6. Fixed github gist
+            7. Installed Kramdown for latex
+
+            rake 'new_post[title]'
+
+            put image file in  zsurface/public/images
+            {% img  center /images/torus.png 400 400 %}
+        </octopress>
+
+        <java snippet>
+        ====================================================================================
+            int array[][] = new int[][]{
+            { 1, 2, 3, 4, 5 },
+            { 1, 2, 3, 4, 5 },
+            { 1, 2, 3, 4, 5 },
+            { 1, 2, 3, 4, 5 }
+            };
+        ====================================================================================
+        </java snippet>
+
+        <c# snippet>
+
+        </c# snippet>
+            ====================================================================================
+            Control Validating event
+            --------------------------------------------------------------------------------
+            TextBox textbox = new TextBox()
+            textbox.Validating += ValidationRule                    // Register event handler
+
+            private void ValidationRule(object sender, EventArg e)
+            { //define your validation rules }
+            --------------------------------------------------------------------------------
+
+        --------------------------------------------------------------------------------
+        <gpg_encryption>
+        tar -czf myencrypt.tar.gz myencrypt
+        tar -xzf myencrypt.tar.gz
+        gpg -c myencrypt.tar.gz
+        gpg -c -o myencrypt.tar.gz myencrypt.tar.gz.gpg
+        </gpg_encryption>
+        ================================================================================
+        Algebraic Curve in Projective Plane
+        Point on Projective Plane
+        (X, Y, Z) ~ (aX, aY, aZ) a != zero
+        Embed Affine plane to projective plane
+        Add infinite line (x:y:0)
+        Embed (x:y)->(1:x:z)
+        Embed (x:y)->(x:1:z)
+        Embed (x:y)->(x:y:1)
+
+        F(X, Y, Z) = 0
+        X = aX', Y = aY', Z = aZ'
+        F(aX', aY', aZ') = a^nF(X', Y', Z') = 0
+        If F(X', Y', Z') => a^nF(X', Y', Z') = 0
+
+        Any affine curve C can be extended to projective plane curve by following process
+        F(X, Y) = 0
+        Z^nF(X/Z, Y/Z) = 0, Let Z != 0
+        e.g. X^2 + y  + 3 = 0
+             (X/Z)^2 + Y/Z + 3 = 0
+            =>X^2 + ZY + 3Z^2 = 0
+              Add (X:Y:0) as infinite line
+
+        ================================================================================
+        ([1, 2, 3, 0, 5]U{Infinite}, max, +, 0, 1)
+        max is associative
+        + is associative
+        0 is the identify of +
+        since a = a + 0
+
+        Infinite is annihilator for max
+        Infinite = max(Infinite, a)
+
+        m = max(1, 2)
+        2 = max(2, 0)
+        2 = max(0, 2)
+            max(max(a, b), c) = max(a, max(b, c))
+            3 = 3 + 0
+            3 = 0 + 3
+
+        ================================================================================
+        new word of the data
+        snap [ ] say something quickly and irritably to someone, snapped at her  
+        snapshot, snapchat
+        snapper [ ] a marine fish that is typically reddish and is valued as food
+
+        ================================================================================
+        install haskell web framework snap
+        cabal upgrade
+        cabal install snap
+        --------------------------------------------------------------------------------
+        change haskell verion
+        ghc -v
+        there are two major pieces: GHC and Haskell Platform
+        They are installed respectively in:
+        /Library/Frameworks/GHC.framework
+        /Library/Haskell
+        Executables are symlinked in /usr/bin/ and should be avaiable in any shell
+
+        How to uninstall different Haskell GCH versions:
+        /Library/Haskell/bin/uninstall-hs
+        e.g ./uninstall-hs thru --remove 7.8.3 [option --remove is remove files]
+        --------------------------------------------------------------------------------
+        cabal update            Install the latest version of each package
+        cabal sandbox init      To prevent version incompatibility with earlier installed packages
+        cabal install foo
+        cabal install foo-1.0   Specific version of a package
+        --------------------------------------------------------------------------------
+        Google just release a new compression [algo called Brotli], [which] the company hope 
+        will [reduce(speed up)] the web browsing by [shrinking] images, web fonts, other other
+        content
+        --------------------------------------------------------------------------------
+        install homebrew in Mac
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        use homebrew to install Haskell
+        brew install ghc
+
+        // install cabal from brew
+        brew install cabal-install
+
+        // use cabal install packages
+        cabal install cabal-install
+        I spend many hours on the Haskell framework, and still can't resolve the package dependency hell
+        --------------------------------------------------------------------------------
+</pre>
