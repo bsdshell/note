@@ -6,13 +6,17 @@
         gpg -c -o myencrypt.tar.gz myencrypt.tar.gz.gpgencrypt your tar file
 
         *Git Stuff*
-        git branch myfeature_branchcreate // git feature branch
-        git branch -d delete_branchdelete // feature branch
-        git branch -D delete_branchdelete // unmerged feature branch
-        git checkout mastergit merge --no-ff feature_branchmerge feature branch to master
-        git rm -r --cached myfileremove //tracked file in .gitignore
-        git rm -r --cached myfileremove //file from your index
-        git refloghow                   //all the reference log
+        git branch myfeature_branchcreate                   // git feature branch
+        git branch -d delete_branchdelete                   // [git delete] feature branch
+        git branch -D delete_branchdelete                   // unmerged feature branch
+
+        git checkout master 
+        git merge --no-ff feature_branch // [git merge]merge feature branch to master
+
+        git rm -r --cached myfileremove                     // tracked file in .gitignore
+        git rm -r --cached myfileremove                     // file from your index
+        git refloghow                                       // all the reference log
+        git reset --hard 828c8c0b1995                       // revert to previous commit
 
         *Regular Expression [:help pattern]*
         * zero or more
@@ -20,15 +24,141 @@
         ? zero or one
         *? zero or more non-greedy
         +? one or more non-greedy
+
+        //vim command
+        =i{     // indent inner block[inside the bracket]
+        =a{     // indent a block [include the bracket] 
+        =2a{    // indent two blocks[ this block and cointaining block ]
+        >i{     // increase indent for inner block
+        <i{     // decrease indent for inner block
+        =%      // indent the block with cursor on { or }
+
+        grep --color -Hnirs class\s\+\w\+\s\+\(extends\s\+[A-Za-z_\]\+\)*\s\+\(implements\s\+\([A-Za-z_\]\+\)\)\?\(\s\+\)*\(,\s\+[A-Za-z_\]\+\)* 
+        grep --include="*.java" "\"[a-zA-Z]\+\""  ./
+        vim $(grep -l --include="*.java" pattern .) #vim open all files from grep
+        :bufdo %s/pattern/replacement #vim replace all buffers
+        vim $(grep -l --include="*.java" pattern .)
+        :bufdo %s/pattern/replacement #replace all buffers
+        /pattern\c #ignorecase
+        :hi clear SpellBad # Reset SpellBad bad spell highlight to default
+        :g/-\s*(\w\+)\w+/z#.1                                                                           // print all xcode methods with line number #
+
+        history -d  xxx #remove history
+        add to vimrc file #vim change tabs to space
+        set tabstop=4
+        set shiftwidth=4
+        set expandtab
+        set showcmd
+        :hi clear SpellBad # Reset SpellBad bad spell highlight to default
+
+        :g/-\s*(\w\+)\w+/z#.1                                                                           // print all xcode methods with line number #
+        :tabmove 4                                                                                      // move the current tab to position 4 [help :tabmove]
+        vim $(grep -l --include="*.java" pattern .)
+        :bufdo %s/pattern/replacement #replace all buffers
+        /pattern\c #ignorecase
+
+        vim $(grep -l --include="*.java" pattern .)        // vim open all files from grep
+        vim $(find ./ -name \*.java -print)                // open all java file from find
+
+        :bufdo %s/pattern/replacement/ge | update          // vim replace all buffers
+        :zf                // Create fold under cursor
+        :zd                // Delete fold under cursor
+        :5gt               // goto tab 5, [in insert mode]
+        :tabmove 4         // move the current tab to position 4 [help :tabmove]
+        :tabc 11           // close tab 11
+
+        :set modeline      // display file name in each tabs page
+        :set ls=2
+
+        :set modeline      // display full file name in statusline [:help :statusline]
+        :set statusline=%F
+
+        y$                                             // copy character from cursor to the end of line     [:help yank]
+        vaw                                            // highlight word under cursor including white space [:help text-object]
+        viw                                            // hightlight word under cursor excluding white space[:help text-object]
+        awk '{for(i=0; i<NF; i++) print $1}' inputfile // print the first column from file>
+        kill -9 $(ps aux | awk '/Safari/ {print $2}')  // kill Safari brower
+
+        vim $(grep -l --include="*.java" pattern .)                                                     // vim open all files from grep
+        vim $(find ./ -name \*.java -print)                                                             // open all java file from find
+
+        :bufdo %s/pattern/replacement/ge | update                                                       // vim replace all buffers
+        :zf                                                                                             // Create fold under cursor
+        :zd                                                                                             // Delete fold under cursor
+        5gt                                                                                             // goto tab 5, [in insert mode]
+        :tabmove 4                                                                                      // move the current tab to position 4 [help :tabmove]
+        :tabc 11                                                                                        // close tab 11
+
+        :set modeline                                                                                   // display file name in each tabs page
+        :set ls=2
+
+        :set modeline                                                                                   // display full file name in statusline [:help :statusline]
+        :set statusline=%F
+
+        y$                                                                                              // copy character from cursor to the end of line     [:help yank]
+        vaw                                                                                             // highlight word under cursor including white space [:help text-object]
+        viw                                                                                             // hightlight word under cursor excluding white space[:help text-object]
+        awk '{for(i=0; i<NF; i++) print $1}' inputfile                                                  // print the first column from file>
+
+        sed 's/.*\(Name=\"[^"]*\"\)\s\(ContentFolder=\"[^"]*\"\).*/\1 \2/g' /tmp/c.txt  > /tmp/norm.txt // Match Name=xxx  and ContentFolder=xxx two columns from c.txt and direct to norm.txt
+
+        sed -i -e 's/oldstring/newstring/g' *                                                           // grep all the file *.php search oldstring and replace newstring
+        find . -name "*" | xargs -n1 perl -i -ane 's/images/img/g; print;'
+        :bufdo e!                                                                                       // Save reload all buffers :syntax on  to enable syntax highlight
+        '< and >'                                                                                       // first cursor position/last cursor position in registers in visual mode/selection
+        
+        :echo getline(".")                 // get current line string
+        :echo match("mystring", "st")      // return 2
+        :echo line(".")                    // line number of cursor
+        :echo line("'t")                   // line number of mark t
+        :echo getpos(".")                  // [bufferNumber, col, lnum, off] [:help getpos]
+        :echo setpos(".", {list})          // [bufferNumber, col, lnum, off]
+        :echo [col, lnum] = searchpos("=") // return = position in current line and move the cursor to =
+        :help debug-mode                   // debug vim script
+
+        
+        :echo getline(".")                                                                              // get current line string
+        :echo match("mystring", "st")                                                                   // return 2
+        :Align \*\zs\s\+ =                                                                              // *'  ' and '=' separator
+        \%V                                                                                             // visual selection block [:help \%V]
+        :'<,>'sort /\ze\%V/                                                                             // sort all selected lines in visual mode
+        :g/^$/d                             //delete empty line 
+        :let @a=substitue(@a, 'pattern', 'sub', 'g')                                                    // substitute 'pattern' with 'sub' in register @a 
+        :q: or q/                          // vim command history
+
+        :hi Search guifg=Brown guibg=Gray
+        :hi Search cterm=Brown ctermbg=Gray                                                             // change search backgroun/foreground [:h hl-Search]
+
+        :sort n                            //sort lines by the first digital in the line, [n] is first decimal number, [x] is first hexadecimal number [:help :sort]
+        :sort! n                           //reverse sorting
+
+        :syn match MyKeyWord /MyName/               //Highlight defined keyword [:help syn-match]
+        :highlight MyKeyWord guifg=Green 
+        :'<,'>s/^\s*\zs\w/#\0/gc        //comment all selected lines in python
+        :set ma                             // set file modifiable on  [:h modifiable]
+
+        ctrl-]                              //class definition 
+        ctrl-t                              //back to previous window
+
+        ================================================================================
+        UIBezierPath* path = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:0];
+        [_shapeLayer setFrame:rect];
+        _shapeLayer.path = [path CGPath];
+        _shapeLayer.strokeColor = [[UIColor greenColor]CGColorRef];
+        _shapeLayer.fillColor = [[UIColor greenColor]CGColorRef];
+        _shapeLayer.lineWidth = 2;
+        //_shapeLayer.shouldRasterize = YES;
+        //[_shapeLayer setRasterizationScale:[UIScreen mainScreen].scale];
+        //[_shapeLayer setShadowOpacity:0.6];
+
+        //    for(CALayer* layer in myView.layer.sublayers){
+        //        [layer removeFromSuperlayer];
+        //    }
+        [myView.layer addSublayer:_shapeLayer];
+        ================================================================================
         Object:obj, forKey:key];
         NSString* strValue = [Dictionary objectForKey:key];
         [Dictionary setObject:value forKey:key];
-
-        ================================================================================
-        [self.searchBar becomeFirstResponder];
-        [self.searchBar resignFirstResponder];
-        NSMutableArray* mutableArray = [NSMutableArray arrayWithArray:oldMutableArray];                  // copy mutable array
-        NSUInteger* myNSUInteger   = [myNSNumber integerValue];                                          // Convert NSNumber to NSUInteger
 
         ================================================================================
         NSString* firstString = @"first";
@@ -109,15 +239,56 @@
         [numberFormatter release];
 
         ================================================================================
-        NSMutableArray* arr = [[NSMutableArray alloc] initWithCapacity:2];                              // convert int to NSNumber and NSNumber to int
-        [arr addObject:[NSNumber numberWithInt:4]];
-        [arr addObject:[NSNumber numberWithInt:5]];
+        NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:2];                              // convert int to NSNumber and NSNumber to int
+        [array addObject:[NSNumber numberWithInt:4]];
+        [array addObject:[NSNumber numberWithInt:5]];
         
-        int x = [[arr objectAtIndex:0] integerValue];
-        int y = [[arr objectAtIndex:1] integerValue];
-
+        int x = [[array objectAtIndex:0] integerValue];
+        int y = [[array objectAtIndex:1] integerValue];
+        --------------------------------------------------------------------------------
+        [array removeObjectAtIndex:index];
+        --------------------------------------------------------------------------------
+        [array removeAllObjects];
+        --------------------------------------------------------------------------------
+        NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:2];                              // convert int to NSNumber and NSNumber to int
+        [array addObject:@"dog"]; 
+        [array addObject:@"cat"]; 
+        String str0 = [array objectAtIndex:0]; 
+        String str1 = [array objectAtIndex:1]; 
         ================================================================================
+        [self.searchBar becomeFirstResponder];
+        [self.searchBar resignFirstResponder];
+        NSMutableArray* mutableArray = [NSMutableArray arrayWithArray:oldMutableArray];                  // copy mutable array
+        NSUInteger* myNSUInteger   = [myNSNumber integerValue];                                          // Convert NSNumber to NSUInteger
 
+        --------------------------------------------------------------------------------
+        NSMutableArray* array = [[NSMutableArray alloc] initWithCapacity:10];
+        NSMutableArray* arr1 = [[NSMutableArray alloc] initWithCapacity:2];
+        NSMutableArray* arr2 = [[NSMutableArray alloc] initWithCapacity:2];
+
+        [arr1 addObject:@"dog"];
+        [arr1 addObject:@"cat"];
+
+        [arr2 addObject:@"cat"];
+        [arr2 addObject:@"dog"];
+
+        [array addObject:arr1];
+        [array addObject:arr2];
+        [array containsObject:arr1]
+
+        --------------------------------------------------------------------------------
+        [arr3 addObject:[MyLib NumInt:1]];
+        [arr3 addObject:[MyLib NumInt:2]];
+        
+        [arr4 addObject:[MyLib NumInt:2]];
+        [arr4 addObject:[MyLib NumInt:1]];
+
+        [array2 addObject:arr3];
+        [array2 addObject:arr4];
+
+        [array2 removeObject:arr3];
+        [array2 removeObject:arr4];
+        ================================================================================
         NSNumber* nsnumber = [NSNumber numberWithInteger:123];                                           // Convert NSNumber to NSString
         NSString* numString = [nsnumber stringValue];
 
